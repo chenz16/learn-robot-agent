@@ -104,16 +104,46 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
               └───────────────────────────────┘
 ```
 
-### 4.2 Three-Tier Frequency Model
+### 4.2 Three-Layer Abstraction
 
-| Tier | Component | Frequency | Location | Latency Budget | Process |
-|------|-----------|-----------|----------|----------------|---------|
-| 1 | VLA Control | 2-50 Hz | LOCAL GPU | < 20ms | Model Manager |
-| 2 | VLM Perception | 0.5-5 Hz | LOCAL GPU | 200ms-2s | Model Manager |
-| 3 | LLM Planning | 0.05-0.2 Hz | LOCAL vLLM (default) / REMOTE API (optional) | 0.5-10s | Agent Core |
-| 4 | Evaluator | 0.1-1 Hz | LOCAL/REMOTE | 1-3s | Agent Core |
+High-level architecture is intentionally simplified into three logical layers:
 
-### 4.3 What's Reused from Nanobot vs What's New
+- **Intention**: Fast intent detection and task framing from user instruction.
+- **Cognition**: Unified reasoning + perception capability that outputs structured plan/context.
+- **Action**: Real-time robot control loop (VLA + safety + actuation).
+
+| Layer | Responsibility | Typical Budget | Deployment Mode | Notes |
+|------|----------------|----------------|-----------------|-------|
+| Intention | Classify intent, extract slots, decide whether full planning is needed | 50-800ms | `local_process` or `remote_tool_call` | Optional fast path for simple commands |
+| Cognition | Produce plan/perception summary for next subtask | 0.5-10s | `local_process` or `remote_tool_call` | Internals may or may not split VLM/LLM |
+| Action | Execute subtasks at high frequency with safety checks | 2-50Hz, p99 step < 20ms | **local_process only** | Must not be blocked by Intention/Cognition latency |
+
+### 4.3 Configurable Implementation Boundary
+
+The three layers above are **logical modules**. Concrete implementation is configuration-driven:
+
+- Main agent treats each layer as a callable module endpoint.
+- Each layer can be implemented as a local subprocess or remote tool call.
+- How a layer decomposes internally is that layer's own responsibility.
+- In particular, Cognition may internally split into perception/reasoning loops, but this is hidden behind its I/O contract.
+
+```yaml
+pipeline:
+  intention:
+    mode: local_process        # local_process | remote_tool_call
+    endpoint: ipc://intent
+    timeout_ms: 150
+  cognition:
+    mode: remote_tool_call     # local_process | remote_tool_call
+    endpoint: https://cognition.example.com/v1
+    timeout_ms: 6000
+    fallback: local_cognition
+  action:
+    mode: local_process        # fixed
+    endpoint: ipc://vla-controller
+```
+
+### 4.4 What's Reused from Nanobot vs What's New
 
 | Component | Source | Lines | Status |
 |-----------|--------|-------|--------|
@@ -130,7 +160,7 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
 | MessageBus | nanobot | ~50 | Reuse as-is |
 | **Robot Tools** | **new** | ~300 | look, move, grasp, perceive, etc. |
 | **VLA Adapters** | **new** (from r13) | ~200 | Mock/HTTP/GR00T/OpenPI |
-| **LoopManager** | **new** (from r13) | ~200 | asyncio control+perception loops |
+| **LoopManager** | **new** (from r13) | ~200 | asyncio action loop + cognition handoff |
 | **Terminators** | **new** (from r13) | ~150 | 5 strategies |
 | **RoutingConfig** | **new** (from r13) | ~100 | YAML routes + difficulty classifier |
 | **SafetyManager** | **new** (from r10) | ~200 | E-stop, zones, velocity, audit |
@@ -725,7 +755,25 @@ Agent uses LoRA:
 
 ### FR-5: Multi-Frequency Control
 
-LoopManager orchestrates concurrent VLA control and VLM perception loops using asyncio.
+LoopManager orchestrates the **Action** layer (VLA control loop) and consumes handoff outputs from Intention/Cognition modules.
+
+At the product boundary, Intention/Cognition are treated as pluggable modules with a stable contract:
+
+```json
+{
+  "intent": "pick_place",
+  "slots": {"object": "apple", "target": "plate"},
+  "plan": [
+    "move_to_object",
+    "close_gripper",
+    "move_to_target",
+    "open_gripper"
+  ],
+  "confidence": 0.92
+}
+```
+
+Design constraint: Intention/Cognition delays or failures must not block the running Action loop; they can only affect next-subtask decisions or trigger fallback routes.
 
 ```python
 class LoopManager:
@@ -736,7 +784,7 @@ class LoopManager:
         route: str = "default",
         difficulty: str = "easy",
     ) -> str
-        """Launch control + perception loops as asyncio tasks"""
+        """Launch action loop for subtask and consume cognition handoff"""
 
     async def wait_for_completion(self, timeout: float = 30.0) -> str
         """Block until subtask completes or times out"""
@@ -765,15 +813,18 @@ async def _control_loop(action_hz, terminator):
         await asyncio.sleep(1.0 / action_hz)
 ```
 
-**Perception loop** (runs at `perception_hz`):
+**Example Cognition internal loop** (optional, subprocess-owned):
 ```
-async def _perception_loop(perception_hz):
-    while not termination_signal.is_set():
+async def _cognition_internal_loop(perception_hz):
+    while True:
         image = await env.capture_image()
         scene = await vlm.analyze(image, "describe the scene")
-        shared_state.update_scene(scene)
+        plan = await planner.update(scene)
+        publish_to_main_process({"scene": scene, "plan": plan})
         await asyncio.sleep(1.0 / perception_hz)
 ```
+
+Whether Cognition actually uses this split-loop pattern is implementation detail and configurable.
 
 ### FR-6: Termination Strategies
 
@@ -810,6 +861,8 @@ routes:
 
 Task difficulty determines which models run, at what frequency, and with what LoRA.
 
+At high level, routing targets the three logical layers (Intention/Cognition/Action). Route fields like `planner`, `evaluator`, and `perception_hz` are backend hints consumed by the Cognition implementation.
+
 **Difficulty classification:**
 ```
 classify_difficulty(instruction, scene) → "easy" | "medium" | "hard"
@@ -839,20 +892,20 @@ routes:
     max_steps: 100
     vla_lora: null                       # base model
   medium:
-    planner: local-vlm                   # VLM as quick planner
+    planner: local-cognition             # local cognition subprocess profile
     perception_hz: 2
     action_hz: 20
     termination: [vlm_check, step_limit]
     max_steps: 200
     vla_lora: null
   hard:
-    planner: remote-llm                  # user-configured remote; fallback local-vllm
+    planner: remote-cognition            # remote cognition endpoint; fallback local-cognition
     perception_hz: 5
     action_hz: 50
     termination: [vlm_check, gripper_state, step_limit]
     max_steps: 500
     vla_lora: task-specific              # load user's fine-tuned LoRA
-    evaluator: remote-llm                # same fallback rule
+    evaluator: remote-cognition          # same fallback rule
 ```
 
 **Three route profiles included:**
@@ -1348,7 +1401,7 @@ External services accessed via MCP tools:
 - Model Registry (registry.yaml)
 - Model Manager with load/unload/swap/health operations
 - MockVLAAdapter + HTTPVLAAdapter
-- LoopManager with asyncio control + perception loops
+- LoopManager with asyncio action loop + cognition handoff
 - 5 termination strategies
 - RoutingConfig with 3 YAML profiles
 - Difficulty classifier
@@ -1391,6 +1444,9 @@ External services accessed via MCP tools:
 | **VLA** | Vision-Language-Action model. Takes image + text instruction, outputs robot actions. |
 | **VLM** | Vision-Language Model. Takes image + text question, outputs text description. |
 | **LLM** | Large Language Model. Text-to-text reasoning and planning. |
+| **Intention** | Logical layer for fast intent recognition and slot extraction before full planning. |
+| **Cognition** | Logical layer that produces reasoning/perception outputs for subtask decisions; internal structure is implementation-defined. |
+| **Action** | Logical layer that executes robot control in high-frequency local loops (VLA + safety + actuation). |
 | **LoRA** | Low-Rank Adaptation. Small parameter file (<200MB) that specializes a base model for a specific task. |
 | **MCP** | Model Context Protocol. Standard for connecting AI agents to external tools and services. |
 | **Adapter** | A LoRA weight file that can be hot-swapped onto a base model. |
