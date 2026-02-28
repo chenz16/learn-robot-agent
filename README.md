@@ -1,6 +1,6 @@
 # learn-robot-agent
 
-A progressive 12-lesson tutorial for building robot agents — from a single loop to multi-robot teams with safety and parallel simulation.
+A progressive 13-lesson tutorial for building robot agents — from a single loop to multi-frequency dynamic routing.
 
 Inspired by [learn-claude-code](https://github.com/shareAI-lab/learn-claude-code), applied to robotics.
 
@@ -36,6 +36,7 @@ Every file works in **MOCK mode** without external services.
 | r10 | [r10_safety_protocols.py](agents/r10_safety_protocols.py) | Safety Protocols | 19 | E-stop, zones, velocity, audit |
 | r11 | [r11_autonomous_patrol.py](agents/r11_autonomous_patrol.py) | Autonomous Patrol | 22 | Waypoint patrol + idle-cycle auto-claim |
 | r12 | [r12_parallel_sim.py](agents/r12_parallel_sim.py) | Parallel Sim | 20 | Fork/compare/promote sim sandboxes |
+| r13 | [r13_dynamic_routing.py](agents/r13_dynamic_routing.py) | Dynamic Routing | 28 | Multi-freq loops + VLA adapters + YAML routes |
 
 Detailed docs for each lesson: [docs/en/](docs/en/)
 
@@ -65,6 +66,8 @@ r10  + Safety Pipeline    ← e-stop, zones, audit
 r11  + Autonomous Patrol  ← finds work itself
  │
 r12  + Parallel Sims      ← try strategies in sandbox
+ │
+r13  + Dynamic Routing    ← VLA@50Hz / VLM@5Hz / LLM@0.1Hz
 ```
 
 ## Quick Start
@@ -124,12 +127,16 @@ learn-robot-agent/
 ├── agents/
 │   ├── .env.example          # API key + service URLs
 │   ├── r01_agent_loop.py     # ... through ...
-│   └── r12_parallel_sim.py
+│   └── r13_dynamic_routing.py
 ├── skills/
 │   ├── top-grasp/SKILL.md    # top-down pick recipe
 │   ├── side-grasp/SKILL.md   # side approach for mugs
 │   ├── pour/SKILL.md         # pour liquid recipe
 │   └── precision-place/SKILL.md
+├── routes/
+│   ├── default.yaml          # standard routing config
+│   ├── fast_manipulation.yaml
+│   └── cautious.yaml
 ├── docs/en/                  # detailed lesson docs
 ├── requirements.txt
 └── README.md
@@ -157,7 +164,7 @@ But MOCK mode works without any of these.
 
 - Python 3.10+
 - An Anthropic API key (or compatible proxy via `ANTHROPIC_BASE_URL`)
-- `pip install anthropic python-dotenv requests`
+- `pip install anthropic python-dotenv requests pyyaml`
 
 ## License
 

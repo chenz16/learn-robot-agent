@@ -1,0 +1,41 @@
+name: default
+description: "Standard routing for pick-and-place tasks"
+
+defaults:
+  perception_hz: 2
+  action_hz: 20
+  max_steps: 200
+  termination: [step_limit]
+  vla_lora: null
+  position_threshold: 0.05
+
+routes:
+  easy:
+    description: "Known skill, seen object — skip LLM replanning"
+    planner: null
+    perception_hz: 1
+    action_hz: 20
+    termination: [position_threshold, step_limit]
+    max_steps: 100
+    vla_lora: null
+    position_threshold: 0.05
+
+  medium:
+    description: "Known type, new parameters — VLM as quick planner"
+    planner: local-vlm
+    perception_hz: 2
+    action_hz: 20
+    termination: [vlm_check, step_limit]
+    max_steps: 200
+    vla_lora: null
+    evaluator: null
+
+  hard:
+    description: "Novel or compound task — full LLM + VLM + evaluation"
+    planner: remote-llm
+    perception_hz: 5
+    action_hz: 50
+    termination: [vlm_check, gripper_state, step_limit]
+    max_steps: 500
+    vla_lora: task-specific
+    evaluator: remote-llm

@@ -1,0 +1,35 @@
+name: fast_manipulation
+description: "High-speed manipulation for known objects"
+
+defaults:
+  action_hz: 50
+  max_steps: 300
+  termination: [position_threshold, step_limit]
+  position_threshold: 0.03
+
+routes:
+  easy:
+    description: "Known object, practiced skill — max speed"
+    planner: null
+    perception_hz: 0.5
+    action_hz: 50
+    termination: [position_threshold, step_limit]
+    max_steps: 100
+    position_threshold: 0.03
+
+  medium:
+    description: "Known type, unfamiliar instance"
+    planner: local-vlm
+    perception_hz: 2
+    action_hz: 50
+    termination: [vlm_check, step_limit]
+    max_steps: 200
+
+  hard:
+    description: "Complex multi-step at full speed"
+    planner: remote-llm
+    perception_hz: 5
+    action_hz: 50
+    termination: [vlm_check, gripper_state, step_limit]
+    max_steps: 500
+    evaluator: remote-llm

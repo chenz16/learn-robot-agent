@@ -1,0 +1,35 @@
+name: cautious
+description: "Safety-first routing with frequent VLM checks"
+
+defaults:
+  action_hz: 10
+  perception_hz: 5
+  max_steps: 500
+  position_threshold: 0.03
+
+routes:
+  easy:
+    description: "Simple task, but check often"
+    planner: local-vlm
+    perception_hz: 3
+    action_hz: 10
+    termination: [vlm_check, position_threshold, step_limit]
+    max_steps: 200
+
+  medium:
+    description: "Moderate task with evaluation"
+    planner: local-vlm
+    perception_hz: 5
+    action_hz: 10
+    termination: [vlm_check, step_limit]
+    max_steps: 300
+    evaluator: local-vlm
+
+  hard:
+    description: "High-risk task — slow, careful, evaluated"
+    planner: remote-llm
+    perception_hz: 5
+    action_hz: 10
+    termination: [vlm_check, gripper_state, step_limit]
+    max_steps: 500
+    evaluator: remote-llm
