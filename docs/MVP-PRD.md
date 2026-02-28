@@ -2,62 +2,62 @@
 
 ## 1. Executive Summary
 
-基于 [nanobot](https://github.com/HKUDS/nanobot)（~4,000 行 Python asyncio 框架）构建的机器人 agent，通过 CLI 接收自然语言指令，调度 VLM（视觉理解）和 VLA（动作生成）模型，在 LIBERO 仿真环境中控制机器人完成操作任务。核心理念：机器人动作和软件动作是同一种抽象——Tool。
+A robot agent built on [nanobot](https://github.com/HKUDS/nanobot) (~4,000-line Python asyncio framework) that receives natural language instructions via CLI, orchestrates VLM (visual understanding) and VLA (action generation) models, and controls a robot to complete manipulation tasks in the LIBERO simulation environment. Core philosophy: robot actions and software actions are the same abstraction — a Tool.
 
-**目标用户**: 机器人研究团队，需要一个轻量 agent 框架验证 "LLM 调度 VLA/VLM 执行操作任务" 的端到端可行性。
+**Target users**: Robotics research teams who need a lightweight agent framework to validate the end-to-end feasibility of "LLM orchestrates VLA/VLM to execute manipulation tasks."
 
-**核心 demo**: 两个 LIBERO-10 (Long) 多步任务，验证 **LLM 任务分解 + VLA 逐步执行**——
-1. 重复型分解："put both the alphabet soup and the tomato sauce in the basket"（同一动作对不同物体执行两轮）
-2. 链式型分解："put the black bowl in the bottom drawer of the cabinet and close it"（不同动作按顺序串联：开→放→关）
+**Core demo**: Two LIBERO-10 (Long) multi-step tasks that validate **LLM task decomposition + VLA step-by-step execution** —
+1. Repeat decomposition: "put both the alphabet soup and the tomato sauce in the basket" (same action pattern applied to different objects across two rounds)
+2. Chain decomposition: "put the black bowl in the bottom drawer of the cabinet and close it" (different actions chained in sequence: open → place → close)
 
-两个任务都需要 LLM 拆解为多个子任务，VLA 无法一步完成。Agent 自主完成 感知 → 推理 → 分步执行 → 验证 闭环，Franka Panda 机械臂在 LIBERO 仿真中成功完成操作。
+Both tasks require the LLM to decompose into multiple subtasks that a VLA cannot complete in a single step. The agent autonomously completes the perceive → reason → execute → verify loop, with a Franka Panda arm successfully performing the operations in LIBERO simulation.
 
 ---
 
 ## 2. Scope
 
-### 2.1 IN（MVP 范围内）
+### 2.1 IN (MVP Scope)
 
-| 维度 | 内容 |
-|------|------|
-| 机器人数量 | 单机器人 |
-| 仿真环境 | LIBERO（MuJoCo），Franka Panda 固定底座，130+ 桌面操作任务 |
-| 交互方式 | CLI 终端（文本输入） |
-| Agent 框架 | nanobot，复用 AgentLoop、ToolRegistry、SkillsLoader 等 |
-| 模型 | VLM（场景理解）+ VLA（动作生成）+ LLM（推理调度） |
-| 控制闭环 | PRAE：Prepare → Perceive → Reason → Act → Evaluate |
-| Robot Tools | 8 个 base tools |
-| VLA 接入 | Mock adapter（开发调试）+ HTTP adapter（接真实 VLA 推理服务） |
-| 安全 | 紧急停止 + 速度限制 |
-| 运行模式 | Mock 模式（无 GPU）+ LIBERO 仿真模式（CPU） |
+| Dimension | Content |
+|-----------|---------|
+| Robot count | Single robot |
+| Simulation | LIBERO (MuJoCo), Franka Panda fixed-base, 130+ tabletop manipulation tasks |
+| Interaction | CLI terminal (text input) |
+| Agent framework | nanobot, reusing AgentLoop, ToolRegistry, SkillsLoader, etc. |
+| Models | VLM (scene understanding) + VLA (action generation) + LLM (reasoning & orchestration) |
+| Control loop | PRAE: Prepare → Perceive → Reason → Act → Evaluate |
+| Robot Tools | 8 base tools |
+| VLA integration | Mock adapter (dev/debug) + HTTP adapter (real VLA inference service) |
+| Safety | Emergency stop + velocity limits |
+| Run modes | Mock mode (no GPU) + LIBERO simulation mode (CPU) |
 
-### 2.2 OUT（不在 MVP 范围）
+### 2.2 OUT (Deferred)
 
-| 功能 | 推迟原因 |
-|------|---------|
-| 多机器人协调 | 单机器人已足够验证架构 |
-| 语音输入（板载麦克风 / Web Voice） | 需要 ASR/VAD 依赖，CLI 足够 |
-| LoRA 热切换 | Base model 足够完成 demo 任务 |
-| 模型生命周期管理（加载/卸载/VRAM 管理） | 模型由外部手动启动 |
-| OTA 更新 / 模型维护 | 运维层面，非架构验证 |
-| 自主巡逻 / 任务自动领取 | 应用层行为，后续用 SKILL.md 实现 |
-| 仿真 fork-compare-promote | 需要多并行仿真实例 |
-| Web UI / 多通道（Telegram、Slack 等） | CLI 足够，nanobot channels 后续零改动启用 |
-| 安全区域围栏 / 审计日志 | 需要 3D 空间感知，MVP 暂不需要 |
-| 真实硬件（Unitree G1 + GR00T） | MVP 先在仿真中验证 |
-| 导航（移动底座） | LIBERO 为固定底座，导航需 RoboCasa 等支持移动底座的仿真 |
+| Feature | Reason for deferral |
+|---------|-------------------|
+| Multi-robot coordination | Single robot is sufficient to validate the architecture |
+| Voice input (onboard mic / Web Voice) | Requires ASR/VAD dependencies; CLI is sufficient |
+| LoRA hot-swap | Base model is sufficient for demo tasks |
+| Model lifecycle management (load/unload/VRAM) | Models are started manually by the developer |
+| OTA updates / model maintenance | Operational concern, not architecture validation |
+| Autonomous patrol / task auto-claim | Application-layer behavior, implementable later via SKILL.md |
+| Sim fork-compare-promote | Requires multiple parallel sim instances |
+| Web UI / multi-channel (Telegram, Slack, etc.) | CLI is sufficient; nanobot channels can be enabled later with zero code changes |
+| Safety zone fencing / audit logging | Requires 3D spatial awareness; not needed for MVP |
+| Real hardware (Unitree G1 + GR00T) | MVP validates in simulation first |
+| Navigation (mobile base) | LIBERO is fixed-base; navigation requires RoboCasa or similar mobile-base simulation |
 
 ---
 
 ## 3. Architecture Overview
 
-### 3.1 系统架构
+### 3.1 System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
 │                  User (CLI Terminal)                  │
 └──────────────────────┬──────────────────────────────┘
-                       │ 自然语言指令
+                       │ natural language instruction
                        ▼
 ┌─────────────────────────────────────────────────────┐
 │                Agent Core (nanobot)                   │
@@ -88,37 +88,37 @@
               └────────────────────────────────┘
 ```
 
-### 3.2 三层抽象
+### 3.2 Three-Layer Abstraction
 
-Agent 的推理和控制分为三个逻辑层，频率递增、抽象递减：
+The agent's reasoning and control are divided into three logical layers with increasing frequency and decreasing abstraction:
 
-| 层 | 职责 | 典型延迟 | MVP 实现 |
-|----|------|---------|---------|
-| **Intention** | 意图识别、槽位提取、判断是否需要完整规划 | 50-800ms | LLM 单轮推理 |
-| **Cognition** | 场景感知 + 任务规划，输出结构化 plan | 0.5-10s | VLM 分析 + LLM 规划 |
-| **Action** | 高频控制循环，VLA 预测 + 安全检查 + 执行 | 2-20Hz, < 20ms/step | LoopManager + VLA adapter |
+| Layer | Responsibility | Typical Latency | MVP Implementation |
+|-------|---------------|----------------|-------------------|
+| **Intention** | Intent recognition, slot extraction, decide if full planning is needed | 50-800ms | Single-turn LLM inference |
+| **Cognition** | Scene perception + task planning, output structured plan | 0.5-10s | VLM analysis + LLM planning |
+| **Action** | High-frequency control loop: VLA prediction + safety checks + execution | 2-20Hz, < 20ms/step | LoopManager + VLA adapter |
 
-设计约束：Action 层不可被 Intention/Cognition 阻塞——Cognition 的延迟只影响下一个子任务的决策，不中断正在执行的动作循环。
+Design constraint: The Action layer must not be blocked by Intention/Cognition — Cognition latency only affects the next subtask decision, never interrupts a running action loop.
 
-### 3.3 Nanobot 复用 vs 新增
+### 3.3 Nanobot Reuse vs New Code
 
-| 组件 | 来源 | 说明 |
-|------|------|------|
-| AgentLoop | nanobot 复用 | 消息消费 → LLM 调用 → Tool 调度 → 保存会话 |
-| ToolRegistry | nanobot 复用 | 动态注册/注销，JSON Schema 校验 |
-| ContextBuilder | nanobot 复用 | 拼接 system prompt：identity + memory + skills |
-| MemoryStore | nanobot 复用 | LLM 驱动的记忆压缩 |
-| SkillsLoader | nanobot 复用 | SKILL.md 加载，YAML frontmatter |
-| SubagentManager | nanobot 复用 | 后台 asyncio 子 agent，最多 15 轮迭代 |
-| LLMProvider | nanobot 复用 | 支持 20+ 模型提供商 |
-| **Robot Tools** | **新增** | look, move, grasp 等 8 个 |
-| **VLA Adapters** | **新增** | Mock + HTTP 两种 |
-| **LoopManager** | **新增** | asyncio 控制循环 + cognition handoff |
-| **Terminators** | **新增** | StepLimit + PositionThreshold |
-| **SafetyManager** | **新增** | E-Stop + 速度限制 |
-| **RobotEnv** | **新增** | Mock + LIBERO 环境接口 |
+| Component | Source | Description |
+|-----------|--------|-------------|
+| AgentLoop | nanobot reuse | Consume messages → call LLM → dispatch tool calls → save session |
+| ToolRegistry | nanobot reuse | Dynamic register/unregister, JSON Schema validation |
+| ContextBuilder | nanobot reuse | Assemble system prompt: identity + memory + skills |
+| MemoryStore | nanobot reuse | LLM-driven memory compaction |
+| SkillsLoader | nanobot reuse | Load SKILL.md files with YAML frontmatter |
+| SubagentManager | nanobot reuse | Background asyncio subagents, max 15 iterations |
+| LLMProvider | nanobot reuse | Supports 20+ model providers |
+| **Robot Tools** | **new** | look, move, grasp, etc. (8 tools) |
+| **VLA Adapters** | **new** | Mock + HTTP (2 adapters) |
+| **LoopManager** | **new** | asyncio control loop + cognition handoff |
+| **Terminators** | **new** | StepLimit + PositionThreshold |
+| **SafetyManager** | **new** | E-Stop + velocity limits |
+| **RobotEnv** | **new** | Mock + LIBERO environment interface |
 
-**新增代码量估算**: ~800 行。其余全部复用 nanobot。
+**Estimated new code**: ~800 lines. Everything else is reused from nanobot.
 
 ---
 
@@ -126,269 +126,271 @@ Agent 的推理和控制分为三个逻辑层，频率递增、抽象递减：
 
 ### FR-1: Agent Core
 
-**需求**: 复用 nanobot 的 agent 核心，不做修改。
+**Requirement**: Reuse nanobot's agent core without modification.
 
-- AgentLoop 消费消息、调用 LLM、分发 Tool 调用、保存会话
-- ToolRegistry 支持动态注册，所有 tool 参数经 JSON Schema 校验
-- ContextBuilder 从 identity + memory + skills + bootstrap files 拼接 system prompt
-- MemoryStore 在会话超过 `memory_window` 时自动压缩
-- SkillsLoader 加载 `skills/` 目录下的 SKILL.md
-- SubagentManager 支持 spawn 子 agent 执行感知/执行/评估子任务
+- AgentLoop consumes messages, calls LLM, dispatches tool calls, saves sessions
+- ToolRegistry supports dynamic registration; all tool parameters validated via JSON Schema
+- ContextBuilder assembles system prompt from identity + memory + skills + bootstrap files
+- MemoryStore automatically compacts when session exceeds `memory_window`
+- SkillsLoader loads SKILL.md files from the `skills/` directory
+- SubagentManager supports spawning subagents for perception/execution/evaluation subtasks
 
-**配置需求**:
-- 指定工作目录、模型、最大迭代次数、记忆窗口、temperature
-- 模型默认使用本地 vLLM，可选配置远程 LLM（用户自行配置 API）
+**Configuration requirements**:
+- Specify workspace directory, model, max tool iterations, memory window, temperature
+- Model defaults to local vLLM; optionally configure a remote LLM (user-provided API)
 
 ### FR-2: Robot Tools
 
-**需求**: 8 个 base tools，覆盖 PRAE 闭环的最小必要能力。
+**Requirement**: 8 base tools covering the minimum capabilities for a PRAE loop.
 
-| Tool | 输入 | 输出 | 用途 |
-|------|------|------|------|
-| `look` | question: str | 场景描述 + 物体列表 | 捕获图像 + VLM 分析 |
-| `move` | target: str, position: [x,y,z] | 执行状态 | 移动末端执行器到目标位置 |
-| `grasp` | action: "open" \| "close" | 夹爪状态 | 控制夹爪 |
-| `perceive` | goal: str | 深度感知结果 | 通过子 agent 进行多步观察分析 |
-| `start_subtask` | instruction: str, target: dict | 子任务 ID + 状态 | 启动 VLA 控制循环 |
-| `check_loops` | — | 循环状态 + 统计 | 查询当前控制循环运行状态 |
-| `wait_subtask` | timeout: float | 完成状态 + 结果 | 阻塞等待子任务完成 |
-| `emergency_stop` | — | 确认 | 立即停止所有机器人运动 |
+| Tool | Input | Output | Purpose |
+|------|-------|--------|---------|
+| `look` | question: str | Scene description + object list | Capture image + VLM analysis |
+| `move` | target: str, position: [x,y,z] | Execution status | Move end-effector to target position |
+| `grasp` | action: "open" \| "close" | Gripper state | Control gripper |
+| `perceive` | goal: str | Deep perception result | Multi-step observation analysis via subagent |
+| `start_subtask` | instruction: str, target: dict | Subtask ID + status | Launch VLA control loop |
+| `check_loops` | — | Loop status + stats | Query current control loop state |
+| `wait_subtask` | timeout: float | Completion status + result | Block until subtask completes |
+| `emergency_stop` | — | Confirmation | Immediately halt all robot motion |
 
-**扩展机制**: 用户可通过 Python 代码注册自定义 tool（继承 Tool ABC，调用 `agent.tools.register()`）。自定义 tool 和 base tool 在 LLM 视角完全平等，ToolRegistry 是扁平的。
+**Extension mechanism**: Users can register custom tools via Python code (subclass Tool ABC, call `agent.tools.register()`). Custom tools and base tools are treated identically by the LLM — the ToolRegistry is flat.
 
 ### FR-3: Model Management
 
-**需求**: 极简模型管理——确认外部启动的模型服务是否就绪。
+**Requirement**: Minimal model management — confirm externally started model services are ready.
 
-MVP 中模型服务（VLM、VLA）由开发者手动启动。Agent 只需：
+In the MVP, model services (VLM, VLA) are started manually by the developer. The agent only needs:
 
-| 能力 | 说明 |
-|------|------|
-| **健康检查** | 查询各模型服务是否在线、响应延迟 |
-| **状态查询** | 当前加载了哪些模型、各服务地址 |
-| **就绪确认** | PRAE 循环开始前，确认 VLM + VLA + Sim 全部 ready |
+| Capability | Description |
+|------------|-------------|
+| **Health check** | Query whether each model service is online and its response latency |
+| **Status query** | Which models are currently loaded, service addresses |
+| **Readiness confirmation** | Before starting a PRAE loop, confirm VLM + VLA + Sim are all ready |
 
-Agent 通过 `model_health` 和 `model_ensure` 两个内部工具完成上述能力。不涉及模型加载/卸载/VRAM 管理。
+The agent provides `model_health` and `model_ensure` as internal tools. No model loading/unloading/VRAM management.
 
 ### FR-4: VLA Adapter Layer
 
-**需求**: 统一的 VLA 接口抽象，MVP 提供两种实现。
+**Requirement**: A unified VLA interface abstraction with two implementations for the MVP.
 
-VLA adapter 定义统一接口：输入（图像 + 指令 + 机器人状态）→ 输出（动作序列）。
+The VLA adapter defines a unified interface: input (image + instruction + robot state) → output (action sequence).
 
-| Adapter | 用途 | 后端 |
-|---------|------|------|
-| **MockVLAAdapter** | 开发调试，无需 GPU | 进程内模拟，返回随机/固定动作序列 |
-| **HTTPVLAAdapter** | 接真实 VLA 推理服务 | HTTP POST 到 VLA server（SmolVLA / pi0 / 其他） |
+| Adapter | Purpose | Backend |
+|---------|---------|---------|
+| **MockVLAAdapter** | Development and debugging, no GPU required | In-process simulation, returns random/fixed action sequences |
+| **HTTPVLAAdapter** | Connect to a real VLA inference service | HTTP POST to VLA server (SmolVLA / pi0 / others) |
 
-接口契约：
-- **predict**: 输入 observation dict + instruction string → 返回动作序列 (action_horizon × action_dim)
-- **reset**: 重置内部状态（新 episode）
-- **health_check**: 存活检测
-- **get_action_horizon**: 返回每次预测的动作步数（chunking size）
+Interface contract:
+- **predict**: Input observation dict + instruction string → return action sequence (action_horizon × action_dim)
+- **reset**: Reset internal state (new episode)
+- **health_check**: Liveness check
+- **get_action_horizon**: Return the number of action steps per prediction (chunking size)
 
-通过配置切换 adapter 类型，对 LoopManager 和上层 agent 透明。
+Adapter type is switched via configuration, transparent to LoopManager and the upper-layer agent.
 
 ### FR-5: Multi-Frequency Control
 
-**需求**: LoopManager 管理 VLA 控制循环，与上层推理解耦。
+**Requirement**: LoopManager manages the VLA control loop, decoupled from upper-layer reasoning.
 
-LoopManager 是 Action 层的执行引擎：
+LoopManager is the execution engine of the Action layer:
 
-- **start_subtask**: 接收指令 + 目标 + 路由配置，启动异步控制循环
-- **控制循环**: 以 action_hz 频率运行——获取观测 → VLA 预测 → 安全检查 → 执行动作 → 检查终止条件
-- **wait_for_completion**: 阻塞等待子任务完成或超时
-- **stop**: 强制停止所有活跃循环
+- **start_subtask**: Receive instruction + target + route config, launch async control loop
+- **Control loop**: Run at action_hz frequency — get observation → VLA predict → safety check → execute action → check termination
+- **wait_for_completion**: Block until subtask completes or times out
+- **stop**: Force-stop all active loops
 
-设计约束：
-- 控制循环运行在 asyncio task 中，不阻塞 agent 主循环
-- VLA predict() 如果是阻塞调用，使用 `asyncio.to_thread()` 包装
-- Cognition 层的延迟不影响正在执行的 Action 循环
+Design constraints:
+- The control loop runs as an asyncio task, never blocking the agent main loop
+- If VLA predict() is a blocking call, wrap it with `asyncio.to_thread()`
+- Cognition layer latency does not affect a running Action loop
 
 ### FR-6: Termination Strategies
 
-**需求**: VLA 不会自行停止，需要外部终止策略。MVP 提供 2 种。
+**Requirement**: VLAs do not self-terminate; external termination strategies are required. The MVP provides 2 strategies.
 
-| 策略 | 触发条件 | 用途 |
-|------|---------|------|
-| **StepLimitTerminator** | 步数 >= max_steps | 安全兜底，防止无限运行 |
-| **PositionThresholdTerminator** | 末端执行器距目标 < threshold | move-to-target 类任务的完成判定 |
+| Strategy | Trigger Condition | Purpose |
+|----------|------------------|---------|
+| **StepLimitTerminator** | step_count >= max_steps | Safety fallback, prevent infinite execution |
+| **PositionThresholdTerminator** | end-effector distance to target < threshold | Completion detection for move-to-target tasks |
 
-两种策略可组合使用（AND / OR）。路由配置指定每个难度等级使用的终止策略组合。
+The two strategies can be combined (AND / OR). The route config specifies which termination strategy combination to use for each difficulty level.
 
 ### FR-7: Routing
 
-**需求**: 任务难度决定控制参数。MVP 提供 1 个默认路由配置、2 个难度等级。
+**Requirement**: Task difficulty determines control parameters. The MVP provides 1 default route config with 2 difficulty levels.
 
-**难度分类**:
-- **easy**: 已知物体 + 简单动词（"拿起红色杯子"）
-- **hard**: 复合多步任务（"put the black bowl in the bottom drawer of the cabinet and close it"）
+**Difficulty classification**:
+- **easy**: Known object + simple verb ("pick up the red cup")
+- **hard**: Compound multi-step task ("put the black bowl in the bottom drawer of the cabinet and close it")
 
-**路由决定的参数**:
+**Parameters determined by route**:
 
-| 参数 | easy | hard |
-|------|------|------|
+| Parameter | easy | hard |
+|-----------|------|------|
 | action_hz | 10 | 20 |
 | max_steps | 100 | 500 |
 | position_threshold | 0.05m | 0.03m |
-| 终止策略 | StepLimit + PositionThreshold | StepLimit + PositionThreshold |
-| LLM 重规划 | 无 | 每个子任务后重新规划 |
+| Termination strategy | StepLimit + PositionThreshold | StepLimit + PositionThreshold |
+| LLM re-planning | None | Re-plan after each subtask |
 
-路由配置存储为 YAML 文件，agent 在 PRAE 的 Reason 阶段根据指令判断难度并选择路由。
+Route config is stored as a YAML file. The agent selects difficulty and route during the Reason phase of the PRAE loop.
 
 ### FR-8: Safety
 
-**需求**: 最基础的安全保障——能停、能限速。
+**Requirement**: Basic safety guarantees — the ability to stop and limit speed.
 
-| 安全层 | 行为 |
-|--------|------|
-| **E-Stop** | `emergency_stop` 触发后，立即停止所有运动，状态持久化（重启后仍生效），需手动解除 |
-| **Velocity Limit** | 每个动作执行前检查速度，超过 max_velocity 自动钳制（clamp），不拒绝动作 |
+| Safety Layer | Behavior |
+|-------------|----------|
+| **E-Stop** | When `emergency_stop` is triggered, immediately halt all motion. State persists across restarts. Manual reset required. |
+| **Velocity Limit** | Before each action execution, check velocity. If exceeding max_velocity, clamp automatically (do not reject the action). |
 
-安全检查位于 LoopManager 控制循环内，在 `env.step()` 之前执行。每次安全事件记录到日志。
+Safety checks are inside the LoopManager control loop, executed before `env.step()`. Each safety event is logged.
 
 ---
 
 ## 5. PRAE Loop
 
-两个验收任务都来自 **LIBERO-10 (Long)**，都需要 LLM 分解、VLA 逐步执行。
+Both acceptance tasks are from **LIBERO-10 (Long)** and require LLM decomposition with VLA step-by-step execution.
 
-### 5.1 任务 A（重复型分解）：put both the alphabet soup and the tomato sauce in the basket
+### 5.1 Task A (Repeat Decomposition): put both the alphabet soup and the tomato sauce in the basket
 
-**LIBERO 任务 ID**: `LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket`
+**LIBERO task ID**: `LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket`
 
-**LLM 分解要点**: 同一动作模式（抓取→放入）对不同物体执行两轮，每轮之间需重新感知。
+**LLM decomposition focus**: The same action pattern (pick → place) applied to different objects across two rounds, with re-perception between rounds.
 
 ```
 Step 1: PREPARE
-  Agent 收到用户指令 → model_ensure 确认 VLM + VLA + Sim 全部 ready
-  LIBERO 加载 LIVING_ROOM_SCENE2
+  Agent receives user instruction → model_ensure confirms VLM + VLA + Sim all ready
+  LIBERO loads LIVING_ROOM_SCENE2
 
 Step 2: PERCEIVE
   look("describe all objects on the table and their positions") →
-    VLM 返回："alphabet soup at [0.2, -0.1, 0.10], tomato sauce at [0.4, 0.2, 0.10],
-              basket at [0.6, 0.0, 0.05], ..."
+    VLM returns: "alphabet soup at [0.2, -0.1, 0.10], tomato sauce at [0.4, 0.2, 0.10],
+                  basket at [0.6, 0.0, 0.05], ..."
 
-Step 3: REASON (LLM 任务分解)
-  LLM 分析指令 "put both ... in the basket" →
-    识别：2 个目标物体，1 个目标容器
-    分解为 2 轮，每轮 = pick + place：
-      轮 1: pick up alphabet soup → place in basket
-      轮 2: pick up tomato sauce → place in basket
-    判断难度：hard（多物体复合任务）
-    选择路由：default/hard (action_hz=20, max_steps=500)
+Step 3: REASON (LLM task decomposition)
+  LLM analyzes instruction "put both ... in the basket" →
+    Identifies: 2 target objects, 1 target container
+    Decomposes into 2 rounds, each round = pick + place:
+      Round 1: pick up alphabet soup → place in basket
+      Round 2: pick up tomato sauce → place in basket
+    Difficulty: hard (multi-object compound task)
+    Route: default/hard (action_hz=20, max_steps=500)
 
-=== 轮 1: alphabet soup ===
+=== Round 1: alphabet soup ===
 
-Step 4: ACT (子任务 1: 抓取 alphabet soup)
+Step 4: ACT (Subtask 1: pick up alphabet soup)
   start_subtask("pick up the alphabet soup",
                 target={"object": "alphabet_soup", "position": [0.2, -0.1, 0.10]}) →
-    VLA 控制循环 @ 20Hz → 接近 → 下降 → 闭合夹爪 → 抬起
-    StepLimit(500) 终止
+    VLA control loop @ 20Hz → approach → descend → close gripper → lift
+    StepLimit(500) termination
 
-Step 5: ACT (子任务 2: 放入 basket)
+Step 5: ACT (Subtask 2: place in basket)
   start_subtask("place the alphabet soup in the basket",
                 target={"object": "basket", "position": [0.6, 0.0, 0.05]}) →
-    VLA 控制循环 → 移到篮子上方 → 下降 → 松开夹爪
-    StepLimit(500) 终止
+    VLA control loop → move above basket → descend → open gripper
+    StepLimit(500) termination
 
-Step 6: EVALUATE (中间检查)
+Step 6: EVALUATE (intermediate check)
   look("is the alphabet soup in the basket?") →
-    VLM 确认："alphabet soup is inside the basket"
-  通过 → 进入轮 2
+    VLM confirms: "alphabet soup is inside the basket"
+  Pass → proceed to Round 2
 
-=== 轮 2: tomato sauce ===
+=== Round 2: tomato sauce ===
 
-Step 7: PERCEIVE (重新感知——场景已变，soup 不在桌上了)
+Step 7: PERCEIVE (re-perceive — scene has changed, soup is no longer on table)
   look("where is the tomato sauce now?") →
-    VLM 返回："tomato sauce at [0.4, 0.2, 0.10]"
+    VLM returns: "tomato sauce at [0.4, 0.2, 0.10]"
 
-Step 8: ACT (子任务 3: 抓取 tomato sauce)
+Step 8: ACT (Subtask 3: pick up tomato sauce)
   start_subtask("pick up the tomato sauce") →
-    VLA 控制循环 → 抓取番茄酱
+    VLA control loop → pick up tomato sauce
 
-Step 9: ACT (子任务 4: 放入 basket)
+Step 9: ACT (Subtask 4: place in basket)
   start_subtask("place the tomato sauce in the basket") →
-    VLA 控制循环 → 放入篮子
+    VLA control loop → place in basket
 
-Step 10: EVALUATE (最终)
+Step 10: EVALUATE (final)
   look("are both the alphabet soup and the tomato sauce in the basket?") →
-    VLM 确认："both items are in the basket"
-  成功 → 回复用户 "done: both items placed in the basket"
+    VLM confirms: "both items are in the basket"
+  Success → reply to user "done: both items placed in the basket"
 
-=== 失败处理 ===
-  某轮 EVALUATE 失败 → 对该轮重新 PERCEIVE → ACT → EVALUATE
-  单轮最多重试 3 次
-  3 次失败 → 上报用户，说明卡在哪一轮（如 "failed to place tomato sauce, gripper did not close"）
+=== Failure handling ===
+  If a round's EVALUATE fails → re-PERCEIVE → ACT → EVALUATE for that round
+  Max 3 retries per round
+  After 3 failures → report to user which round failed
+    (e.g., "failed to place tomato sauce, gripper did not close")
 ```
 
-### 5.2 任务 B（链式型分解）：put the black bowl in the bottom drawer of the cabinet and close it
+### 5.2 Task B (Chain Decomposition): put the black bowl in the bottom drawer of the cabinet and close it
 
-**LIBERO 任务 ID**: `KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it`
+**LIBERO task ID**: `KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it`
 
-**LLM 分解要点**: 不同类型的动作按顺序串联（开抽屉 → 抓碗 → 放入 → 关抽屉），每个子任务的动作模式不同，且有依赖关系（必须先开抽屉才能放入）。
+**LLM decomposition focus**: Different action types chained in sequence (open drawer → pick bowl → place in drawer → close drawer). Each subtask has a different action pattern, and there are dependency relationships (drawer must be opened before placing, placing must complete before closing).
 
 ```
 Step 1: PREPARE
-  Agent 收到用户指令 → model_ensure 确认 ready
-  LIBERO 加载 KITCHEN_SCENE4
+  Agent receives user instruction → model_ensure confirms ready
+  LIBERO loads KITCHEN_SCENE4
 
 Step 2: PERCEIVE
   look("describe the scene: where is the black bowl and the cabinet?") →
-    VLM 返回："black bowl on the table at [0.3, 0.0, 0.08],
-              cabinet with bottom drawer at [0.6, -0.2, 0.15], drawer is closed"
+    VLM returns: "black bowl on the table at [0.3, 0.0, 0.08],
+                  cabinet with bottom drawer at [0.6, -0.2, 0.15], drawer is closed"
 
-Step 3: REASON (LLM 任务分解)
-  LLM 分析指令 "put the black bowl in the bottom drawer ... and close it" →
-    识别依赖链：要放进抽屉 → 抽屉必须先打开 → 放入后必须关闭
-    分解为 4 个顺序子任务：
-      子任务 1: open the bottom drawer of the cabinet
-      子任务 2: pick up the black bowl
-      子任务 3: place the black bowl in the drawer
-      子任务 4: close the bottom drawer
-    判断难度：hard（4 步链式依赖）
-    选择路由：default/hard (action_hz=20, max_steps=500)
+Step 3: REASON (LLM task decomposition)
+  LLM analyzes instruction "put the black bowl in the bottom drawer ... and close it" →
+    Identifies dependency chain: must open drawer → place inside → close drawer
+    Decomposes into 4 sequential subtasks:
+      Subtask 1: open the bottom drawer of the cabinet
+      Subtask 2: pick up the black bowl
+      Subtask 3: place the black bowl in the drawer
+      Subtask 4: close the bottom drawer
+    Difficulty: hard (4-step chain with dependencies)
+    Route: default/hard (action_hz=20, max_steps=500)
 
-Step 4: ACT (子任务 1: 开抽屉)
+Step 4: ACT (Subtask 1: open drawer)
   start_subtask("open the bottom drawer of the cabinet",
                 target={"object": "bottom_drawer", "position": [0.6, -0.2, 0.15]}) →
-    VLA 控制循环 → 接近抽屉把手 → 抓握 → 向外拉
-    StepLimit(500) 终止
+    VLA control loop → approach drawer handle → grasp → pull outward
+    StepLimit(500) termination
 
-Step 5: EVALUATE (中间检查 1)
+Step 5: EVALUATE (intermediate check 1)
   look("is the bottom drawer open?") →
-    VLM 确认："the bottom drawer is open"
-  通过 → 继续
+    VLM confirms: "the bottom drawer is open"
+  Pass → continue
 
-Step 6: ACT (子任务 2: 抓碗)
+Step 6: ACT (Subtask 2: pick up bowl)
   start_subtask("pick up the black bowl from the table") →
-    VLA 控制循环 → 接近碗 → 下降 → 闭合夹爪 → 抬起
+    VLA control loop → approach bowl → descend → close gripper → lift
 
-Step 7: ACT (子任务 3: 放入抽屉)
+Step 7: ACT (Subtask 3: place in drawer)
   start_subtask("place the black bowl in the open drawer") →
-    VLA 控制循环 → 移到抽屉上方 → 下降到抽屉内 → 松开夹爪
+    VLA control loop → move above drawer → descend into drawer → open gripper
 
-Step 8: EVALUATE (中间检查 2)
+Step 8: EVALUATE (intermediate check 2)
   look("is the black bowl inside the drawer?") →
-    VLM 确认："the black bowl is in the bottom drawer"
-  通过 → 继续
+    VLM confirms: "the black bowl is in the bottom drawer"
+  Pass → continue
 
-Step 9: ACT (子任务 4: 关抽屉)
+Step 9: ACT (Subtask 4: close drawer)
   start_subtask("close the bottom drawer of the cabinet") →
-    VLA 控制循环 → 接近抽屉 → 向内推
+    VLA control loop → approach drawer → push inward
 
-Step 10: EVALUATE (最终)
+Step 10: EVALUATE (final)
   look("is the drawer closed with the bowl inside?") →
-    VLM 确认："the bottom drawer is closed"
-  成功 → 回复用户 "done: bowl placed in drawer and drawer closed"
+    VLM confirms: "the bottom drawer is closed"
+  Success → reply to user "done: bowl placed in drawer and drawer closed"
 
-=== 失败处理 ===
-  子任务失败 → 根据当前状态决定回退策略：
-    - 子任务 1 失败（开抽屉）→ 重试开抽屉
-    - 子任务 3 失败（放入）→ 可能需要重新抓碗（从子任务 2 重试）
-    - 子任务 4 失败（关抽屉）→ 重试关抽屉
-  每个子任务最多重试 3 次
-  3 次失败 → 上报用户，说明当前状态（如 "drawer is open, bowl is on the table, failed to pick up bowl"）
+=== Failure handling ===
+  Subtask failure → rollback strategy based on current state:
+    - Subtask 1 fails (open drawer) → retry opening
+    - Subtask 3 fails (place in drawer) → may need to re-pick bowl (retry from Subtask 2)
+    - Subtask 4 fails (close drawer) → retry closing
+  Max 3 retries per subtask
+  After 3 failures → report to user with current state
+    (e.g., "drawer is open, bowl is on the table, failed to pick up bowl")
 ```
 
 ---
@@ -397,106 +399,106 @@ Step 10: EVALUATE (最终)
 
 ### 6.1 Performance
 
-| 指标 | 目标 |
-|------|------|
-| VLA 控制循环延迟 | < 20ms / step |
-| VLM 感知延迟 | < 2s / frame |
-| LLM 规划延迟 | < 10s / decision |
-| 端到端任务（简单 pick-and-place） | < 60s |
+| Metric | Target |
+|--------|--------|
+| VLA control loop latency | < 20ms / step |
+| VLM perception latency | < 2s / frame |
+| LLM planning latency | < 10s / decision |
+| End-to-end task (simple pick-and-place) | < 60s |
 
 ### 6.2 Concurrency
 
-- 全部使用 asyncio，不使用 threading.Lock
-- 单事件循环处理所有协程
-- VLA predict() 等阻塞调用使用 `asyncio.to_thread()`
+- All I/O uses asyncio; no threading.Lock in hot paths
+- Single event loop handles all coroutines
+- Blocking VLA predict() calls wrapped with `asyncio.to_thread()`
 
 ### 6.3 Reliability
 
-| 场景 | 行为 |
-|------|------|
-| VLA 服务不可达 | 重试 3 次，然后报告用户 |
-| LLM API 超时 | 指数退避重试，降级到本地模型 |
-| 子任务执行失败 | PRAE 重试（最多 3 次），3 次失败上报用户 |
-| E-Stop 触发 | 所有运动立即停止，需手动解除 |
+| Scenario | Behavior |
+|----------|----------|
+| VLA service unreachable | Retry 3 times, then report to user |
+| LLM API timeout | Exponential backoff retry, fall back to local model |
+| Subtask execution failure | PRAE retry (max 3 times), report to user after 3 failures |
+| E-Stop triggered | All motion stops immediately, manual reset required |
 
 ---
 
 ## 7. Verification Criteria
 
-2 个 LIBERO-10 (Long) 任务，验证两种 LLM 分解模式 + VLA 逐步执行。
+Two LIBERO-10 (Long) tasks validating two LLM decomposition patterns + VLA step-by-step execution.
 
-### 7.1 任务 A：重复型分解（Mock + LIBERO）
+### 7.1 Task A: Repeat Decomposition (Mock + LIBERO)
 
-**LIBERO 任务**: `put both the alphabet soup and the tomato sauce in the basket` (LIVING_ROOM_SCENE2)
+**LIBERO task**: `put both the alphabet soup and the tomato sauce in the basket` (LIVING_ROOM_SCENE2)
 
-**验证重点**: LLM 能将 "both X and Y" 分解为 2 轮相同模式的 pick-and-place，每轮之间重新感知。
+**Verification focus**: LLM can decompose "both X and Y" into 2 rounds of the same pick-and-place pattern, with re-perception between rounds.
 
-| 模式 | 通过条件 |
-|------|---------|
-| **Mock** | LLM 正确分解为 4 个子任务（pick soup → place → pick sauce → place），每轮之间 PERCEIVE，PRAE 闭环完整执行 |
-| **LIBERO** | Franka Panda 在 LIBERO 仿真中依次将 2 个物体放入篮子，VLM 中间检查 + 最终评估确认全部成功 |
+| Mode | Pass Criteria |
+|------|--------------|
+| **Mock** | LLM correctly decomposes into 4 subtasks (pick soup → place → pick sauce → place), PERCEIVE between rounds, full PRAE loop execution |
+| **LIBERO** | Franka Panda in LIBERO simulation sequentially places 2 objects in basket, VLM intermediate check + final evaluation confirm success |
 
-### 7.2 任务 B：链式型分解（Mock + LIBERO）
+### 7.2 Task B: Chain Decomposition (Mock + LIBERO)
 
-**LIBERO 任务**: `put the black bowl in the bottom drawer of the cabinet and close it` (KITCHEN_SCENE4)
+**LIBERO task**: `put the black bowl in the bottom drawer of the cabinet and close it` (KITCHEN_SCENE4)
 
-**验证重点**: LLM 能识别动作间的依赖关系（先开抽屉才能放入，放入后才能关），分解为 4 个不同类型的顺序子任务。
+**Verification focus**: LLM can identify dependencies between actions (must open drawer before placing, must place before closing) and decompose into 4 different-typed sequential subtasks.
 
-| 模式 | 通过条件 |
-|------|---------|
-| **Mock** | LLM 正确分解为 4 个子任务（open drawer → pick bowl → place in drawer → close drawer），识别依赖顺序，PRAE 闭环完整执行 |
-| **LIBERO** | Franka Panda 在 LIBERO 仿真中完成 开抽屉→抓碗→放入→关抽屉 全链路，VLM 在关键节点（抽屉开了？碗放进去了？）中间检查 + 最终评估确认 |
+| Mode | Pass Criteria |
+|------|--------------|
+| **Mock** | LLM correctly decomposes into 4 subtasks (open drawer → pick bowl → place in drawer → close drawer), identifies dependency order, full PRAE loop execution |
+| **LIBERO** | Franka Panda in LIBERO simulation completes the full chain: open drawer → pick bowl → place inside → close drawer, with VLM intermediate checks at key points (drawer open? bowl inside?) + final evaluation |
 
-### 7.3 共性验收标准
+### 7.3 Common Acceptance Criteria
 
-- 两个任务 LLM 都能正确判断为 hard 难度并选择对应路由
-- 每个子任务由 VLA 控制循环独立执行，LLM 在子任务间做调度决策
-- 失败时自动重试（最多 3 次），3 次失败后合理报告当前状态和卡在哪一步
-- E-Stop 工具可随时中断执行
-- Mock 模式无需 GPU，LIBERO 模式仅需 VLA 推理服务的 GPU
+- LLM correctly classifies both tasks as hard difficulty and selects the corresponding route
+- Each subtask is executed by an independent VLA control loop; LLM makes orchestration decisions between subtasks
+- Automatic retry on failure (max 3 times); after 3 failures, report current state and which step failed
+- Emergency stop tool can interrupt execution at any time
+- Mock mode requires no GPU; LIBERO mode only requires GPU for VLA inference service
 
 ---
 
 ## 8. Future Scope
 
-以下功能在 MVP 之后的版本中实现：
+The following features will be implemented in post-MVP versions:
 
-| 功能 | 说明 |
-|------|------|
-| **Multi-Robot** | 多机器人通过 MessageBus 协调，角色分工（scout / manipulator / monitor） |
-| **Voice Input** | 板载麦克风（本地 Whisper ASR）+ Web Voice（浏览器 Web Speech API） |
-| **Input Routing** | 统一 Input Router 归一化所有输入渠道为 ChannelMessage，支持优先级和限流 |
-| **LoRA Hot-Swap** | 运行时切换 VLA 的 LoRA 权重，per-subtask 特化（< 2s 切换） |
-| **Model Lifecycle** | 独立进程管理模型加载/卸载/VRAM 分配/健康监控 |
-| **OTA Updates** | 增量拉取新 adapter/model 版本，校验 + 注册 + 归档旧版本 |
-| **Autonomous Ops** | 巡逻路线、任务自动领取、展示表演模式、空闲交互模式 |
-| **Sim Fork-Compare** | 并行仿真多种策略，对比结果，提升胜者到主环境 |
-| **Web UI** | 浏览器界面：实时仿真画面 + 指令输入 + 状态仪表盘 |
-| **Multi-Channel** | 启用 nanobot 内置 channels（Telegram、Slack、飞书、Email 等） |
-| **4-Layer Safety** | 安全区域围栏 + 审计日志（在 E-Stop + Velocity 基础上扩展） |
-| **Dynamic Routing** | 多路由配置（cautious、fast_manipulation）、三级难度、per-route LoRA |
-| **VLM Terminator** | VLM 判断子任务是否完成，用于复杂多步任务 |
-| **Navigation** | 移动底座导航，需切换 RoboCasa（PandaMobile）或 Habitat 等支持导航的仿真 |
-| **Real Hardware** | Unitree G1 + GR00T N1.6（ZMQ adapter） |
+| Feature | Description |
+|---------|-------------|
+| **Multi-Robot** | Multiple robots coordinated via MessageBus with role specialization (scout / manipulator / monitor) |
+| **Voice Input** | Onboard microphone (local Whisper ASR) + Web Voice (browser Web Speech API) |
+| **Input Routing** | Unified Input Router normalizing all input channels to ChannelMessage with priority and rate limiting |
+| **LoRA Hot-Swap** | Runtime VLA LoRA weight switching, per-subtask specialization (< 2s swap) |
+| **Model Lifecycle** | Separate process managing model load/unload/VRAM allocation/health monitoring |
+| **OTA Updates** | Incremental pull of new adapter/model versions with checksum verification and archival |
+| **Autonomous Ops** | Patrol routes, task auto-claim, demo show mode, interactive idle mode |
+| **Sim Fork-Compare** | Parallel simulation of multiple strategies, compare results, promote winner to main environment |
+| **Web UI** | Browser interface: real-time simulation view + command input + status dashboard |
+| **Multi-Channel** | Enable nanobot built-in channels (Telegram, Slack, Feishu, Email, etc.) |
+| **4-Layer Safety** | Safety zone fencing + audit logging (extending E-Stop + Velocity) |
+| **Dynamic Routing** | Multiple route profiles (cautious, fast_manipulation), 3 difficulty levels, per-route LoRA |
+| **VLM Terminator** | VLM-based subtask completion detection for complex multi-step tasks |
+| **Navigation** | Mobile base navigation, requires switching to RoboCasa (PandaMobile) or Habitat simulation |
+| **Real Hardware** | Unitree G1 + GR00T N1.6 (ZMQ adapter) |
 
 ---
 
 ## 9. Glossary
 
-| 术语 | 定义 |
-|------|------|
-| **VLA** | Vision-Language-Action model。输入图像+文本指令，输出机器人动作序列 |
-| **VLM** | Vision-Language Model。输入图像+文本问题，输出文本描述 |
-| **LLM** | Large Language Model。文本推理和规划 |
-| **PRAE** | Prepare → Perceive → Reason → Act → Evaluate，agent 的核心执行循环 |
-| **Intention** | 逻辑层：快速意图识别和任务框定 |
-| **Cognition** | 逻辑层：场景理解 + 推理规划，输出结构化 plan |
-| **Action** | 逻辑层：高频机器人控制循环（VLA + 安全 + 执行） |
-| **Tool** | 注册在 agent 中的异步函数，LLM 可通过 tool_call 调用。机器人动作和软件操作是同一抽象 |
-| **LoopManager** | 管理 VLA 控制循环的组件，处理启动/等待/终止/统计 |
-| **Terminator** | 判断 VLA 控制循环何时应停止的策略 |
-| **Action Horizon** | VLA 每次推理产出的动作步数（chunking size） |
-| **Route** | YAML 配置，指定不同任务难度下的控制参数（频率、步数限制、终止策略） |
-| **LIBERO** | 基于 MuJoCo 的机器人桌面操作仿真平台，Franka Panda 固定底座，130+ 任务（5 个 suite），7 维动作空间（3D 位移 + 3D 旋转 + 夹爪），SmolVLA/pi0/openpi 原生支持 |
-| **Nanobot** | 超轻量 Python agent 框架（~4,000 LOC），本项目的基础 |
-| **SKILL.md** | 技能描述文件，YAML frontmatter + Markdown 指令，agent 可加载并按步骤执行 |
+| Term | Definition |
+|------|-----------|
+| **VLA** | Vision-Language-Action model. Input: image + text instruction. Output: robot action sequence. |
+| **VLM** | Vision-Language Model. Input: image + text question. Output: text description. |
+| **LLM** | Large Language Model. Text-based reasoning and planning. |
+| **PRAE** | Prepare → Perceive → Reason → Act → Evaluate. The agent's core execution loop. |
+| **Intention** | Logical layer: fast intent recognition and task framing. |
+| **Cognition** | Logical layer: scene understanding + reasoning/planning, outputs structured plan. |
+| **Action** | Logical layer: high-frequency robot control loop (VLA + safety + actuation). |
+| **Tool** | An async function registered with the agent that the LLM can invoke via tool_call. Robot actions and software operations share the same abstraction. |
+| **LoopManager** | Component managing VLA control loops: start/wait/terminate/stats. |
+| **Terminator** | Strategy that decides when a VLA control loop should stop. |
+| **Action Horizon** | Number of action steps a VLA produces per inference call (chunking size). |
+| **Route** | YAML config specifying control parameters (frequency, step limits, termination strategies) for a given task difficulty. |
+| **LIBERO** | MuJoCo-based tabletop manipulation simulation platform. Franka Panda fixed-base, 130+ tasks (5 suites), 7-dim action space (3D position + 3D rotation + gripper). Natively supported by SmolVLA/pi0/openpi. |
+| **Nanobot** | Ultra-lightweight Python agent framework (~4,000 LOC). The foundation of this project. |
+| **SKILL.md** | Skill description file with YAML frontmatter + Markdown instructions that the agent can load and execute step-by-step. |
