@@ -164,7 +164,7 @@ class MockRobotEnv:
             d = self._distance(self.ee_pos, obj["pos"])
             if d < best_d:
                 best, best_d = name, d
-            return best, best_d
+        return best, best_d
 
     def look(self, question: str = "") -> str:
         lines = ["Scene observation:"]
@@ -298,6 +298,7 @@ def real_act(instruction: str, steps: int = 10) -> str:
     obs = obs_resp.json()
 
     results = []
+    step_result = {}
     for i in range(steps):
         # VLA predicts action from observation + instruction
         vla_resp = requests.post(
