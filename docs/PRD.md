@@ -62,9 +62,10 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        User / Operator                              │
-│  Telegram │ Slack │ 飞书 │ CLI │ Email │ Web UI                     │
+│  Remote: Telegram │ Slack │ 飞书 │ CLI │ Email │ Web UI (+ Web Voice)│
+│  On-site: Robot Onboard Microphone → Local ASR                      │
 └─────────────────────┬───────────────────────────────────────────────┘
-                      │ (nanobot channels)
+                      │ (nanobot channels + voice pipeline)
                       ▼
 ┌─────────────────────────────────────────────────────────────────────┐
 │                     Agent Core (nanobot)                             │
@@ -256,6 +257,7 @@ Always available. Cover the minimum capabilities for any robot agent.
 | `emergency_stop` | — | Immediate halt of all robot motion |
 | `add_safety_zone` | `name, center, radius, level` | Define forbidden/warning zone |
 | `safety_status` | — | Current safety state and audit log |
+| `voice_listen` | `timeout: float, mode: str` | Capture audio from onboard mic → local ASR → return transcribed text |
 
 #### 2.3 Extension Tool Set (user-defined)
 
@@ -308,7 +310,7 @@ extension_tools:
 |-------------|----------|
 | `laser_scan` | LIDAR-based obstacle mapping |
 | `force_feedback` | Force/torque sensor reading |
-| `voice_command` | Speech-to-text for operator commands |
+| `voice_listen` | Onboard microphone → local ASR → text command (always-on or wake-word triggered) |
 | `navigate` | Autonomous navigation to named locations |
 | `manipulate_dual` | Dual-arm coordinated manipulation |
 | `inspect_weld` | Weld quality inspection with specialized camera |
@@ -1064,7 +1066,9 @@ main_env (real or primary sim)
 
 ### FR-12: Communication Channels
 
-**Reuse nanobot's channel system directly.** No custom code needed.
+**Reuse nanobot's channel system directly.** No custom code needed for text channels. Voice input adds two new pathways.
+
+#### 12.1 Text Channels (nanobot built-in)
 
 | Channel | Protocol | Use Case |
 |---------|----------|----------|
@@ -1077,7 +1081,159 @@ main_env (real or primary sim)
 | CLI | stdin/stdout | Development, debugging |
 | Matrix | Sync | Self-hosted alternative |
 
-**MCP for external services:**
+#### 12.2 Voice Input Channels
+
+Two distinct voice input pathways, serving different scenarios:
+
+| Pathway | Hardware | ASR Engine | Network | Scenario |
+|---------|----------|-----------|---------|----------|
+| **Onboard Microphone** | Robot's built-in mic / mic array | Local Whisper or FunASR (GPU) | Offline-capable | Operator stands near robot, speaks directly |
+| **Web Voice** | User's PC/phone microphone | Browser Web Speech API or remote Whisper | Requires network | Remote operator sends voice commands via Web UI |
+
+**Onboard Microphone Pipeline** (new, robot-side):
+```
+Robot Mic (ALSA/PulseAudio)
+    │
+    ▼
+Audio Stream (PCM 16kHz)
+    │
+    ▼
+┌─────────────────────────────────┐
+│ Local ASR Engine                │
+│ Whisper-large-v3 / FunASR      │
+│ (GPU, ~200ms latency)          │
+└───────────────┬─────────────────┘
+                │ text
+                ▼
+┌─────────────────────────────────┐
+│ Voice Channel Adapter           │
+│ • Wake-word detection (optional)│
+│ • VAD (Voice Activity Detection)│
+│ • Inject text into MessageBus   │
+└───────────────┬─────────────────┘
+                │
+                ▼
+        Agent Loop (same as any channel message)
+```
+
+The onboard mic is a **Robot Sensor**, same level as Camera/IMU. The Voice Channel Adapter bridges audio→text and injects into nanobot's MessageBus. From the agent's perspective, a voice command is indistinguishable from a Telegram message.
+
+**Activation modes:**
+
+| Mode | Trigger | Use Case |
+|------|---------|----------|
+| `wake_word` | "Hey Robot" / custom keyword (Porcupine/Snowboy) | Hands-free, avoid false triggers |
+| `push_to_talk` | Physical button on robot or Web UI | Noisy environments |
+| `always_on` | Continuous VAD-based segmentation | Quiet lab, 1:1 interaction |
+
+**Web Voice Pipeline** (browser-side, no new backend code):
+```
+Browser Mic → Web Speech API / Whisper.js → text → WebSocket → Agent Loop
+```
+
+Web Voice is implemented entirely in the Web UI frontend. The backend receives text over the existing WebSocket channel — no new server code needed.
+
+**Voice Channel config** (`config.json`):
+```json
+{
+  "voice": {
+    "onboard": {
+      "enabled": true,
+      "asr_engine": "whisper",
+      "model": "large-v3",
+      "device": "cuda:0",
+      "language": "zh",
+      "activation": "wake_word",
+      "wake_word": "你好机器人",
+      "vad_threshold": 0.5,
+      "sample_rate": 16000
+    },
+    "web": {
+      "enabled": true,
+      "engine": "web_speech_api",
+      "fallback": "whisper_js"
+    }
+  }
+}
+```
+
+#### 12.3 Input Routing
+
+All input channels — text, voice, API — converge into a single **Input Router** before reaching the Agent Loop. The router normalizes heterogeneous inputs into a uniform `ChannelMessage` and attaches source metadata, without changing nanobot's existing architecture.
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                        Input Sources                              │
+│                                                                    │
+│  Telegram  Slack  飞书  CLI  Email  Web UI  Onboard Mic  Web Voice│
+│  Discord   Matrix 钉钉  API Webhook  MCP callback                 │
+└──────┬───────┬─────┬────┬─────┬──────┬────────┬──────────┬────────┘
+       │       │     │    │     │      │        │          │
+       ▼       ▼     ▼    ▼     ▼      ▼        ▼          ▼
+┌──────────────────────────────────────────────────────────────────┐
+│                     Input Router                                  │
+│                                                                    │
+│  1. Receive raw input from any channel                             │
+│  2. Normalize to ChannelMessage { text, source, metadata }        │
+│  3. Attach source context (channel, user_id, priority, modality) │
+│  4. Apply input policy (allowlist, rate limit, priority)          │
+│  5. Inject into MessageBus                                        │
+└──────────────────────────┬───────────────────────────────────────┘
+                           │ ChannelMessage
+                           ▼
+                    Agent Loop (unchanged)
+```
+
+**ChannelMessage schema:**
+
+```python
+@dataclass
+class ChannelMessage:
+    text: str                    # normalized text content
+    source: str                  # "telegram" | "cli" | "onboard_mic" | "web_voice" | ...
+    user_id: str                 # operator identity
+    modality: str                # "text" | "voice" | "api"
+    priority: int                # 0=normal, 1=urgent (e.g. safety command via voice)
+    metadata: dict               # channel-specific: confidence, language, raw_audio_path, ...
+    timestamp: float
+```
+
+**Why this doesn't change the architecture:**
+
+- Nanobot channels already produce messages into MessageBus — the Input Router is the **existing channel→bus bridge**, formalized with metadata
+- Voice channels (onboard mic, web voice) are just two more producers into the same bus
+- The Agent Loop consumes `ChannelMessage` from the bus — it never knows or cares about the source
+- Adding a new input source = implement one adapter that produces `ChannelMessage`, zero changes to agent core
+
+**Input policy config** (`config.json`):
+
+```json
+{
+  "input_routing": {
+    "channels": {
+      "onboard_mic": { "enabled": true,  "priority": 1, "rate_limit": "10/min" },
+      "web_voice":   { "enabled": true,  "priority": 0, "rate_limit": "30/min" },
+      "telegram":    { "enabled": true,  "priority": 0, "rate_limit": "60/min" },
+      "cli":         { "enabled": true,  "priority": 0, "rate_limit": null },
+      "webhook":     { "enabled": false, "priority": 0, "rate_limit": "10/min" }
+    },
+    "conflict_resolution": "latest_wins",
+    "allowlist": ["operator_1", "operator_2"]
+  }
+}
+```
+
+**Input priority rules:**
+
+| Priority | Source | Behavior |
+|----------|--------|----------|
+| 1 (urgent) | Onboard mic (operator physically present) | Interrupts current planning, queued ahead of normal messages |
+| 0 (normal) | All remote channels (Telegram, CLI, Web, etc.) | FIFO processing |
+
+This means an operator standing next to the robot and saying "停下" (stop) via onboard mic takes precedence over a queued Telegram command — without any special handling in the agent loop.
+
+#### 12.4 MCP for External Services
+
 ```json
 {
   "mcp_servers": {
@@ -1291,6 +1447,7 @@ All core control/perception/planning paths must work with open-source or open-we
 | Robot | Unitree G1 humanoid | 30-DOF, walk + manipulate |
 | GPU | NVIDIA H200 (80GB) | Local VLA + VLM inference |
 | Camera | Robot-mounted RGB | 640×480 or 1280×720 |
+| Microphone | Onboard mic or mic array | 16kHz, for voice commands via local ASR |
 | Gripper | Unitree dexterous hand | 2-finger or 5-finger |
 | Network | LAN (robot ↔ GPU server) | <1ms latency required |
 | Cloud | API access (optional) | For user-configured remote LLM provider |
@@ -1305,6 +1462,8 @@ All core control/perception/planning paths must work with open-source or open-we
 | VLA serving | Isaac GR00T | N1.6 |
 | VLM serving | vLLM | 0.6+ |
 | Sim | MuJoCo | 3.0+ |
+| ASR | Whisper (openai-whisper) or FunASR | large-v3 / paraformer-zh |
+| VAD | Silero VAD or WebRTC VAD | For voice activity detection |
 | GPU runtime | CUDA | 12.0+ |
 | Container | Docker | 24.0+ (optional) |
 
@@ -1336,6 +1495,9 @@ robot-agent (new repo)
 ├── requests (pip)             # HTTP VLA/VLM adapters
 ├── pyzmq (pip, optional)      # GR00T ZMQ adapter
 ├── websockets (pip, optional) # OpenPI WebSocket adapter
+├── openai-whisper (pip, optional)  # Onboard ASR (Whisper)
+├── sounddevice (pip, optional)     # Microphone audio capture
+├── silero-vad (pip, optional)      # Voice activity detection
 └── mujoco (pip, optional)     # Sim environment
 ```
 
@@ -1458,6 +1620,9 @@ External services accessed via MCP tools:
 | **Mock Mode** | Development mode using simulated physics, no real hardware or GPU needed. |
 | **Nanobot** | Ultra-lightweight Python agent framework (~4,000 LOC) that this product builds on. |
 | **Tool** | An async function registered with the agent that the LLM can invoke. Robot actions, model management, and external services are all tools. |
+| **ASR** | Automatic Speech Recognition. Converts audio to text. Whisper (OpenAI) or FunASR (Alibaba) for local inference. |
+| **VAD** | Voice Activity Detection. Detects when speech starts/stops in an audio stream. |
+| **Wake Word** | A keyword (e.g., "Hey Robot") that activates voice listening mode, avoiding false triggers. |
 
 ---
 
