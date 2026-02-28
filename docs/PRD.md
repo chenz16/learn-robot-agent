@@ -2,7 +2,7 @@
 
 ## 1. Executive Summary
 
-A production-grade robot agent framework that orchestrates open-source VLA/VLM models on local GPU, remote LLMs via API, and customer-trained LoRA adapters — all through a unified tool-calling agent loop. Built on [nanobot](https://github.com/HKUDS/nanobot) (~4,000 lines, Python, asyncio), it extends the same architecture that powers chat assistants to also drive physical robots. The agent treats `move_arm` and `send_email` as the same abstraction: a tool.
+A production-grade robot agent framework that orchestrates open-source VLA/VLM models on local GPU, optional user-configured remote LLMs via API, and customer-trained LoRA adapters — all through a unified tool-calling agent loop. Built on [nanobot](https://github.com/HKUDS/nanobot) (~4,000 lines, Python, asyncio), it extends the same architecture that powers chat assistants to also drive physical robots. The agent treats `move_arm` and `send_email` as the same abstraction: a tool.
 
 **Target users**: Robotics teams deploying Unitree G1 (or similar) with GR00T/OpenPI VLAs, who need an orchestration layer that handles model lifecycle, multi-frequency control, safety, and external service integration — without writing a custom framework.
 
@@ -86,10 +86,10 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
 │ LLM      │  │ Loop Manager │  │ Model        │  │ MCP        │
 │ Provider │  │              │  │ Lifecycle    │  │ Servers    │
 │          │  │ VLA@2-50Hz   │  │ Manager      │  │            │
-│ Claude   │  │ VLM@1-5Hz   │  │              │  │ Email      │
-│ DeepSeek │  │ Evaluator    │  │ Base models  │  │ Slack      │
-│ Qwen     │  │ Terminators  │  │ LoRA swap    │  │ Database   │
-│ (remote) │  │ (local)      │  │ Health check │  │ Config srv │
+│ Local    │  │ VLM@1-5Hz   │  │              │  │ Email      │
+│ vLLM     │  │ Evaluator    │  │ Base models  │  │ Slack      │
+│ + Remote │  │ Terminators  │  │ LoRA swap    │  │ Database   │
+│ (optional) │ │ (local)      │  │ Health check │  │ Config srv │
 └──────────┘  └──────┬───────┘  └──────┬───────┘  └────────────┘
                      │                 │
               ┌──────┴──────┐   ┌──────┴──────┐
@@ -110,7 +110,7 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
 |------|-----------|-----------|----------|----------------|---------|
 | 1 | VLA Control | 2-50 Hz | LOCAL GPU | < 20ms | Model Manager |
 | 2 | VLM Perception | 0.5-5 Hz | LOCAL GPU | 200ms-2s | Model Manager |
-| 3 | LLM Planning | 0.05-0.2 Hz | REMOTE API | 1-10s | Agent Core |
+| 3 | LLM Planning | 0.05-0.2 Hz | LOCAL vLLM (default) / REMOTE API (optional) | 0.5-10s | Agent Core |
 | 4 | Evaluator | 0.1-1 Hz | LOCAL/REMOTE | 1-3s | Agent Core |
 
 ### 4.3 What's Reused from Nanobot vs What's New
@@ -162,10 +162,28 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
   "agents": {
     "defaults": {
       "workspace": "~/.robot-agent/workspace",
-      "model": "anthropic/claude-sonnet-4-20250514",
+      "model": "local/qwen2.5-72b-instruct",
       "max_tool_iterations": 40,
       "memory_window": 100,
       "temperature": 0.1
+    }
+  }
+}
+```
+
+Remote LLM is user-configurable and optional. If no remote provider is configured, planning/evaluation uses the local vLLM model by default.
+
+```json
+{
+  "agents": {
+    "defaults": {
+      "model": "local/qwen2.5-72b-instruct",
+      "remote_llm": {
+        "enabled": true,
+        "provider": "openai_compatible",
+        "base_url": "https://api.example.com/v1",
+        "model": "custom-remote-model"
+      }
     }
   }
 }
@@ -330,12 +348,15 @@ models:
         size_mb: 120
 
 remote_models:
-  claude-sonnet:
+  user-primary:
+    enabled: true
     type: llm
-    provider: anthropic
-    model: claude-sonnet-4-20250514
+    provider: openai_compatible   # anthropic | openai_compatible | deepseek | ...
+    base_url: https://api.example.com/v1
+    model: custom-remote-model
     latency_class: high       # 1-10s per call
   deepseek-r1:
+    enabled: false
     type: llm
     provider: deepseek
     model: deepseek-reasoner
@@ -825,13 +846,13 @@ routes:
     max_steps: 200
     vla_lora: null
   hard:
-    planner: remote-llm                  # full LLM reasoning
+    planner: remote-llm                  # user-configured remote; fallback local-vllm
     perception_hz: 5
     action_hz: 50
     termination: [vlm_check, gripper_state, step_limit]
     max_steps: 500
     vla_lora: task-specific              # load user's fine-tuned LoRA
-    evaluator: remote-llm
+    evaluator: remote-llm                # same fallback rule
 ```
 
 **Three route profiles included:**
@@ -908,7 +929,7 @@ team:
     role: manipulation
     system_prompt: "You are a manipulation robot. Execute pick-and-place tasks."
     tools: [look, move, grasp, start_subtask, send_message, read_inbox]
-    model: claude-sonnet
+    model: local-qwen2.5-72b
     vla: groot-n1.6
 
   - name: monitor
@@ -1104,14 +1125,14 @@ main_env (real or primary sim)
 
 ### 7.1 Open-Source First
 
-All models must be open-source or open-weight. No proprietary model dependencies for core functionality.
+All core control/perception/planning paths must work with open-source or open-weight local models. Proprietary remote models are optional accelerators, not hard dependencies.
 
 | Component | Primary Model | Fallback | License |
 |-----------|--------------|----------|---------|
 | VLA | GR00T N1.6 | OpenPI pi0 | Apache-2.0 / MIT |
 | VLM | Qwen2.5-VL-7B | InternVL2 | Apache-2.0 |
-| LLM (remote) | Claude | DeepSeek-R1 | Commercial / MIT |
-| LLM (local) | Qwen2.5-72B | DeepSeek-V3 | Apache-2.0 |
+| LLM (local, default) | Qwen2.5-72B (vLLM) | DeepSeek-V3 (vLLM) | Apache-2.0 |
+| LLM (remote, optional) | User-configured endpoint | Local LLM (above) | Varies by provider |
 
 ### 7.2 Storage Layout
 
@@ -1165,8 +1186,10 @@ All models must be open-source or open-weight. No proprietary model dependencies
 
 ### 7.4 Remote LLM Considerations
 
-- **Latency**: 1-10s per call. Only used for planning (0.1Hz), not control.
-- **Fallback**: If remote LLM unreachable, fall back to local Qwen/DeepSeek.
+- **Optionality**: Remote LLM is optional. System runs fully with local vLLM only.
+- **Default**: If remote LLM is not configured, use local Qwen/DeepSeek via vLLM for planning/evaluation.
+- **Latency**: Remote LLM is typically 1-10s per call. Only used for planning (0.1Hz), not control.
+- **Fallback**: If remote LLM is configured but unreachable, fall back to local Qwen/DeepSeek.
 - **Cost**: Remote API calls are metered. Route config determines when LLM is used:
   - Easy tasks: no LLM replanning (save cost)
   - Hard tasks: LLM evaluates each subtask (worth the cost)
@@ -1217,7 +1240,7 @@ All models must be open-source or open-weight. No proprietary model dependencies
 | Camera | Robot-mounted RGB | 640×480 or 1280×720 |
 | Gripper | Unitree dexterous hand | 2-finger or 5-finger |
 | Network | LAN (robot ↔ GPU server) | <1ms latency required |
-| Cloud | API access | For remote LLM (Claude, DeepSeek) |
+| Cloud | API access (optional) | For user-configured remote LLM provider |
 
 ### 8.2 Software Stack
 
@@ -1255,7 +1278,7 @@ Available for second VLA     ~55GB    ← room for OpenPI or DreamZero
 ```
 robot-agent (new repo)
 ├── nanobot-ai (pip)           # Agent core, tools, channels, MCP
-├── anthropic (pip)            # Claude API (remote LLM)
+├── openai / anthropic (pip, optional)  # User-configured remote LLM providers
 ├── pyyaml (pip)               # Route + model config
 ├── requests (pip)             # HTTP VLA/VLM adapters
 ├── pyzmq (pip, optional)      # GR00T ZMQ adapter
@@ -1273,7 +1296,8 @@ robot-agent (new repo)
 | VLA (HTTP proxy) | HTTP | :8020 | Co-located with VLA |
 | VLM (Qwen-VL) | HTTP (vLLM) | :8010 | Dedicated GPU server |
 | Sim (MuJoCo) | HTTP | :8030 | CPU server |
-| LLM (Claude) | HTTPS | :443 | Anthropic API |
+| LLM (local planner, default) | HTTP (vLLM OpenAI-compatible) | :8008 (example) | Local GPU server |
+| LLM (remote, optional) | HTTPS | :443 | User-configured provider API |
 | Channels | Various | Various | nanobot channel processes |
 
 ### 9.3 MCP Server Integration
