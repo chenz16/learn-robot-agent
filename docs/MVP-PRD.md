@@ -95,8 +95,10 @@ The agent's reasoning and control are divided into three logical layers with inc
 | Layer | Responsibility | Typical Latency | MVP Implementation |
 |-------|---------------|----------------|-------------------|
 | **Intention** | Intent recognition, slot extraction, decide if full planning is needed | 50-800ms | Single-turn LLM inference |
-| **Cognition** | Scene perception + task planning, output structured plan | 0.5-10s | VLM analysis + LLM planning |
+| **Cognition** | Task reasoning/planning, outputs structured plan; contains optional Perception sub-module | 0.5-10s | LLM planning, optionally preceded by VLM perception |
 | **Action** | High-frequency control loop: VLA prediction + safety checks + execution | 2-20Hz, < 20ms/step | LoopManager + VLA adapter |
+
+**Perception as optional sub-module of Cognition**: Perception (VLM-based scene understanding) is not a fourth layer — it is an optional, independently configurable component within Cognition. When enabled, Cognition calls Perception before Reasoning to obtain a scene description. When disabled (e.g., mock mode), Cognition plans directly from simulation ground-truth or prior context. The Perception backend is replaceable (VLM / traditional CV / ground-truth) without changing Cognition's external interface.
 
 Design constraint: The Action layer must not be blocked by Intention/Cognition — Cognition latency only affects the next subtask decision, never interrupts a running action loop.
 
@@ -492,7 +494,8 @@ The following features will be implemented in post-MVP versions:
 | **LLM** | Large Language Model. Text-based reasoning and planning. |
 | **PRAE** | Prepare → Perceive → Reason → Act → Evaluate. The agent's core execution loop. |
 | **Intention** | Logical layer: fast intent recognition and task framing. |
-| **Cognition** | Logical layer: scene understanding + reasoning/planning, outputs structured plan. |
+| **Cognition** | Logical layer: task reasoning/planning, outputs structured plan. Contains an optional Perception sub-module. |
+| **Perception** | Optional sub-module of Cognition. Produces scene descriptions from visual input (VLM / CV / ground-truth). Can be enabled/disabled independently. |
 | **Action** | Logical layer: high-frequency robot control loop (VLA + safety + actuation). |
 | **Tool** | An async function registered with the agent that the LLM can invoke via tool_call. Robot actions and software operations share the same abstraction. |
 | **LoopManager** | Component managing VLA control loops: start/wait/terminate/stats. |

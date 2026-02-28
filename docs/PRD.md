@@ -110,14 +110,32 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
 High-level architecture is intentionally simplified into three logical layers:
 
 - **Intention**: Fast intent detection and task framing from user instruction.
-- **Cognition**: Unified reasoning + perception capability that outputs structured plan/context.
+- **Cognition**: Task reasoning and planning, outputs structured plan/context. Contains an **optional Perception sub-module** for scene understanding.
 - **Action**: Real-time robot control loop (VLA + safety + actuation).
 
 | Layer | Responsibility | Typical Budget | Deployment Mode | Notes |
 |------|----------------|----------------|-----------------|-------|
 | Intention | Classify intent, extract slots, decide whether full planning is needed | 50-800ms | `local_process` or `remote_tool_call` | Optional fast path for simple commands |
-| Cognition | Produce plan/perception summary for next subtask | 0.5-10s | `local_process` or `remote_tool_call` | Internals may or may not split VLM/LLM |
+| Cognition | Produce plan for next subtask; optionally invoke Perception | 0.5-10s | `local_process` or `remote_tool_call` | Perception is an optional sub-module |
 | Action | Execute subtasks at high frequency with safety checks | 2-50Hz, p99 step < 20ms | **local_process only** | Must not be blocked by Intention/Cognition latency |
+
+#### Perception as Optional Sub-module of Cognition
+
+Perception is **not** a fourth layer. It is an optional, independently configurable sub-module within Cognition:
+
+- **When enabled**: Cognition calls Perception (VLM) before Reasoning (LLM) to get a scene description, then plans based on it.
+- **When disabled**: Cognition skips Perception and plans directly from available state (e.g., simulation ground truth, prior context).
+- **Replaceable**: Perception can be backed by VLM, traditional CV (YOLO + depth), or simulation ground-truth — Cognition only consumes its output contract (structured scene description).
+- **Independent frequency**: Perception may run at its own rate (e.g., 2-5Hz continuous observation) while Reasoning runs on-demand when the scene changes.
+
+```
+Cognition
+├── Perception (optional)   ← VLM / CV / ground-truth
+│     output: SceneDescription { objects, relations, confidence }
+└── Reasoning               ← LLM
+      input:  SceneDescription + task context
+      output: StructuredPlan { subtasks, parameters }
+```
 
 ### 4.3 Configurable Implementation Boundary
 
@@ -126,7 +144,7 @@ The three layers above are **logical modules**. Concrete implementation is confi
 - Main agent treats each layer as a callable module endpoint.
 - Each layer can be implemented as a local subprocess or remote tool call.
 - How a layer decomposes internally is that layer's own responsibility.
-- In particular, Cognition may internally split into perception/reasoning loops, but this is hidden behind its I/O contract.
+- In particular, Cognition contains an optional Perception sub-module. Whether Perception is enabled, what backend it uses (VLM / CV / ground-truth), and at what frequency it runs are all configuration-driven. Cognition's external I/O contract remains the same regardless.
 
 ```yaml
 pipeline:
@@ -139,6 +157,11 @@ pipeline:
     endpoint: https://cognition.example.com/v1
     timeout_ms: 6000
     fallback: local_cognition
+    perception:                # optional sub-module
+      enabled: true            # false → skip, use ground-truth or prior context
+      backend: vlm             # vlm | cv | ground_truth
+      endpoint: http://localhost:8010/v1
+      frequency_hz: 2          # independent observation rate
   action:
     mode: local_process        # fixed
     endpoint: ipc://vla-controller
@@ -1607,7 +1630,8 @@ External services accessed via MCP tools:
 | **VLM** | Vision-Language Model. Takes image + text question, outputs text description. |
 | **LLM** | Large Language Model. Text-to-text reasoning and planning. |
 | **Intention** | Logical layer for fast intent recognition and slot extraction before full planning. |
-| **Cognition** | Logical layer that produces reasoning/perception outputs for subtask decisions; internal structure is implementation-defined. |
+| **Cognition** | Logical layer that produces structured plans for subtask decisions. Contains an optional Perception sub-module; when disabled, plans from available state directly. |
+| **Perception** | Optional sub-module of Cognition. Produces structured scene descriptions from visual input (VLM, CV, or simulation ground-truth). Can be enabled/disabled and runs at its own frequency. |
 | **Action** | Logical layer that executes robot control in high-frequency local loops (VLA + safety + actuation). |
 | **LoRA** | Low-Rank Adaptation. Small parameter file (<200MB) that specializes a base model for a specific task. |
 | **MCP** | Model Context Protocol. Standard for connecting AI agents to external tools and services. |
