@@ -1,0 +1,9645 @@
+{
+  "goal": "put both the alphabet soup and the tomato sauce in the basket",
+  "subtasks": [
+    "Subtask 1: pick up alphabet soup -> basket",
+    "Subtask 2: pick up tomato sauce -> basket"
+  ],
+  "subtask_switch_step": null,
+  "total_steps": 344,
+  "total_time_s": 19.44,
+  "success": true,
+  "steps": [
+    {
+      "step": 1,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 1,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 82.1,
+      "eef_pos": [
+        -0.0455,
+        -0.0042,
+        0.7022
+      ],
+      "gripper_qpos": [
+        0.0388,
+        -0.0389
+      ],
+      "action": [
+        0.0308,
+        -0.1078,
+        -0.046,
+        -0.0112,
+        -0.0127,
+        0.0142,
+        -0.5
+      ],
+      "elapsed_s": 0.105
+    },
+    {
+      "step": 2,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 1,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0447,
+        -0.0059,
+        0.702
+      ],
+      "gripper_qpos": [
+        0.0389,
+        -0.0389
+      ],
+      "action": [
+        0.0459,
+        -0.2178,
+        -0.0163,
+        -0.0052,
+        0.0015,
+        0.0093,
+        -0.5
+      ],
+      "elapsed_s": 0.132
+    },
+    {
+      "step": 3,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 1,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.044,
+        -0.009,
+        0.7019
+      ],
+      "gripper_qpos": [
+        0.0389,
+        -0.039
+      ],
+      "action": [
+        0.0667,
+        -0.3463,
+        0.0125,
+        0.0023,
+        0.0089,
+        0.0037,
+        -0.5
+      ],
+      "elapsed_s": 0.16
+    },
+    {
+      "step": 4,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 1,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0432,
+        -0.0136,
+        0.702
+      ],
+      "gripper_qpos": [
+        0.039,
+        -0.0391
+      ],
+      "action": [
+        0.0764,
+        -0.4519,
+        0.0164,
+        0.0052,
+        0.0026,
+        -0.0019,
+        -0.5
+      ],
+      "elapsed_s": 0.189
+    },
+    {
+      "step": 5,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 1,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0424,
+        -0.0194,
+        0.702
+      ],
+      "gripper_qpos": [
+        0.039,
+        -0.0391
+      ],
+      "action": [
+        0.0829,
+        -0.5,
+        0.0118,
+        0.0088,
+        0.002,
+        -0.0054,
+        -0.5
+      ],
+      "elapsed_s": 0.216
+    },
+    {
+      "step": 6,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 2,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 46.9,
+      "eef_pos": [
+        -0.0418,
+        -0.0236,
+        0.7017
+      ],
+      "gripper_qpos": [
+        0.0391,
+        -0.0391
+      ],
+      "action": [
+        0.0175,
+        -0.1215,
+        -0.0643,
+        -0.0019,
+        -0.0002,
+        -0.0006,
+        -0.5
+      ],
+      "elapsed_s": 0.29
+    },
+    {
+      "step": 7,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 2,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0414,
+        -0.0262,
+        0.7011
+      ],
+      "gripper_qpos": [
+        0.0391,
+        -0.0392
+      ],
+      "action": [
+        0.0157,
+        -0.156,
+        -0.0603,
+        0.0008,
+        0.0028,
+        -0.0031,
+        -0.5
+      ],
+      "elapsed_s": 0.317
+    },
+    {
+      "step": 8,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 2,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0411,
+        -0.0287,
+        0.7004
+      ],
+      "gripper_qpos": [
+        0.0391,
+        -0.0392
+      ],
+      "action": [
+        0.0187,
+        -0.2006,
+        -0.053,
+        0.0031,
+        0.0057,
+        -0.0028,
+        -0.5
+      ],
+      "elapsed_s": 0.344
+    },
+    {
+      "step": 9,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 2,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0409,
+        -0.0317,
+        0.6998
+      ],
+      "gripper_qpos": [
+        0.0392,
+        -0.0392
+      ],
+      "action": [
+        0.0219,
+        -0.2784,
+        -0.044,
+        0.0058,
+        0.0116,
+        -0.0048,
+        -0.5
+      ],
+      "elapsed_s": 0.372
+    },
+    {
+      "step": 10,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 2,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0407,
+        -0.0356,
+        0.6992
+      ],
+      "gripper_qpos": [
+        0.0392,
+        -0.0393
+      ],
+      "action": [
+        0.0246,
+        -0.3812,
+        -0.0339,
+        0.0086,
+        0.007,
+        -0.0064,
+        -0.5
+      ],
+      "elapsed_s": 0.4
+    },
+    {
+      "step": 11,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 3,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 50.5,
+      "eef_pos": [
+        -0.04,
+        -0.041,
+        0.6991
+      ],
+      "gripper_qpos": [
+        0.0392,
+        -0.0393
+      ],
+      "action": [
+        0.0949,
+        -0.5,
+        0.0388,
+        0.0066,
+        -0.0015,
+        -0.0354,
+        -0.5
+      ],
+      "elapsed_s": 0.486
+    },
+    {
+      "step": 12,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 3,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0392,
+        -0.0473,
+        0.6993
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0394
+      ],
+      "action": [
+        0.0761,
+        -0.5,
+        0.0328,
+        0.0043,
+        -0.0055,
+        -0.0388,
+        -0.5
+      ],
+      "elapsed_s": 0.531
+    },
+    {
+      "step": 13,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 3,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0385,
+        -0.0538,
+        0.6996
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0394
+      ],
+      "action": [
+        0.0628,
+        -0.5,
+        0.029,
+        0.0021,
+        -0.0065,
+        -0.0399,
+        -0.5
+      ],
+      "elapsed_s": 0.575
+    },
+    {
+      "step": 14,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 3,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0379,
+        -0.0603,
+        0.6998
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0394
+      ],
+      "action": [
+        0.0571,
+        -0.5,
+        0.0196,
+        0.0036,
+        -0.008,
+        -0.0407,
+        -0.5
+      ],
+      "elapsed_s": 0.618
+    },
+    {
+      "step": 15,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 3,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0373,
+        -0.0669,
+        0.7
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0394
+      ],
+      "action": [
+        0.0561,
+        -0.5,
+        0.0064,
+        0.0027,
+        -0.0064,
+        -0.0414,
+        -0.5
+      ],
+      "elapsed_s": 0.662
+    },
+    {
+      "step": 16,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 4,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 49.5,
+      "eef_pos": [
+        -0.0364,
+        -0.0732,
+        0.7002
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0395
+      ],
+      "action": [
+        0.1454,
+        -0.5,
+        0.0609,
+        0.0165,
+        0.0053,
+        -0.0073,
+        -0.5
+      ],
+      "elapsed_s": 0.756
+    },
+    {
+      "step": 17,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 4,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0352,
+        -0.0795,
+        0.7004
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0395
+      ],
+      "action": [
+        0.1481,
+        -0.5,
+        0.0513,
+        0.0169,
+        0.0089,
+        -0.0086,
+        -0.5
+      ],
+      "elapsed_s": 0.801
+    },
+    {
+      "step": 18,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 4,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0339,
+        -0.0859,
+        0.7005
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0395
+      ],
+      "action": [
+        0.1553,
+        -0.5,
+        0.0421,
+        0.0184,
+        0.0089,
+        -0.0086,
+        -0.5
+      ],
+      "elapsed_s": 0.844
+    },
+    {
+      "step": 19,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 4,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0324,
+        -0.0924,
+        0.7006
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0395
+      ],
+      "action": [
+        0.1707,
+        -0.5,
+        0.0269,
+        0.0164,
+        0.0087,
+        -0.0094,
+        -0.5
+      ],
+      "elapsed_s": 0.888
+    },
+    {
+      "step": 20,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 4,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0308,
+        -0.0989,
+        0.7004
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0396
+      ],
+      "action": [
+        0.1626,
+        -0.4931,
+        0.0076,
+        0.0137,
+        0.0058,
+        -0.0083,
+        -0.5
+      ],
+      "elapsed_s": 0.931
+    },
+    {
+      "step": 21,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 5,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 50.0,
+      "eef_pos": [
+        -0.029,
+        -0.1053,
+        0.6993
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0396
+      ],
+      "action": [
+        0.151,
+        -0.432,
+        -0.1671,
+        -0.0078,
+        -0.0007,
+        -0.0371,
+        -0.5
+      ],
+      "elapsed_s": 1.03
+    },
+    {
+      "step": 22,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 5,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0273,
+        -0.1114,
+        0.6972
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0396
+      ],
+      "action": [
+        0.1227,
+        -0.4244,
+        -0.1886,
+        -0.0078,
+        0.0019,
+        -0.0414,
+        -0.5
+      ],
+      "elapsed_s": 1.073
+    },
+    {
+      "step": 23,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 5,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0259,
+        -0.1172,
+        0.6947
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0396
+      ],
+      "action": [
+        0.0823,
+        -0.4179,
+        -0.2122,
+        -0.0077,
+        -0.0019,
+        -0.0437,
+        -0.5
+      ],
+      "elapsed_s": 1.12
+    },
+    {
+      "step": 24,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 5,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0246,
+        -0.1228,
+        0.6921
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0396
+      ],
+      "action": [
+        0.0496,
+        -0.4079,
+        -0.2374,
+        -0.0069,
+        -0.0084,
+        -0.0428,
+        -0.5
+      ],
+      "elapsed_s": 1.166
+    },
+    {
+      "step": 25,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 5,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0237,
+        -0.1281,
+        0.6891
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0397
+      ],
+      "action": [
+        0.0208,
+        -0.3814,
+        -0.2708,
+        -0.0074,
+        -0.0138,
+        -0.0424,
+        -0.5
+      ],
+      "elapsed_s": 1.208
+    },
+    {
+      "step": 26,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 6,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 39.6,
+      "eef_pos": [
+        -0.0223,
+        -0.1325,
+        0.6852
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0397
+      ],
+      "action": [
+        0.0439,
+        -0.246,
+        -0.4691,
+        0.0002,
+        -0.0577,
+        -0.0239,
+        -0.5
+      ],
+      "elapsed_s": 1.297
+    },
+    {
+      "step": 27,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 6,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0208,
+        -0.1357,
+        0.68
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0397
+      ],
+      "action": [
+        0.0287,
+        -0.1826,
+        -0.5,
+        -0.0016,
+        -0.0577,
+        -0.0215,
+        -0.5
+      ],
+      "elapsed_s": 1.343
+    },
+    {
+      "step": 28,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 6,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0196,
+        -0.1383,
+        0.6743
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0397
+      ],
+      "action": [
+        0.0153,
+        -0.1357,
+        -0.5,
+        -0.0036,
+        -0.0599,
+        -0.0174,
+        -0.5
+      ],
+      "elapsed_s": 1.388
+    },
+    {
+      "step": 29,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 6,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0185,
+        -0.1402,
+        0.6684
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0397
+      ],
+      "action": [
+        0.0086,
+        -0.0843,
+        -0.5,
+        -0.0035,
+        -0.0667,
+        -0.0129,
+        -0.5
+      ],
+      "elapsed_s": 1.433
+    },
+    {
+      "step": 30,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 6,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0176,
+        -0.1415,
+        0.6625
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0397
+      ],
+      "action": [
+        0.007,
+        -0.0403,
+        -0.5,
+        -0.0058,
+        -0.0622,
+        -0.0086,
+        -0.5
+      ],
+      "elapsed_s": 1.478
+    },
+    {
+      "step": 31,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 7,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 41.9,
+      "eef_pos": [
+        -0.0166,
+        -0.142,
+        0.6564
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0397
+      ],
+      "action": [
+        0.0608,
+        -0.0132,
+        -0.5,
+        0.0084,
+        -0.0591,
+        0.0073,
+        -0.5
+      ],
+      "elapsed_s": 1.568
+    },
+    {
+      "step": 32,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 7,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0158,
+        -0.1422,
+        0.65
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0397
+      ],
+      "action": [
+        0.0331,
+        -0.0118,
+        -0.5,
+        0.0073,
+        -0.0556,
+        0.0099,
+        -0.5
+      ],
+      "elapsed_s": 1.618
+    },
+    {
+      "step": 33,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 7,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0153,
+        -0.1423,
+        0.6437
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0397
+      ],
+      "action": [
+        0.0037,
+        -0.013,
+        -0.5,
+        0.0094,
+        -0.0559,
+        0.0122,
+        -0.5
+      ],
+      "elapsed_s": 1.663
+    },
+    {
+      "step": 34,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 7,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0151,
+        -0.1424,
+        0.6373
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.0199,
+        -0.0128,
+        -0.5,
+        0.0095,
+        -0.0524,
+        0.0149,
+        -0.5
+      ],
+      "elapsed_s": 1.709
+    },
+    {
+      "step": 35,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 7,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0154,
+        -0.1426,
+        0.6309
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.0587,
+        -0.0205,
+        -0.5,
+        0.0094,
+        -0.0504,
+        0.0182,
+        -0.5
+      ],
+      "elapsed_s": 1.752
+    },
+    {
+      "step": 36,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 8,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 41.1,
+      "eef_pos": [
+        -0.0156,
+        -0.1429,
+        0.6247
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.0478,
+        -0.0507,
+        -0.5,
+        0.0119,
+        -0.0695,
+        0.0227,
+        -0.5
+      ],
+      "elapsed_s": 1.845
+    },
+    {
+      "step": 37,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 8,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0159,
+        -0.1434,
+        0.6185
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.0621,
+        -0.0547,
+        -0.5,
+        0.012,
+        -0.0767,
+        0.0242,
+        -0.5
+      ],
+      "elapsed_s": 1.894
+    },
+    {
+      "step": 38,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 8,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0165,
+        -0.144,
+        0.6123
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.0956,
+        -0.0715,
+        -0.5,
+        0.0128,
+        -0.0767,
+        0.0245,
+        -0.5
+      ],
+      "elapsed_s": 1.939
+    },
+    {
+      "step": 39,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 8,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0177,
+        -0.1449,
+        0.6061
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.1532,
+        -0.0951,
+        -0.5,
+        0.012,
+        -0.0739,
+        0.0257,
+        -0.5
+      ],
+      "elapsed_s": 1.986
+    },
+    {
+      "step": 40,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 8,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0196,
+        -0.1461,
+        0.5999
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.2091,
+        -0.1065,
+        -0.5,
+        0.0113,
+        -0.0773,
+        0.028,
+        -0.5
+      ],
+      "elapsed_s": 2.031
+    },
+    {
+      "step": 41,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 9,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.4,
+      "eef_pos": [
+        -0.0218,
+        -0.1476,
+        0.5941
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.0421,
+        -0.1419,
+        -0.3175,
+        0.0032,
+        0.0025,
+        0.0433,
+        -0.5
+      ],
+      "elapsed_s": 2.129
+    },
+    {
+      "step": 42,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 9,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0238,
+        -0.149,
+        0.5888
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.0401,
+        -0.0785,
+        -0.3057,
+        -0.0001,
+        0.0036,
+        0.0506,
+        -0.5
+      ],
+      "elapsed_s": 2.179
+    },
+    {
+      "step": 43,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 9,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0254,
+        -0.1497,
+        0.584
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.0356,
+        -0.0167,
+        -0.2939,
+        -0.0026,
+        0.0079,
+        0.0608,
+        -0.5
+      ],
+      "elapsed_s": 2.223
+    },
+    {
+      "step": 44,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 9,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0268,
+        -0.1498,
+        0.5795
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.0468,
+        0.0207,
+        -0.2942,
+        -0.0068,
+        0.0058,
+        0.0639,
+        -0.5
+      ],
+      "elapsed_s": 2.267
+    },
+    {
+      "step": 45,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 9,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0281,
+        -0.1496,
+        0.5752
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.0703,
+        0.029,
+        -0.2982,
+        -0.007,
+        0.006,
+        0.0652,
+        -0.5
+      ],
+      "elapsed_s": 2.313
+    },
+    {
+      "step": 46,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 10,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 42.2,
+      "eef_pos": [
+        -0.0289,
+        -0.1495,
+        0.5703
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0398
+      ],
+      "action": [
+        -0.0949,
+        0.0094,
+        -0.5,
+        -0.0076,
+        -0.0465,
+        0.0248,
+        -0.5
+      ],
+      "elapsed_s": 2.399
+    },
+    {
+      "step": 47,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 10,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0297,
+        -0.1494,
+        0.5648
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0399
+      ],
+      "action": [
+        -0.1521,
+        0.0017,
+        -0.5,
+        -0.0092,
+        -0.0552,
+        0.0268,
+        -0.5
+      ],
+      "elapsed_s": 2.446
+    },
+    {
+      "step": 48,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 10,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0309,
+        -0.1493,
+        0.559
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.1993,
+        -0.0024,
+        -0.5,
+        -0.0101,
+        -0.0606,
+        0.029,
+        -0.5
+      ],
+      "elapsed_s": 2.491
+    },
+    {
+      "step": 49,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 10,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0328,
+        -0.1494,
+        0.5533
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.24,
+        -0.0073,
+        -0.4971,
+        -0.0104,
+        -0.0638,
+        0.031,
+        -0.5
+      ],
+      "elapsed_s": 2.538
+    },
+    {
+      "step": 50,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 10,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0352,
+        -0.1495,
+        0.5476
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.2703,
+        -0.0171,
+        -0.4831,
+        -0.0087,
+        -0.0603,
+        0.0313,
+        -0.5
+      ],
+      "elapsed_s": 2.582
+    },
+    {
+      "step": 51,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 11,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 38.4,
+      "eef_pos": [
+        -0.0387,
+        -0.1502,
+        0.5418
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.2904,
+        -0.1085,
+        -0.4158,
+        0.0018,
+        -0.0149,
+        0.0022,
+        -0.5
+      ],
+      "elapsed_s": 2.67
+    },
+    {
+      "step": 52,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 11,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0427,
+        -0.1513,
+        0.5363
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.2987,
+        -0.1069,
+        -0.397,
+        0.0016,
+        -0.0123,
+        0.0056,
+        -0.5
+      ],
+      "elapsed_s": 2.714
+    },
+    {
+      "step": 53,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 11,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.047,
+        -0.1525,
+        0.531
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.304,
+        -0.106,
+        -0.3804,
+        0.0011,
+        -0.0027,
+        0.0081,
+        -0.5
+      ],
+      "elapsed_s": 2.756
+    },
+    {
+      "step": 54,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 11,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0513,
+        -0.1536,
+        0.526
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.307,
+        -0.0871,
+        -0.3654,
+        0.0027,
+        -0.0009,
+        0.0122,
+        -0.5
+      ],
+      "elapsed_s": 2.8
+    },
+    {
+      "step": 55,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 11,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0556,
+        -0.1544,
+        0.5213
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.3277,
+        -0.0593,
+        -0.3449,
+        -0.0004,
+        -0.0048,
+        0.0151,
+        -0.5
+      ],
+      "elapsed_s": 2.845
+    },
+    {
+      "step": 56,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 12,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.3,
+      "eef_pos": [
+        -0.0589,
+        -0.1548,
+        0.517
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.1114,
+        -0.0671,
+        -0.2768,
+        0.0185,
+        0.0106,
+        0.0337,
+        -0.5
+      ],
+      "elapsed_s": 2.933
+    },
+    {
+      "step": 57,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 12,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0615,
+        -0.1551,
+        0.5129
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.1328,
+        -0.0617,
+        -0.2576,
+        0.0181,
+        0.0189,
+        0.0374,
+        -0.5
+      ],
+      "elapsed_s": 2.979
+    },
+    {
+      "step": 58,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 12,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0643,
+        -0.1555,
+        0.5091
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.1822,
+        -0.0607,
+        -0.2317,
+        0.0194,
+        0.0269,
+        0.0374,
+        -0.5
+      ],
+      "elapsed_s": 3.024
+    },
+    {
+      "step": 59,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 12,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0675,
+        -0.156,
+        0.5058
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.2184,
+        -0.0498,
+        -0.1965,
+        0.0204,
+        0.0244,
+        0.0364,
+        -0.5
+      ],
+      "elapsed_s": 3.068
+    },
+    {
+      "step": 60,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 12,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0708,
+        -0.1565,
+        0.503
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.2211,
+        -0.0413,
+        -0.1643,
+        0.0187,
+        0.0284,
+        0.0392,
+        -0.5
+      ],
+      "elapsed_s": 3.113
+    },
+    {
+      "step": 61,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 13,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.5,
+      "eef_pos": [
+        -0.0746,
+        -0.1577,
+        0.5002
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.195,
+        -0.0376,
+        -0.1554,
+        -0.014,
+        0.0405,
+        0.0141,
+        -0.5
+      ],
+      "elapsed_s": 3.198
+    },
+    {
+      "step": 62,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 13,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0785,
+        -0.1591,
+        0.4973
+      ],
+      "gripper_qpos": [
+        0.0399,
+        -0.0399
+      ],
+      "action": [
+        -0.186,
+        -0.0368,
+        -0.1304,
+        -0.0189,
+        0.0475,
+        0.0168,
+        -0.5
+      ],
+      "elapsed_s": 3.244
+    },
+    {
+      "step": 63,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 13,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0821,
+        -0.1602,
+        0.4948
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0395
+      ],
+      "action": [
+        -0.1585,
+        -0.0317,
+        -0.1142,
+        -0.0215,
+        0.0494,
+        0.0183,
+        0.5
+      ],
+      "elapsed_s": 3.29
+    },
+    {
+      "step": 64,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 13,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.085,
+        -0.1609,
+        0.4928
+      ],
+      "gripper_qpos": [
+        0.0374,
+        -0.039
+      ],
+      "action": [
+        -0.1403,
+        -0.0266,
+        -0.0904,
+        -0.0194,
+        0.0517,
+        0.0201,
+        0.5
+      ],
+      "elapsed_s": 3.336
+    },
+    {
+      "step": 65,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 13,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0865,
+        -0.161,
+        0.4919
+      ],
+      "gripper_qpos": [
+        0.034,
+        -0.0388
+      ],
+      "action": [
+        -0.1207,
+        -0.0279,
+        -0.0716,
+        -0.0175,
+        0.0568,
+        0.0196,
+        0.5
+      ],
+      "elapsed_s": 3.382
+    },
+    {
+      "step": 66,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 14,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.9,
+      "eef_pos": [
+        -0.0863,
+        -0.1597,
+        0.4919
+      ],
+      "gripper_qpos": [
+        0.0299,
+        -0.0369
+      ],
+      "action": [
+        -0.1768,
+        0.0274,
+        -0.1467,
+        0.0008,
+        -0.0238,
+        0.0841,
+        0.5
+      ],
+      "elapsed_s": 3.47
+    },
+    {
+      "step": 67,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 14,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0856,
+        -0.158,
+        0.4922
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.035
+      ],
+      "action": [
+        -0.1003,
+        0.0382,
+        -0.0686,
+        -0.0034,
+        -0.0129,
+        0.0811,
+        0.5
+      ],
+      "elapsed_s": 3.515
+    },
+    {
+      "step": 68,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 14,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0858,
+        -0.1571,
+        0.4922
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0342
+      ],
+      "action": [
+        -0.0294,
+        0.0375,
+        0.0244,
+        -0.0074,
+        0.0045,
+        0.0738,
+        0.5
+      ],
+      "elapsed_s": 3.576
+    },
+    {
+      "step": 69,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 14,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0863,
+        -0.1568,
+        0.4927
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0342
+      ],
+      "action": [
+        0.049,
+        0.0372,
+        0.1502,
+        -0.0139,
+        0.0225,
+        0.0655,
+        0.5
+      ],
+      "elapsed_s": 3.625
+    },
+    {
+      "step": 70,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 14,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0869,
+        -0.1568,
+        0.4943
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0342
+      ],
+      "action": [
+        0.1245,
+        0.0419,
+        0.3107,
+        -0.0205,
+        0.0405,
+        0.0566,
+        0.5
+      ],
+      "elapsed_s": 3.672
+    },
+    {
+      "step": 71,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 15,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 46.3,
+      "eef_pos": [
+        -0.0881,
+        -0.1567,
+        0.4966
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0342
+      ],
+      "action": [
+        0.1877,
+        0.0213,
+        0.4079,
+        0.0048,
+        0.1001,
+        0.053,
+        0.5
+      ],
+      "elapsed_s": 3.764
+    },
+    {
+      "step": 72,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 15,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0891,
+        -0.1566,
+        0.4998
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0342
+      ],
+      "action": [
+        0.2458,
+        0.0365,
+        0.5,
+        0.0029,
+        0.1108,
+        0.0499,
+        0.5
+      ],
+      "elapsed_s": 3.81
+    },
+    {
+      "step": 73,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 15,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.089,
+        -0.1563,
+        0.5038
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0342
+      ],
+      "action": [
+        0.3281,
+        0.0727,
+        0.5,
+        -0.005,
+        0.1029,
+        0.0412,
+        0.5
+      ],
+      "elapsed_s": 3.857
+    },
+    {
+      "step": 74,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 15,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0876,
+        -0.1555,
+        0.5083
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0342
+      ],
+      "action": [
+        0.4057,
+        0.1267,
+        0.5,
+        -0.0141,
+        0.0996,
+        0.0335,
+        0.5
+      ],
+      "elapsed_s": 3.902
+    },
+    {
+      "step": 75,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 15,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0849,
+        -0.1541,
+        0.5132
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.437,
+        0.1656,
+        0.5,
+        -0.021,
+        0.0899,
+        0.0312,
+        0.5
+      ],
+      "elapsed_s": 3.956
+    },
+    {
+      "step": 76,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 16,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.8,
+      "eef_pos": [
+        -0.0811,
+        -0.1514,
+        0.5184
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.5,
+        0.3173,
+        0.5,
+        -0.0236,
+        0.0983,
+        0.0461,
+        0.5
+      ],
+      "elapsed_s": 4.049
+    },
+    {
+      "step": 77,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 16,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0765,
+        -0.1473,
+        0.5239
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.5,
+        0.3566,
+        0.5,
+        -0.0223,
+        0.0982,
+        0.0434,
+        0.5
+      ],
+      "elapsed_s": 4.097
+    },
+    {
+      "step": 78,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 16,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0714,
+        -0.1422,
+        0.5298
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.5,
+        0.3981,
+        0.5,
+        -0.0201,
+        0.0945,
+        0.0395,
+        0.5
+      ],
+      "elapsed_s": 4.144
+    },
+    {
+      "step": 79,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 16,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0659,
+        -0.1363,
+        0.536
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.5,
+        0.4445,
+        0.5,
+        -0.0157,
+        0.0885,
+        0.0347,
+        0.5
+      ],
+      "elapsed_s": 4.19
+    },
+    {
+      "step": 80,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 16,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0601,
+        -0.1296,
+        0.5425
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.4867,
+        0.4853,
+        0.5,
+        -0.0106,
+        0.079,
+        0.0297,
+        0.5
+      ],
+      "elapsed_s": 4.235
+    },
+    {
+      "step": 81,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 17,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 39.8,
+      "eef_pos": [
+        -0.0551,
+        -0.1245,
+        0.5483
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.5,
+        0.1082,
+        0.5,
+        -0.005,
+        0.1627,
+        0.0536,
+        0.5
+      ],
+      "elapsed_s": 4.323
+    },
+    {
+      "step": 82,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 17,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0503,
+        -0.1208,
+        0.554
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.5,
+        0.1828,
+        0.5,
+        -0.0037,
+        0.1531,
+        0.0506,
+        0.5
+      ],
+      "elapsed_s": 4.373
+    },
+    {
+      "step": 83,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 17,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0451,
+        -0.1167,
+        0.56
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.5,
+        0.2785,
+        0.5,
+        -0.0045,
+        0.1381,
+        0.0464,
+        0.5
+      ],
+      "elapsed_s": 4.426
+    },
+    {
+      "step": 84,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 17,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0395,
+        -0.112,
+        0.5664
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.4564,
+        0.3718,
+        0.5,
+        -0.0003,
+        0.1104,
+        0.0395,
+        0.5
+      ],
+      "elapsed_s": 4.471
+    },
+    {
+      "step": 85,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 17,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0339,
+        -0.1062,
+        0.5731
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.4202,
+        0.4656,
+        0.5,
+        0.0024,
+        0.0831,
+        0.0294,
+        0.5
+      ],
+      "elapsed_s": 4.516
+    },
+    {
+      "step": 86,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 18,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 47.5,
+      "eef_pos": [
+        -0.0283,
+        -0.1001,
+        0.5804
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.3166,
+        0.5,
+        0.5,
+        -0.0008,
+        0.025,
+        -0.0348,
+        0.5
+      ],
+      "elapsed_s": 4.61
+    },
+    {
+      "step": 87,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 18,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0231,
+        -0.0937,
+        0.5878
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2959,
+        0.5,
+        0.5,
+        0.0025,
+        0.0191,
+        -0.0373,
+        0.5
+      ],
+      "elapsed_s": 4.657
+    },
+    {
+      "step": 88,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 18,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0184,
+        -0.0871,
+        0.5952
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2765,
+        0.5,
+        0.5,
+        0.0053,
+        0.0114,
+        -0.0382,
+        0.5
+      ],
+      "elapsed_s": 4.702
+    },
+    {
+      "step": 89,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 18,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0142,
+        -0.0804,
+        0.6025
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2546,
+        0.5,
+        0.5,
+        0.009,
+        0.0087,
+        -0.0389,
+        0.5
+      ],
+      "elapsed_s": 4.753
+    },
+    {
+      "step": 90,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 18,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0103,
+        -0.0737,
+        0.6097
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2236,
+        0.5,
+        0.5,
+        0.0133,
+        0.0002,
+        -0.0404,
+        0.5
+      ],
+      "elapsed_s": 4.802
+    },
+    {
+      "step": 91,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 19,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 44.8,
+      "eef_pos": [
+        -0.0072,
+        -0.0672,
+        0.6166
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2059,
+        0.5,
+        0.5,
+        -0.0082,
+        0.0251,
+        -0.0137,
+        0.5
+      ],
+      "elapsed_s": 4.9
+    },
+    {
+      "step": 92,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 19,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0045,
+        -0.0606,
+        0.6234
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.1827,
+        0.5,
+        0.5,
+        -0.0039,
+        0.0227,
+        -0.0154,
+        0.5
+      ],
+      "elapsed_s": 4.947
+    },
+    {
+      "step": 93,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 19,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0021,
+        -0.0539,
+        0.6302
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.163,
+        0.5,
+        0.5,
+        0.0039,
+        0.0223,
+        -0.0178,
+        0.5
+      ],
+      "elapsed_s": 4.994
+    },
+    {
+      "step": 94,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 19,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0,
+        -0.0471,
+        0.6369
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.1341,
+        0.5,
+        0.4863,
+        0.0117,
+        0.0199,
+        -0.0198,
+        0.5
+      ],
+      "elapsed_s": 5.04
+    },
+    {
+      "step": 95,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 19,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0018,
+        -0.0404,
+        0.6431
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.1076,
+        0.5,
+        0.4062,
+        0.0126,
+        0.0089,
+        -0.0223,
+        0.5
+      ],
+      "elapsed_s": 5.086
+    },
+    {
+      "step": 96,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 20,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.5,
+      "eef_pos": [
+        0.0041,
+        -0.034,
+        0.6491
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2934,
+        0.5,
+        0.5,
+        -0.0191,
+        0.0396,
+        -0.0273,
+        0.5
+      ],
+      "elapsed_s": 5.178
+    },
+    {
+      "step": 97,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 20,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0067,
+        -0.0276,
+        0.6551
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2764,
+        0.5,
+        0.5,
+        -0.0128,
+        0.0319,
+        -0.0304,
+        0.5
+      ],
+      "elapsed_s": 5.225
+    },
+    {
+      "step": 98,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 20,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0095,
+        -0.021,
+        0.6613
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2654,
+        0.5,
+        0.5,
+        -0.0094,
+        0.0305,
+        -0.0328,
+        0.5
+      ],
+      "elapsed_s": 5.27
+    },
+    {
+      "step": 99,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 20,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0122,
+        -0.0144,
+        0.6672
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.2556,
+        0.5,
+        0.4587,
+        -0.0055,
+        0.0335,
+        -0.0317,
+        0.5
+      ],
+      "elapsed_s": 5.321
+    },
+    {
+      "step": 100,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 20,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0149,
+        -0.0077,
+        0.6726
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.244,
+        0.5,
+        0.3933,
+        -0.0034,
+        0.0298,
+        -0.0327,
+        0.5
+      ],
+      "elapsed_s": 5.367
+    },
+    {
+      "step": 101,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 21,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 51.6,
+      "eef_pos": [
+        0.0172,
+        -0.0008,
+        0.6764
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.1047,
+        0.5,
+        0.1316,
+        0.0177,
+        0.0077,
+        -0.0162,
+        0.5
+      ],
+      "elapsed_s": 5.464
+    },
+    {
+      "step": 102,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 21,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0191,
+        0.0061,
+        0.6788
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0341
+      ],
+      "action": [
+        0.0842,
+        0.5,
+        0.1078,
+        0.0196,
+        0.011,
+        -0.0173,
+        0.5
+      ],
+      "elapsed_s": 5.512
+    },
+    {
+      "step": 103,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 21,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0205,
+        0.0129,
+        0.6805
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0577,
+        0.5,
+        0.089,
+        0.0222,
+        0.0196,
+        -0.0172,
+        0.5
+      ],
+      "elapsed_s": 5.558
+    },
+    {
+      "step": 104,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 21,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0216,
+        0.0197,
+        0.682
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.041,
+        0.5,
+        0.0747,
+        0.0246,
+        0.0199,
+        -0.0176,
+        0.5
+      ],
+      "elapsed_s": 5.605
+    },
+    {
+      "step": 105,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 21,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0224,
+        0.0264,
+        0.6831
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0306,
+        0.5,
+        0.0638,
+        0.0275,
+        0.0231,
+        -0.0193,
+        0.5
+      ],
+      "elapsed_s": 5.652
+    },
+    {
+      "step": 106,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 22,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 48.8,
+      "eef_pos": [
+        0.0238,
+        0.033,
+        0.6846
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0759,
+        0.5,
+        0.0826,
+        0.0254,
+        -0.0328,
+        -0.0205,
+        0.5
+      ],
+      "elapsed_s": 5.749
+    },
+    {
+      "step": 107,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 22,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0255,
+        0.0396,
+        0.6861
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0791,
+        0.5,
+        0.0623,
+        0.0265,
+        -0.0326,
+        -0.0227,
+        0.5
+      ],
+      "elapsed_s": 5.802
+    },
+    {
+      "step": 108,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 22,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.027,
+        0.0462,
+        0.6872
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0825,
+        0.5,
+        0.0489,
+        0.0256,
+        -0.0276,
+        -0.0245,
+        0.5
+      ],
+      "elapsed_s": 5.848
+    },
+    {
+      "step": 109,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 22,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0283,
+        0.0528,
+        0.688
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0779,
+        0.5,
+        0.033,
+        0.0258,
+        -0.0233,
+        -0.0257,
+        0.5
+      ],
+      "elapsed_s": 5.894
+    },
+    {
+      "step": 110,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 22,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0294,
+        0.0594,
+        0.6885
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.07,
+        0.5,
+        0.0203,
+        0.0267,
+        -0.0219,
+        -0.0281,
+        0.5
+      ],
+      "elapsed_s": 5.941
+    },
+    {
+      "step": 111,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 23,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 50.2,
+      "eef_pos": [
+        0.0301,
+        0.0657,
+        0.6892
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0919,
+        0.5,
+        0.1357,
+        -0.0005,
+        0.0278,
+        -0.0191,
+        0.5
+      ],
+      "elapsed_s": 6.037
+    },
+    {
+      "step": 112,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 23,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0305,
+        0.072,
+        0.6902
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0862,
+        0.5,
+        0.1248,
+        -0.0029,
+        0.0266,
+        -0.0228,
+        0.5
+      ],
+      "elapsed_s": 6.085
+    },
+    {
+      "step": 113,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 23,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0309,
+        0.0784,
+        0.6913
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0755,
+        0.5,
+        0.1123,
+        -0.0041,
+        0.0236,
+        -0.0257,
+        0.5
+      ],
+      "elapsed_s": 6.133
+    },
+    {
+      "step": 114,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 23,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0314,
+        0.0848,
+        0.6924
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0659,
+        0.5,
+        0.1009,
+        -0.0029,
+        0.0223,
+        -0.0279,
+        0.5
+      ],
+      "elapsed_s": 6.178
+    },
+    {
+      "step": 115,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 23,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0319,
+        0.0913,
+        0.6934
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.0341
+      ],
+      "action": [
+        0.0634,
+        0.5,
+        0.0882,
+        -0.0031,
+        0.0209,
+        -0.0287,
+        0.5
+      ],
+      "elapsed_s": 6.225
+    },
+    {
+      "step": 116,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 24,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 46.2,
+      "eef_pos": [
+        0.0325,
+        0.0977,
+        0.6938
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0989,
+        0.5,
+        -0.0016,
+        -0.0142,
+        0.0191,
+        -0.0193,
+        0.5
+      ],
+      "elapsed_s": 6.322
+    },
+    {
+      "step": 117,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 24,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0334,
+        0.1041,
+        0.6935
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0976,
+        0.5,
+        -0.0282,
+        -0.0167,
+        0.0163,
+        -0.0197,
+        0.5
+      ],
+      "elapsed_s": 6.368
+    },
+    {
+      "step": 118,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 24,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0343,
+        0.1105,
+        0.6928
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0925,
+        0.5,
+        -0.0448,
+        -0.0164,
+        0.0198,
+        -0.022,
+        0.5
+      ],
+      "elapsed_s": 6.418
+    },
+    {
+      "step": 119,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 24,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0351,
+        0.117,
+        0.6919
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0843,
+        0.5,
+        -0.0584,
+        -0.0132,
+        0.0149,
+        -0.022,
+        0.5
+      ],
+      "elapsed_s": 6.464
+    },
+    {
+      "step": 120,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 24,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.036,
+        0.1236,
+        0.6908
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0793,
+        0.5,
+        -0.0824,
+        -0.0101,
+        0.0134,
+        -0.0227,
+        0.5
+      ],
+      "elapsed_s": 6.514
+    },
+    {
+      "step": 121,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 25,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 46.6,
+      "eef_pos": [
+        0.0369,
+        0.1301,
+        0.6898
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0849,
+        0.5,
+        -0.046,
+        -0.0129,
+        0.0121,
+        -0.0237,
+        0.5
+      ],
+      "elapsed_s": 6.613
+    },
+    {
+      "step": 122,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 25,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0377,
+        0.1366,
+        0.6887
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0704,
+        0.5,
+        -0.0818,
+        -0.0145,
+        0.0153,
+        -0.028,
+        0.5
+      ],
+      "elapsed_s": 6.669
+    },
+    {
+      "step": 123,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 25,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0382,
+        0.1431,
+        0.6872
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0521,
+        0.5,
+        -0.1243,
+        -0.0144,
+        0.0199,
+        -0.031,
+        0.5
+      ],
+      "elapsed_s": 6.719
+    },
+    {
+      "step": 124,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 25,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0387,
+        0.1496,
+        0.6853
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0329,
+        0.5,
+        -0.1656,
+        -0.0152,
+        0.0177,
+        -0.0327,
+        0.5
+      ],
+      "elapsed_s": 6.766
+    },
+    {
+      "step": 125,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 25,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.039,
+        0.156,
+        0.6829
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0157,
+        0.5,
+        -0.2022,
+        -0.0163,
+        0.0137,
+        -0.0345,
+        0.5
+      ],
+      "elapsed_s": 6.812
+    },
+    {
+      "step": 126,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 26,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 48.4,
+      "eef_pos": [
+        0.0397,
+        0.1626,
+        0.6812
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0879,
+        0.5,
+        -0.0559,
+        -0.0216,
+        -0.0133,
+        -0.0067,
+        0.5
+      ],
+      "elapsed_s": 6.906
+    },
+    {
+      "step": 127,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 26,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0407,
+        0.1691,
+        0.68
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0655,
+        0.5,
+        -0.1065,
+        -0.0189,
+        -0.0165,
+        -0.0086,
+        0.5
+      ],
+      "elapsed_s": 6.953
+    },
+    {
+      "step": 128,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 26,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0415,
+        0.1757,
+        0.6783
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0447,
+        0.5,
+        -0.1617,
+        -0.0142,
+        -0.0205,
+        -0.0089,
+        0.5
+      ],
+      "elapsed_s": 6.999
+    },
+    {
+      "step": 129,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 26,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0422,
+        0.1824,
+        0.6761
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0328,
+        0.5,
+        -0.2225,
+        -0.0085,
+        -0.0219,
+        -0.0094,
+        0.5
+      ],
+      "elapsed_s": 7.044
+    },
+    {
+      "step": 130,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 26,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0427,
+        0.1891,
+        0.673
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        0.0182,
+        0.5,
+        -0.2854,
+        0.001,
+        -0.0208,
+        -0.0107,
+        0.5
+      ],
+      "elapsed_s": 7.089
+    },
+    {
+      "step": 131,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 27,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 48.5,
+      "eef_pos": [
+        0.0419,
+        0.1956,
+        0.6685
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.2312,
+        0.5,
+        -0.4812,
+        -0.0287,
+        -0.0157,
+        -0.0199,
+        0.5
+      ],
+      "elapsed_s": 7.187
+    },
+    {
+      "step": 132,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 27,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0401,
+        0.202,
+        0.6629
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.2294,
+        0.5,
+        -0.5,
+        -0.0295,
+        -0.0165,
+        -0.0192,
+        0.5
+      ],
+      "elapsed_s": 7.232
+    },
+    {
+      "step": 133,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 27,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0381,
+        0.2087,
+        0.657
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.2094,
+        0.5,
+        -0.5,
+        -0.0257,
+        -0.0142,
+        -0.02,
+        0.5
+      ],
+      "elapsed_s": 7.278
+    },
+    {
+      "step": 134,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 27,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.036,
+        0.2154,
+        0.6508
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.1717,
+        0.5,
+        -0.5,
+        -0.0193,
+        -0.0116,
+        -0.0232,
+        0.5
+      ],
+      "elapsed_s": 7.325
+    },
+    {
+      "step": 135,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 27,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0339,
+        0.2222,
+        0.6445
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.1694,
+        0.5,
+        -0.5,
+        -0.0092,
+        -0.0052,
+        -0.0231,
+        0.5
+      ],
+      "elapsed_s": 7.371
+    },
+    {
+      "step": 136,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 28,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 46.4,
+      "eef_pos": [
+        0.0316,
+        0.2269,
+        0.6384
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.2909,
+        0.078,
+        -0.5,
+        -0.0029,
+        -0.0456,
+        -0.0137,
+        0.5
+      ],
+      "elapsed_s": 7.465
+    },
+    {
+      "step": 137,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 28,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0291,
+        0.2294,
+        0.6328
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.3075,
+        0.0373,
+        -0.5,
+        -0.0029,
+        -0.0418,
+        -0.0138,
+        0.5
+      ],
+      "elapsed_s": 7.517
+    },
+    {
+      "step": 138,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 28,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0263,
+        0.231,
+        0.6272
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.3239,
+        0.0106,
+        -0.5,
+        -0.0035,
+        -0.0381,
+        -0.0133,
+        0.5
+      ],
+      "elapsed_s": 7.568
+    },
+    {
+      "step": 139,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 28,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0233,
+        0.2319,
+        0.6215
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.3265,
+        -0.0006,
+        -0.5,
+        -0.0059,
+        -0.0383,
+        -0.0139,
+        0.5
+      ],
+      "elapsed_s": 7.617
+    },
+    {
+      "step": 140,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 28,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.02,
+        0.2325,
+        0.6158
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.3246,
+        0.0026,
+        -0.4785,
+        -0.0078,
+        -0.037,
+        -0.0152,
+        0.5
+      ],
+      "elapsed_s": 7.665
+    },
+    {
+      "step": 141,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 29,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 49.1,
+      "eef_pos": [
+        0.0161,
+        0.2331,
+        0.6106
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.3389,
+        0.0278,
+        -0.3515,
+        -0.0125,
+        -0.0015,
+        -0.0232,
+        0.5
+      ],
+      "elapsed_s": 7.763
+    },
+    {
+      "step": 142,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 29,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.012,
+        0.2335,
+        0.6063
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.2799,
+        0.0248,
+        -0.2767,
+        -0.014,
+        0.0056,
+        -0.0179,
+        0.5
+      ],
+      "elapsed_s": 7.811
+    },
+    {
+      "step": 143,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 29,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0083,
+        0.2339,
+        0.6027
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.2315,
+        0.0243,
+        -0.2108,
+        -0.0149,
+        0.0147,
+        -0.0139,
+        0.5
+      ],
+      "elapsed_s": 7.857
+    },
+    {
+      "step": 144,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 29,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0049,
+        0.2341,
+        0.5998
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.1846,
+        0.0252,
+        -0.1521,
+        -0.0148,
+        0.0187,
+        -0.0104,
+        0.5
+      ],
+      "elapsed_s": 7.904
+    },
+    {
+      "step": 145,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 29,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        0.0021,
+        0.2342,
+        0.5978
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.1171,
+        0.0246,
+        -0.0548,
+        -0.0174,
+        0.0211,
+        -0.007,
+        0.5
+      ],
+      "elapsed_s": 7.954
+    },
+    {
+      "step": 146,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 30,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 53.7,
+      "eef_pos": [
+        -0.0005,
+        0.2342,
+        0.5962
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.0778,
+        0.0026,
+        -0.0558,
+        -0.0131,
+        0.059,
+        -0.0123,
+        0.5
+      ],
+      "elapsed_s": 8.053
+    },
+    {
+      "step": 147,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 30,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.003,
+        0.234,
+        0.5949
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.1026,
+        -0.0047,
+        -0.0071,
+        -0.0096,
+        0.0632,
+        -0.0171,
+        0.5
+      ],
+      "elapsed_s": 8.101
+    },
+    {
+      "step": 148,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 30,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0053,
+        0.2337,
+        0.5945
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.0952,
+        -0.0073,
+        0.0601,
+        -0.0105,
+        0.0635,
+        -0.0181,
+        0.5
+      ],
+      "elapsed_s": 8.146
+    },
+    {
+      "step": 149,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 30,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0071,
+        0.2333,
+        0.5953
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.0698,
+        -0.016,
+        0.1593,
+        -0.0133,
+        0.0534,
+        -0.0164,
+        0.5
+      ],
+      "elapsed_s": 8.193
+    },
+    {
+      "step": 150,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 30,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0084,
+        0.2328,
+        0.5973
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.0359,
+        -0.0169,
+        0.2407,
+        -0.0146,
+        0.0456,
+        -0.0152,
+        0.5
+      ],
+      "elapsed_s": 8.239
+    },
+    {
+      "step": 151,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 31,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 49.8,
+      "eef_pos": [
+        -0.009,
+        0.2326,
+        0.5971
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.0982,
+        0.0201,
+        -0.3398,
+        -0.0096,
+        -0.0255,
+        -0.0252,
+        -0.5
+      ],
+      "elapsed_s": 8.335
+    },
+    {
+      "step": 152,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 31,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0093,
+        0.2325,
+        0.5944
+      ],
+      "gripper_qpos": [
+        0.0289,
+        -0.034
+      ],
+      "action": [
+        -0.0631,
+        0.0208,
+        -0.2301,
+        -0.0095,
+        -0.0151,
+        -0.0286,
+        -0.5
+      ],
+      "elapsed_s": 8.382
+    },
+    {
+      "step": 153,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 31,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0097,
+        0.2326,
+        0.5924
+      ],
+      "gripper_qpos": [
+        0.0292,
+        -0.0338
+      ],
+      "action": [
+        -0.0259,
+        0.0103,
+        -0.0805,
+        -0.0078,
+        -0.0097,
+        -0.0253,
+        -0.5
+      ],
+      "elapsed_s": 8.429
+    },
+    {
+      "step": 154,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 31,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.01,
+        0.2327,
+        0.592
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0335
+      ],
+      "action": [
+        0.0023,
+        -0.0027,
+        0.0731,
+        -0.0118,
+        0.0034,
+        -0.0171,
+        0.5
+      ],
+      "elapsed_s": 8.477
+    },
+    {
+      "step": 155,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 31,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0104,
+        0.2328,
+        0.5932
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0335
+      ],
+      "action": [
+        0.0232,
+        -0.0037,
+        0.2097,
+        -0.0112,
+        0.0251,
+        -0.0136,
+        0.5
+      ],
+      "elapsed_s": 8.523
+    },
+    {
+      "step": 156,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 32,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 47.6,
+      "eef_pos": [
+        -0.0116,
+        0.2325,
+        0.5953
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0335
+      ],
+      "action": [
+        -0.0734,
+        -0.0554,
+        0.2347,
+        -0.005,
+        0.0657,
+        -0.0132,
+        0.5
+      ],
+      "elapsed_s": 8.616
+    },
+    {
+      "step": 157,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 32,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0132,
+        0.2321,
+        0.5978
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0335
+      ],
+      "action": [
+        -0.0866,
+        -0.0546,
+        0.2013,
+        -0.0053,
+        0.0616,
+        -0.0117,
+        0.5
+      ],
+      "elapsed_s": 8.666
+    },
+    {
+      "step": 158,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 32,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0147,
+        0.2315,
+        0.6001
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0335
+      ],
+      "action": [
+        -0.0946,
+        -0.0589,
+        0.174,
+        -0.0045,
+        0.0623,
+        -0.0072,
+        0.5
+      ],
+      "elapsed_s": 8.712
+    },
+    {
+      "step": 159,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 32,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0162,
+        0.2307,
+        0.6021
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0336
+      ],
+      "action": [
+        -0.1067,
+        -0.0738,
+        0.1466,
+        -0.0028,
+        0.0617,
+        -0.0039,
+        0.5
+      ],
+      "elapsed_s": 8.761
+    },
+    {
+      "step": 160,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 32,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0177,
+        0.2299,
+        0.6039
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0336
+      ],
+      "action": [
+        -0.089,
+        -0.0671,
+        0.1404,
+        -0.0051,
+        0.0582,
+        -0.0011,
+        0.5
+      ],
+      "elapsed_s": 8.811
+    },
+    {
+      "step": 161,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 33,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 52.7,
+      "eef_pos": [
+        -0.0177,
+        0.2301,
+        0.6033
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0336
+      ],
+      "action": [
+        -0.0441,
+        0.1596,
+        -0.3926,
+        0.0071,
+        -0.0558,
+        -0.0317,
+        0.5
+      ],
+      "elapsed_s": 8.913
+    },
+    {
+      "step": 162,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 33,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0173,
+        0.2315,
+        0.5998
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0336
+      ],
+      "action": [
+        -0.12,
+        0.1447,
+        -0.3892,
+        0.0071,
+        -0.0646,
+        -0.0351,
+        0.5
+      ],
+      "elapsed_s": 8.959
+    },
+    {
+      "step": 163,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 33,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0178,
+        0.2332,
+        0.5955
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0336
+      ],
+      "action": [
+        -0.1879,
+        0.1419,
+        -0.3894,
+        0.0052,
+        -0.0668,
+        -0.0328,
+        0.5
+      ],
+      "elapsed_s": 9.008
+    },
+    {
+      "step": 164,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 33,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.019,
+        0.235,
+        0.5913
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0335
+      ],
+      "action": [
+        -0.2237,
+        0.1345,
+        -0.3819,
+        0.0031,
+        -0.0704,
+        -0.0313,
+        0.5
+      ],
+      "elapsed_s": 9.057
+    },
+    {
+      "step": 165,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 33,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0208,
+        0.2368,
+        0.5871
+      ],
+      "gripper_qpos": [
+        0.0294,
+        -0.0335
+      ],
+      "action": [
+        -0.2545,
+        0.091,
+        -0.3714,
+        0.0043,
+        -0.0637,
+        -0.03,
+        0.5
+      ],
+      "elapsed_s": 9.105
+    },
+    {
+      "step": 166,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 34,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.5,
+      "eef_pos": [
+        -0.0225,
+        0.2378,
+        0.5834
+      ],
+      "gripper_qpos": [
+        0.0295,
+        -0.0335
+      ],
+      "action": [
+        -0.0811,
+        -0.0264,
+        -0.2284,
+        0.0104,
+        -0.0169,
+        -0.0292,
+        0.5
+      ],
+      "elapsed_s": 9.203
+    },
+    {
+      "step": 167,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 34,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0219,
+        0.2382,
+        0.5831
+      ],
+      "gripper_qpos": [
+        0.03,
+        -0.0329
+      ],
+      "action": [
+        -0.081,
+        -0.0283,
+        -0.1562,
+        0.0115,
+        -0.0147,
+        -0.0359,
+        0.5
+      ],
+      "elapsed_s": 9.255
+    },
+    {
+      "step": 168,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 34,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0216,
+        0.2381,
+        0.5833
+      ],
+      "gripper_qpos": [
+        0.0302,
+        -0.0328
+      ],
+      "action": [
+        -0.0636,
+        -0.0202,
+        -0.0706,
+        0.0071,
+        -0.0065,
+        -0.0386,
+        0.5
+      ],
+      "elapsed_s": 9.307
+    },
+    {
+      "step": 169,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 34,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0216,
+        0.238,
+        0.5836
+      ],
+      "gripper_qpos": [
+        0.0303,
+        -0.0327
+      ],
+      "action": [
+        -0.038,
+        -0.0048,
+        -0.0001,
+        0.0024,
+        0.002,
+        -0.0409,
+        0.5
+      ],
+      "elapsed_s": 9.362
+    },
+    {
+      "step": 170,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 34,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0219,
+        0.2379,
+        0.5842
+      ],
+      "gripper_qpos": [
+        0.0303,
+        -0.0327
+      ],
+      "action": [
+        -0.0173,
+        0.0141,
+        0.0722,
+        -0.0019,
+        0.0027,
+        -0.0429,
+        0.5
+      ],
+      "elapsed_s": 9.412
+    },
+    {
+      "step": 171,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 35,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 51.0,
+      "eef_pos": [
+        -0.0228,
+        0.2381,
+        0.5828
+      ],
+      "gripper_qpos": [
+        0.0303,
+        -0.0327
+      ],
+      "action": [
+        -0.151,
+        0.0341,
+        -0.3259,
+        0.0018,
+        0.0049,
+        -0.0005,
+        0.5
+      ],
+      "elapsed_s": 9.511
+    },
+    {
+      "step": 172,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 35,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0237,
+        0.2384,
+        0.5801
+      ],
+      "gripper_qpos": [
+        0.0303,
+        -0.0326
+      ],
+      "action": [
+        -0.1632,
+        0.0197,
+        -0.311,
+        0.0008,
+        0.0073,
+        -0.0035,
+        0.5
+      ],
+      "elapsed_s": 9.562
+    },
+    {
+      "step": 173,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 35,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.025,
+        0.2387,
+        0.577
+      ],
+      "gripper_qpos": [
+        0.0302,
+        -0.0327
+      ],
+      "action": [
+        -0.1786,
+        0.0066,
+        -0.2952,
+        0.0016,
+        0.0087,
+        -0.0038,
+        0.5
+      ],
+      "elapsed_s": 9.614
+    },
+    {
+      "step": 174,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 35,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0266,
+        0.2391,
+        0.574
+      ],
+      "gripper_qpos": [
+        0.0301,
+        -0.0328
+      ],
+      "action": [
+        -0.178,
+        0.0076,
+        -0.2649,
+        0.0009,
+        0.0092,
+        -0.0037,
+        0.5
+      ],
+      "elapsed_s": 9.666
+    },
+    {
+      "step": 175,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 35,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0282,
+        0.2395,
+        0.5713
+      ],
+      "gripper_qpos": [
+        0.0301,
+        -0.0329
+      ],
+      "action": [
+        -0.1609,
+        0.0164,
+        -0.2209,
+        -0.0023,
+        0.0122,
+        -0.0054,
+        0.5
+      ],
+      "elapsed_s": 9.716
+    },
+    {
+      "step": 176,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 36,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 48.0,
+      "eef_pos": [
+        -0.0291,
+        0.2397,
+        0.5694
+      ],
+      "gripper_qpos": [
+        0.03,
+        -0.0329
+      ],
+      "action": [
+        -0.0327,
+        0.0013,
+        -0.1213,
+        -0.013,
+        0.0008,
+        -0.0007,
+        -0.5
+      ],
+      "elapsed_s": 9.814
+    },
+    {
+      "step": 177,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 36,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0297,
+        0.2398,
+        0.5681
+      ],
+      "gripper_qpos": [
+        0.0299,
+        -0.033
+      ],
+      "action": [
+        -0.0235,
+        0.0085,
+        -0.0769,
+        -0.0159,
+        0.0222,
+        -0.006,
+        0.5
+      ],
+      "elapsed_s": 9.866
+    },
+    {
+      "step": 178,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 36,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0298,
+        0.24,
+        0.5678
+      ],
+      "gripper_qpos": [
+        0.0298,
+        -0.0331
+      ],
+      "action": [
+        -0.0143,
+        -0.0002,
+        -0.0323,
+        -0.0156,
+        0.0281,
+        -0.011,
+        0.5
+      ],
+      "elapsed_s": 9.923
+    },
+    {
+      "step": 179,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 36,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.03,
+        0.24,
+        0.5678
+      ],
+      "gripper_qpos": [
+        0.0297,
+        -0.0332
+      ],
+      "action": [
+        -0.006,
+        0.0002,
+        0.0104,
+        -0.0165,
+        0.0319,
+        -0.014,
+        0.5
+      ],
+      "elapsed_s": 9.977
+    },
+    {
+      "step": 180,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 36,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0302,
+        0.24,
+        0.568
+      ],
+      "gripper_qpos": [
+        0.0297,
+        -0.0332
+      ],
+      "action": [
+        0.001,
+        0.004,
+        0.0469,
+        -0.0184,
+        0.0258,
+        -0.0172,
+        0.5
+      ],
+      "elapsed_s": 10.029
+    },
+    {
+      "step": 181,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 37,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.8,
+      "eef_pos": [
+        -0.0303,
+        0.24,
+        0.5697
+      ],
+      "gripper_qpos": [
+        0.0297,
+        -0.0333
+      ],
+      "action": [
+        0.0378,
+        -0.0025,
+        0.2673,
+        -0.005,
+        0.0346,
+        -0.0115,
+        -0.5
+      ],
+      "elapsed_s": 10.13
+    },
+    {
+      "step": 182,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 37,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0302,
+        0.2401,
+        0.5728
+      ],
+      "gripper_qpos": [
+        0.0297,
+        -0.0333
+      ],
+      "action": [
+        0.0456,
+        -0.0079,
+        0.297,
+        -0.0036,
+        0.0373,
+        -0.0145,
+        -0.5
+      ],
+      "elapsed_s": 10.179
+    },
+    {
+      "step": 183,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 37,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.03,
+        0.24,
+        0.5765
+      ],
+      "gripper_qpos": [
+        0.0298,
+        -0.0332
+      ],
+      "action": [
+        0.0597,
+        -0.0017,
+        0.3354,
+        -0.0048,
+        0.0427,
+        -0.0154,
+        -0.5
+      ],
+      "elapsed_s": 10.23
+    },
+    {
+      "step": 184,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 37,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0297,
+        0.24,
+        0.5807
+      ],
+      "gripper_qpos": [
+        0.0301,
+        -0.033
+      ],
+      "action": [
+        0.0716,
+        0.0053,
+        0.3667,
+        -0.0062,
+        0.0458,
+        -0.0154,
+        -0.5
+      ],
+      "elapsed_s": 10.276
+    },
+    {
+      "step": 185,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 37,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0293,
+        0.2399,
+        0.5853
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0329
+      ],
+      "action": [
+        0.0747,
+        0.0085,
+        0.3863,
+        -0.0056,
+        0.0461,
+        -0.014,
+        -0.5
+      ],
+      "elapsed_s": 10.321
+    },
+    {
+      "step": 186,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 38,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 46.3,
+      "eef_pos": [
+        -0.0292,
+        0.2396,
+        0.5882
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0327
+      ],
+      "action": [
+        -0.0929,
+        -0.0493,
+        -0.0044,
+        -0.01,
+        0.007,
+        -0.0146,
+        0.5
+      ],
+      "elapsed_s": 10.417
+    },
+    {
+      "step": 187,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 38,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0292,
+        0.239,
+        0.5892
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0326
+      ],
+      "action": [
+        -0.0361,
+        -0.045,
+        0.0331,
+        -0.0123,
+        0.007,
+        -0.0177,
+        0.5
+      ],
+      "elapsed_s": 10.462
+    },
+    {
+      "step": 188,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 38,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0291,
+        0.2385,
+        0.5902
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0324
+      ],
+      "action": [
+        0.0034,
+        -0.0225,
+        0.0768,
+        -0.0178,
+        0.0099,
+        -0.0156,
+        0.5
+      ],
+      "elapsed_s": 10.507
+    },
+    {
+      "step": 189,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 38,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0289,
+        0.2382,
+        0.5913
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0324
+      ],
+      "action": [
+        0.0359,
+        0.0031,
+        0.1218,
+        -0.0234,
+        0.0176,
+        -0.0142,
+        0.5
+      ],
+      "elapsed_s": 10.551
+    },
+    {
+      "step": 190,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 38,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0287,
+        0.238,
+        0.5928
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0324
+      ],
+      "action": [
+        0.0524,
+        0.0189,
+        0.1394,
+        -0.0241,
+        0.0223,
+        -0.0171,
+        0.5
+      ],
+      "elapsed_s": 10.596
+    },
+    {
+      "step": 191,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 39,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.0,
+      "eef_pos": [
+        -0.0286,
+        0.2379,
+        0.5928
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0325
+      ],
+      "action": [
+        -0.0738,
+        -0.0538,
+        -0.1714,
+        0.0017,
+        -0.0072,
+        -0.0245,
+        0.5
+      ],
+      "elapsed_s": 10.687
+    },
+    {
+      "step": 192,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 39,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0288,
+        0.2375,
+        0.5914
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0325
+      ],
+      "action": [
+        -0.0862,
+        -0.068,
+        -0.167,
+        0.0019,
+        -0.011,
+        -0.0288,
+        0.5
+      ],
+      "elapsed_s": 10.733
+    },
+    {
+      "step": 193,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 39,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0292,
+        0.2369,
+        0.5898
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0325
+      ],
+      "action": [
+        -0.0978,
+        -0.0866,
+        -0.1634,
+        0.0024,
+        -0.0126,
+        -0.0307,
+        0.5
+      ],
+      "elapsed_s": 10.779
+    },
+    {
+      "step": 194,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 39,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0299,
+        0.236,
+        0.5881
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0325
+      ],
+      "action": [
+        -0.1176,
+        -0.1011,
+        -0.1567,
+        0.0035,
+        -0.0101,
+        -0.0321,
+        0.5
+      ],
+      "elapsed_s": 10.824
+    },
+    {
+      "step": 195,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 39,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0308,
+        0.235,
+        0.5864
+      ],
+      "gripper_qpos": [
+        0.0305,
+        -0.0325
+      ],
+      "action": [
+        -0.138,
+        -0.111,
+        -0.1505,
+        0.0034,
+        -0.0083,
+        -0.0343,
+        0.5
+      ],
+      "elapsed_s": 10.87
+    },
+    {
+      "step": 196,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 40,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 47.8,
+      "eef_pos": [
+        -0.0321,
+        0.2339,
+        0.5853
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        -0.0629,
+        -0.0907,
+        -0.0029,
+        -0.0116,
+        0.0458,
+        -0.0358,
+        0.5
+      ],
+      "elapsed_s": 10.967
+    },
+    {
+      "step": 197,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 40,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0333,
+        0.2327,
+        0.585
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0326
+      ],
+      "action": [
+        -0.0423,
+        -0.0997,
+        0.0217,
+        -0.0125,
+        0.0465,
+        -0.0431,
+        0.5
+      ],
+      "elapsed_s": 11.014
+    },
+    {
+      "step": 198,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 40,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0343,
+        0.2313,
+        0.5851
+      ],
+      "gripper_qpos": [
+        0.0303,
+        -0.0326
+      ],
+      "action": [
+        -0.0319,
+        -0.1075,
+        0.0362,
+        -0.0117,
+        0.0534,
+        -0.0471,
+        0.5
+      ],
+      "elapsed_s": 11.062
+    },
+    {
+      "step": 199,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 40,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.035,
+        0.2298,
+        0.5854
+      ],
+      "gripper_qpos": [
+        0.0302,
+        -0.0327
+      ],
+      "action": [
+        -0.0259,
+        -0.1113,
+        0.0485,
+        -0.0121,
+        0.0539,
+        -0.0497,
+        0.5
+      ],
+      "elapsed_s": 11.111
+    },
+    {
+      "step": 200,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 40,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0356,
+        0.2284,
+        0.586
+      ],
+      "gripper_qpos": [
+        0.0301,
+        -0.0328
+      ],
+      "action": [
+        -0.022,
+        -0.1077,
+        0.0604,
+        -0.0126,
+        0.0515,
+        -0.0509,
+        0.5
+      ],
+      "elapsed_s": 11.161
+    },
+    {
+      "step": 201,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 41,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.1,
+      "eef_pos": [
+        -0.0358,
+        0.2281,
+        0.5865
+      ],
+      "gripper_qpos": [
+        0.0301,
+        -0.0328
+      ],
+      "action": [
+        -0.0918,
+        0.0995,
+        -0.0122,
+        -0.006,
+        -0.026,
+        -0.0461,
+        0.5
+      ],
+      "elapsed_s": 11.254
+    },
+    {
+      "step": 202,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 41,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0358,
+        0.2288,
+        0.5872
+      ],
+      "gripper_qpos": [
+        0.0301,
+        -0.0328
+      ],
+      "action": [
+        -0.0827,
+        0.088,
+        0.0302,
+        -0.0093,
+        -0.0487,
+        -0.0499,
+        -0.5
+      ],
+      "elapsed_s": 11.302
+    },
+    {
+      "step": 203,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 41,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.036,
+        0.2297,
+        0.5884
+      ],
+      "gripper_qpos": [
+        0.0301,
+        -0.0328
+      ],
+      "action": [
+        -0.0429,
+        0.0775,
+        0.1297,
+        -0.0113,
+        -0.0285,
+        -0.0461,
+        -0.5
+      ],
+      "elapsed_s": 11.35
+    },
+    {
+      "step": 204,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 41,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0362,
+        0.2307,
+        0.5906
+      ],
+      "gripper_qpos": [
+        0.0302,
+        -0.0328
+      ],
+      "action": [
+        -0.0102,
+        0.0705,
+        0.2294,
+        -0.0105,
+        -0.02,
+        -0.0387,
+        -0.5
+      ],
+      "elapsed_s": 11.399
+    },
+    {
+      "step": 205,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 41,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0364,
+        0.2316,
+        0.5939
+      ],
+      "gripper_qpos": [
+        0.0303,
+        -0.0328
+      ],
+      "action": [
+        0.0186,
+        0.0746,
+        0.3172,
+        -0.0104,
+        -0.012,
+        -0.0285,
+        -0.5
+      ],
+      "elapsed_s": 11.448
+    },
+    {
+      "step": 206,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 42,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 43.5,
+      "eef_pos": [
+        -0.0363,
+        0.2322,
+        0.5946
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0326
+      ],
+      "action": [
+        -0.0286,
+        -0.0811,
+        -0.2657,
+        0.0385,
+        -0.0362,
+        -0.0431,
+        0.5
+      ],
+      "elapsed_s": 11.538
+    },
+    {
+      "step": 207,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 42,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.036,
+        0.232,
+        0.5925
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        -0.0302,
+        -0.0777,
+        -0.2325,
+        0.0322,
+        -0.0384,
+        -0.0482,
+        0.5
+      ],
+      "elapsed_s": 11.587
+    },
+    {
+      "step": 208,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 42,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0358,
+        0.2314,
+        0.5902
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        -0.0312,
+        -0.0592,
+        -0.1965,
+        0.024,
+        -0.0418,
+        -0.0514,
+        0.5
+      ],
+      "elapsed_s": 11.638
+    },
+    {
+      "step": 209,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 42,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0356,
+        0.2308,
+        0.588
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        -0.0324,
+        -0.0502,
+        -0.1677,
+        0.0181,
+        -0.0414,
+        -0.0555,
+        0.5
+      ],
+      "elapsed_s": 11.683
+    },
+    {
+      "step": 210,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 42,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0356,
+        0.2301,
+        0.5862
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        -0.033,
+        -0.0522,
+        -0.1273,
+        0.012,
+        -0.0452,
+        -0.0589,
+        0.5
+      ],
+      "elapsed_s": 11.728
+    },
+    {
+      "step": 211,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 43,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 41.9,
+      "eef_pos": [
+        -0.0361,
+        0.2298,
+        0.5852
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        0.0067,
+        0.0265,
+        0.0207,
+        0.0036,
+        0.0117,
+        -0.0491,
+        0.5
+      ],
+      "elapsed_s": 11.818
+    },
+    {
+      "step": 212,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 43,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0366,
+        0.2297,
+        0.5851
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        0.0165,
+        0.0049,
+        0.0716,
+        0.0025,
+        0.0103,
+        -0.0556,
+        0.5
+      ],
+      "elapsed_s": 11.865
+    },
+    {
+      "step": 213,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 43,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0369,
+        0.2295,
+        0.5858
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        0.0297,
+        -0.0154,
+        0.114,
+        0.0013,
+        0.0108,
+        -0.0578,
+        0.5
+      ],
+      "elapsed_s": 11.911
+    },
+    {
+      "step": 214,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 43,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.037,
+        0.2291,
+        0.5872
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        0.0459,
+        -0.0239,
+        0.1502,
+        -0.0008,
+        0.0107,
+        -0.0583,
+        0.5
+      ],
+      "elapsed_s": 11.955
+    },
+    {
+      "step": 215,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 43,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0368,
+        0.2286,
+        0.5889
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        0.0497,
+        -0.0245,
+        0.1698,
+        -0.0031,
+        0.0109,
+        -0.0584,
+        0.5
+      ],
+      "elapsed_s": 12.001
+    },
+    {
+      "step": 216,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 44,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 42.1,
+      "eef_pos": [
+        -0.0367,
+        0.2283,
+        0.5911
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        -0.0123,
+        0.0408,
+        0.1953,
+        -0.0235,
+        -0.0104,
+        -0.0366,
+        -0.5
+      ],
+      "elapsed_s": 12.096
+    },
+    {
+      "step": 217,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 44,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0367,
+        0.2283,
+        0.5936
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0326
+      ],
+      "action": [
+        -0.0082,
+        0.0406,
+        0.207,
+        -0.0251,
+        -0.0176,
+        -0.0404,
+        -0.5
+      ],
+      "elapsed_s": 12.141
+    },
+    {
+      "step": 218,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 44,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0367,
+        0.2286,
+        0.5964
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0325
+      ],
+      "action": [
+        -0.0033,
+        0.0452,
+        0.2203,
+        -0.0242,
+        -0.0196,
+        -0.0415,
+        -0.5
+      ],
+      "elapsed_s": 12.186
+    },
+    {
+      "step": 219,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 44,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0367,
+        0.229,
+        0.5993
+      ],
+      "gripper_qpos": [
+        0.0306,
+        -0.0325
+      ],
+      "action": [
+        0.0017,
+        0.0522,
+        0.2364,
+        -0.0259,
+        -0.0231,
+        -0.0418,
+        -0.5
+      ],
+      "elapsed_s": 12.233
+    },
+    {
+      "step": 220,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 44,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0367,
+        0.2295,
+        0.6024
+      ],
+      "gripper_qpos": [
+        0.0308,
+        -0.0325
+      ],
+      "action": [
+        0.0108,
+        0.0517,
+        0.248,
+        -0.0253,
+        -0.0181,
+        -0.0423,
+        -0.5
+      ],
+      "elapsed_s": 12.28
+    },
+    {
+      "step": 221,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 45,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.6,
+      "eef_pos": [
+        -0.0362,
+        0.2307,
+        0.6052
+      ],
+      "gripper_qpos": [
+        0.0308,
+        -0.0324
+      ],
+      "action": [
+        0.0349,
+        0.1218,
+        0.1603,
+        0.0038,
+        -0.0623,
+        -0.0532,
+        0.5
+      ],
+      "elapsed_s": 12.367
+    },
+    {
+      "step": 222,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 45,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0354,
+        0.2321,
+        0.6078
+      ],
+      "gripper_qpos": [
+        0.0309,
+        -0.0323
+      ],
+      "action": [
+        0.0374,
+        0.0916,
+        0.1798,
+        0.0072,
+        -0.0589,
+        -0.0524,
+        -0.5
+      ],
+      "elapsed_s": 12.414
+    },
+    {
+      "step": 223,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 45,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0347,
+        0.2334,
+        0.6105
+      ],
+      "gripper_qpos": [
+        0.0311,
+        -0.0323
+      ],
+      "action": [
+        0.0307,
+        0.0738,
+        0.2035,
+        0.0123,
+        -0.0554,
+        -0.0538,
+        -0.5
+      ],
+      "elapsed_s": 12.457
+    },
+    {
+      "step": 224,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 45,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0342,
+        0.2345,
+        0.6133
+      ],
+      "gripper_qpos": [
+        0.0314,
+        -0.0324
+      ],
+      "action": [
+        0.0225,
+        0.0592,
+        0.2146,
+        0.0183,
+        -0.0495,
+        -0.0549,
+        -0.5
+      ],
+      "elapsed_s": 12.501
+    },
+    {
+      "step": 225,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 45,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0338,
+        0.2355,
+        0.6162
+      ],
+      "gripper_qpos": [
+        0.0331,
+        -0.0338
+      ],
+      "action": [
+        0.0117,
+        0.0407,
+        0.2141,
+        0.0241,
+        -0.0369,
+        -0.0552,
+        -0.5
+      ],
+      "elapsed_s": 12.55
+    },
+    {
+      "step": 226,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 46,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 37.7,
+      "eef_pos": [
+        -0.034,
+        0.2365,
+        0.6193
+      ],
+      "gripper_qpos": [
+        0.0355,
+        -0.036
+      ],
+      "action": [
+        0.0444,
+        0.0854,
+        0.309,
+        0.0181,
+        0.0162,
+        -0.0391,
+        -0.5
+      ],
+      "elapsed_s": 12.632
+    },
+    {
+      "step": 227,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 46,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0343,
+        0.2375,
+        0.6228
+      ],
+      "gripper_qpos": [
+        0.037,
+        -0.0373
+      ],
+      "action": [
+        0.0179,
+        0.0579,
+        0.2937,
+        0.0283,
+        0.0175,
+        -0.0421,
+        -0.5
+      ],
+      "elapsed_s": 12.68
+    },
+    {
+      "step": 228,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 46,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0346,
+        0.2381,
+        0.6262
+      ],
+      "gripper_qpos": [
+        0.0378,
+        -0.0381
+      ],
+      "action": [
+        -0.0112,
+        -0.0122,
+        0.2638,
+        0.0368,
+        0.0097,
+        -0.0415,
+        -0.5
+      ],
+      "elapsed_s": 12.73
+    },
+    {
+      "step": 229,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 46,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0348,
+        0.2379,
+        0.6297
+      ],
+      "gripper_qpos": [
+        0.0383,
+        -0.0385
+      ],
+      "action": [
+        -0.0305,
+        -0.0872,
+        0.2444,
+        0.0445,
+        0.003,
+        -0.0387,
+        -0.5
+      ],
+      "elapsed_s": 12.777
+    },
+    {
+      "step": 230,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 46,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0351,
+        0.2369,
+        0.6331
+      ],
+      "gripper_qpos": [
+        0.0386,
+        -0.0388
+      ],
+      "action": [
+        -0.0314,
+        -0.1673,
+        0.2295,
+        0.0481,
+        0.0093,
+        -0.0353,
+        -0.5
+      ],
+      "elapsed_s": 12.821
+    },
+    {
+      "step": 231,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 47,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.9,
+      "eef_pos": [
+        -0.0362,
+        0.2354,
+        0.6362
+      ],
+      "gripper_qpos": [
+        0.0387,
+        -0.0389
+      ],
+      "action": [
+        -0.062,
+        -0.1086,
+        0.2827,
+        0.0109,
+        0.0774,
+        -0.0093,
+        -0.5
+      ],
+      "elapsed_s": 12.916
+    },
+    {
+      "step": 232,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 47,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0377,
+        0.2336,
+        0.6396
+      ],
+      "gripper_qpos": [
+        0.0388,
+        -0.039
+      ],
+      "action": [
+        -0.0767,
+        -0.1547,
+        0.3001,
+        0.0132,
+        0.0713,
+        -0.0066,
+        -0.5
+      ],
+      "elapsed_s": 12.962
+    },
+    {
+      "step": 233,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 47,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0392,
+        0.2313,
+        0.6433
+      ],
+      "gripper_qpos": [
+        0.0389,
+        -0.039
+      ],
+      "action": [
+        -0.0922,
+        -0.2065,
+        0.308,
+        0.0143,
+        0.0672,
+        -0.0029,
+        -0.5
+      ],
+      "elapsed_s": 13.008
+    },
+    {
+      "step": 234,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 47,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0406,
+        0.2286,
+        0.6474
+      ],
+      "gripper_qpos": [
+        0.0389,
+        -0.0391
+      ],
+      "action": [
+        -0.1045,
+        -0.2464,
+        0.3109,
+        0.0142,
+        0.0619,
+        -0.0025,
+        -0.5
+      ],
+      "elapsed_s": 13.053
+    },
+    {
+      "step": 235,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 47,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0421,
+        0.2254,
+        0.6515
+      ],
+      "gripper_qpos": [
+        0.0389,
+        -0.0391
+      ],
+      "action": [
+        -0.1151,
+        -0.2748,
+        0.3066,
+        0.0137,
+        0.0608,
+        -0.0001,
+        -0.5
+      ],
+      "elapsed_s": 13.101
+    },
+    {
+      "step": 236,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 48,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.0,
+      "eef_pos": [
+        -0.0439,
+        0.2209,
+        0.6544
+      ],
+      "gripper_qpos": [
+        0.039,
+        -0.0392
+      ],
+      "action": [
+        -0.16,
+        -0.5,
+        0.0832,
+        0.0219,
+        0.0785,
+        0.0054,
+        -0.5
+      ],
+      "elapsed_s": 13.19
+    },
+    {
+      "step": 237,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 48,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0455,
+        0.2151,
+        0.656
+      ],
+      "gripper_qpos": [
+        0.039,
+        -0.0392
+      ],
+      "action": [
+        -0.1423,
+        -0.5,
+        0.0622,
+        0.0195,
+        0.0703,
+        0.0076,
+        -0.5
+      ],
+      "elapsed_s": 13.237
+    },
+    {
+      "step": 238,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 48,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.047,
+        0.209,
+        0.6571
+      ],
+      "gripper_qpos": [
+        0.0391,
+        -0.0393
+      ],
+      "action": [
+        -0.1376,
+        -0.5,
+        0.0418,
+        0.0184,
+        0.0648,
+        0.0082,
+        -0.5
+      ],
+      "elapsed_s": 13.282
+    },
+    {
+      "step": 239,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 48,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0486,
+        0.2027,
+        0.6579
+      ],
+      "gripper_qpos": [
+        0.0391,
+        -0.0393
+      ],
+      "action": [
+        -0.146,
+        -0.5,
+        0.0216,
+        0.0179,
+        0.0685,
+        0.0103,
+        -0.5
+      ],
+      "elapsed_s": 13.329
+    },
+    {
+      "step": 240,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 48,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0503,
+        0.1963,
+        0.6583
+      ],
+      "gripper_qpos": [
+        0.0391,
+        -0.0393
+      ],
+      "action": [
+        -0.1653,
+        -0.5,
+        0.0021,
+        0.0172,
+        0.0614,
+        0.0114,
+        -0.5
+      ],
+      "elapsed_s": 13.372
+    },
+    {
+      "step": 241,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 49,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 38.7,
+      "eef_pos": [
+        -0.0516,
+        0.1899,
+        0.6586
+      ],
+      "gripper_qpos": [
+        0.0392,
+        -0.0394
+      ],
+      "action": [
+        -0.2091,
+        -0.5,
+        -0.0783,
+        0.0243,
+        -0.0142,
+        0.0008,
+        -0.5
+      ],
+      "elapsed_s": 13.459
+    },
+    {
+      "step": 242,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 49,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0529,
+        0.1836,
+        0.6584
+      ],
+      "gripper_qpos": [
+        0.0392,
+        -0.0394
+      ],
+      "action": [
+        -0.2131,
+        -0.5,
+        -0.0888,
+        0.0218,
+        -0.0201,
+        0.0019,
+        -0.5
+      ],
+      "elapsed_s": 13.503
+    },
+    {
+      "step": 243,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 49,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0545,
+        0.1773,
+        0.6579
+      ],
+      "gripper_qpos": [
+        0.0392,
+        -0.0394
+      ],
+      "action": [
+        -0.2217,
+        -0.5,
+        -0.0965,
+        0.0172,
+        -0.0175,
+        0.0013,
+        -0.5
+      ],
+      "elapsed_s": 13.548
+    },
+    {
+      "step": 244,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 49,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0566,
+        0.1709,
+        0.6571
+      ],
+      "gripper_qpos": [
+        0.0392,
+        -0.0395
+      ],
+      "action": [
+        -0.2397,
+        -0.5,
+        -0.1081,
+        0.0142,
+        -0.0106,
+        -0.003,
+        -0.5
+      ],
+      "elapsed_s": 13.594
+    },
+    {
+      "step": 245,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 49,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0592,
+        0.1645,
+        0.6561
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0395
+      ],
+      "action": [
+        -0.261,
+        -0.5,
+        -0.1193,
+        0.0108,
+        -0.0046,
+        -0.003,
+        -0.5
+      ],
+      "elapsed_s": 13.643
+    },
+    {
+      "step": 246,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 50,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 44.1,
+      "eef_pos": [
+        -0.0613,
+        0.1583,
+        0.6549
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0395
+      ],
+      "action": [
+        -0.1561,
+        -0.5,
+        -0.1405,
+        0.0417,
+        -0.0314,
+        0.0044,
+        -0.5
+      ],
+      "elapsed_s": 13.732
+    },
+    {
+      "step": 247,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 50,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0629,
+        0.1521,
+        0.6534
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0395
+      ],
+      "action": [
+        -0.163,
+        -0.5,
+        -0.1678,
+        0.0405,
+        -0.0415,
+        0.0012,
+        -0.5
+      ],
+      "elapsed_s": 13.777
+    },
+    {
+      "step": 248,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 50,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0645,
+        0.1457,
+        0.6514
+      ],
+      "gripper_qpos": [
+        0.0393,
+        -0.0396
+      ],
+      "action": [
+        -0.1682,
+        -0.5,
+        -0.193,
+        0.0396,
+        -0.0509,
+        0.0007,
+        -0.5
+      ],
+      "elapsed_s": 13.821
+    },
+    {
+      "step": 249,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 50,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0661,
+        0.1393,
+        0.6491
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0396
+      ],
+      "action": [
+        -0.1625,
+        -0.5,
+        -0.2252,
+        0.0367,
+        -0.0608,
+        -0.0013,
+        -0.5
+      ],
+      "elapsed_s": 13.864
+    },
+    {
+      "step": 250,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 50,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0676,
+        0.1328,
+        0.6463
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0396
+      ],
+      "action": [
+        -0.1494,
+        -0.5,
+        -0.2676,
+        0.0325,
+        -0.0636,
+        -0.004,
+        -0.5
+      ],
+      "elapsed_s": 13.909
+    },
+    {
+      "step": 251,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 51,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.0,
+      "eef_pos": [
+        -0.0706,
+        0.1262,
+        0.6434
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0396
+      ],
+      "action": [
+        -0.3423,
+        -0.5,
+        -0.192,
+        0.018,
+        -0.0247,
+        -0.0263,
+        -0.5
+      ],
+      "elapsed_s": 13.998
+    },
+    {
+      "step": 252,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 51,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0743,
+        0.1196,
+        0.6409
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0397
+      ],
+      "action": [
+        -0.3241,
+        -0.5,
+        -0.2199,
+        0.0154,
+        -0.0339,
+        -0.0271,
+        -0.5
+      ],
+      "elapsed_s": 14.045
+    },
+    {
+      "step": 253,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 51,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0779,
+        0.113,
+        0.6382
+      ],
+      "gripper_qpos": [
+        0.0394,
+        -0.0397
+      ],
+      "action": [
+        -0.2999,
+        -0.5,
+        -0.2492,
+        0.0085,
+        -0.0453,
+        -0.0242,
+        -0.5
+      ],
+      "elapsed_s": 14.088
+    },
+    {
+      "step": 254,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 51,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0813,
+        0.1064,
+        0.635
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0397
+      ],
+      "action": [
+        -0.2714,
+        -0.5,
+        -0.2898,
+        0.0035,
+        -0.0538,
+        -0.0275,
+        -0.5
+      ],
+      "elapsed_s": 14.131
+    },
+    {
+      "step": 255,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 51,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0844,
+        0.0999,
+        0.6311
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0397
+      ],
+      "action": [
+        -0.2331,
+        -0.5,
+        -0.3479,
+        0.0006,
+        -0.0633,
+        -0.0306,
+        -0.5
+      ],
+      "elapsed_s": 14.177
+    },
+    {
+      "step": 256,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 52,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.9,
+      "eef_pos": [
+        -0.0872,
+        0.0934,
+        0.627
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0397
+      ],
+      "action": [
+        -0.0575,
+        -0.5,
+        -0.2396,
+        0.0104,
+        -0.0064,
+        0.0036,
+        -0.5
+      ],
+      "elapsed_s": 14.264
+    },
+    {
+      "step": 257,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 52,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0895,
+        0.0869,
+        0.6226
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0397
+      ],
+      "action": [
+        -0.0592,
+        -0.5,
+        -0.3471,
+        0.0083,
+        -0.0233,
+        0.0031,
+        -0.5
+      ],
+      "elapsed_s": 14.31
+    },
+    {
+      "step": 258,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 52,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0913,
+        0.0806,
+        0.6171
+      ],
+      "gripper_qpos": [
+        0.0395,
+        -0.0398
+      ],
+      "action": [
+        -0.0612,
+        -0.445,
+        -0.4567,
+        0.0057,
+        -0.0343,
+        0.0017,
+        -0.5
+      ],
+      "elapsed_s": 14.357
+    },
+    {
+      "step": 259,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 52,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0929,
+        0.075,
+        0.6107
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0398
+      ],
+      "action": [
+        -0.06,
+        -0.3781,
+        -0.5,
+        0.0029,
+        -0.0397,
+        0.0009,
+        -0.5
+      ],
+      "elapsed_s": 14.401
+    },
+    {
+      "step": 260,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 52,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0943,
+        0.0702,
+        0.604
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0398
+      ],
+      "action": [
+        -0.0571,
+        -0.3074,
+        -0.5,
+        -0.0017,
+        -0.0397,
+        0.0001,
+        -0.5
+      ],
+      "elapsed_s": 14.445
+    },
+    {
+      "step": 261,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 53,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 42.1,
+      "eef_pos": [
+        -0.0956,
+        0.0669,
+        0.5977
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0398
+      ],
+      "action": [
+        -0.0129,
+        -0.1025,
+        -0.3999,
+        0.005,
+        -0.0327,
+        -0.0396,
+        -0.5
+      ],
+      "elapsed_s": 14.532
+    },
+    {
+      "step": 262,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 53,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0965,
+        0.0652,
+        0.5919
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0398
+      ],
+      "action": [
+        -0.0122,
+        -0.0694,
+        -0.4175,
+        0.0016,
+        -0.0377,
+        -0.0367,
+        -0.5
+      ],
+      "elapsed_s": 14.578
+    },
+    {
+      "step": 263,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 53,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0973,
+        0.0641,
+        0.586
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0398
+      ],
+      "action": [
+        -0.0162,
+        -0.0416,
+        -0.4349,
+        -0.0013,
+        -0.0395,
+        -0.0307,
+        -0.5
+      ],
+      "elapsed_s": 14.621
+    },
+    {
+      "step": 264,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 53,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0981,
+        0.0634,
+        0.58
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0398
+      ],
+      "action": [
+        -0.0278,
+        -0.0301,
+        -0.4547,
+        -0.0059,
+        -0.0414,
+        -0.0233,
+        -0.5
+      ],
+      "elapsed_s": 14.666
+    },
+    {
+      "step": 265,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 53,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.099,
+        0.0628,
+        0.5738
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.0556,
+        -0.0248,
+        -0.4711,
+        -0.0087,
+        -0.0471,
+        -0.0158,
+        -0.5
+      ],
+      "elapsed_s": 14.712
+    },
+    {
+      "step": 266,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 54,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.6,
+      "eef_pos": [
+        -0.1011,
+        0.0625,
+        0.5678
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.388,
+        -0.0186,
+        -0.5,
+        0.0022,
+        -0.0748,
+        -0.0042,
+        -0.5
+      ],
+      "elapsed_s": 14.798
+    },
+    {
+      "step": 267,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 54,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1043,
+        0.0623,
+        0.562
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.3716,
+        -0.0301,
+        -0.5,
+        0.0035,
+        -0.0791,
+        -0.0019,
+        -0.5
+      ],
+      "elapsed_s": 14.848
+    },
+    {
+      "step": 268,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 54,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1078,
+        0.062,
+        0.5561
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0398
+      ],
+      "action": [
+        -0.3435,
+        -0.0357,
+        -0.5,
+        0.0039,
+        -0.0716,
+        0.0016,
+        -0.5
+      ],
+      "elapsed_s": 14.9
+    },
+    {
+      "step": 269,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 54,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1114,
+        0.0616,
+        0.55
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0399
+      ],
+      "action": [
+        -0.2911,
+        -0.0265,
+        -0.5,
+        0.0022,
+        -0.0625,
+        0.008,
+        -0.5
+      ],
+      "elapsed_s": 14.958
+    },
+    {
+      "step": 270,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 54,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1149,
+        0.0614,
+        0.5436
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0399
+      ],
+      "action": [
+        -0.2168,
+        -0.0104,
+        -0.5,
+        0.0008,
+        -0.0521,
+        0.0162,
+        -0.5
+      ],
+      "elapsed_s": 15.01
+    },
+    {
+      "step": 271,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 55,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 40.3,
+      "eef_pos": [
+        -0.1172,
+        0.0616,
+        0.5374
+      ],
+      "gripper_qpos": [
+        0.0397,
+        -0.0399
+      ],
+      "action": [
+        -0.0198,
+        0.0704,
+        -0.4155,
+        -0.0006,
+        -0.0486,
+        -0.0077,
+        -0.5
+      ],
+      "elapsed_s": 15.094
+    },
+    {
+      "step": 272,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 55,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1188,
+        0.0622,
+        0.5315
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0399
+      ],
+      "action": [
+        -0.021,
+        0.0678,
+        -0.405,
+        0.0003,
+        -0.0496,
+        -0.0109,
+        -0.5
+      ],
+      "elapsed_s": 15.141
+    },
+    {
+      "step": 273,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 55,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.12,
+        0.0628,
+        0.5258
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0399
+      ],
+      "action": [
+        -0.0226,
+        0.0549,
+        -0.4014,
+        -0.0001,
+        -0.0539,
+        -0.0105,
+        -0.5
+      ],
+      "elapsed_s": 15.187
+    },
+    {
+      "step": 274,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 55,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.121,
+        0.0634,
+        0.5203
+      ],
+      "gripper_qpos": [
+        0.0398,
+        -0.0399
+      ],
+      "action": [
+        -0.0236,
+        0.0423,
+        -0.393,
+        0.0007,
+        -0.0548,
+        -0.0119,
+        -0.5
+      ],
+      "elapsed_s": 15.233
+    },
+    {
+      "step": 275,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 55,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1219,
+        0.0638,
+        0.515
+      ],
+      "gripper_qpos": [
+        0.0401,
+        -0.0399
+      ],
+      "action": [
+        -0.0224,
+        0.0329,
+        -0.3785,
+        0.0008,
+        -0.05,
+        -0.0124,
+        -0.5
+      ],
+      "elapsed_s": 15.28
+    },
+    {
+      "step": 276,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 56,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 39.9,
+      "eef_pos": [
+        -0.1226,
+        0.0629,
+        0.5103
+      ],
+      "gripper_qpos": [
+        0.0401,
+        -0.0399
+      ],
+      "action": [
+        0.0157,
+        -0.2078,
+        -0.2919,
+        0.011,
+        -0.0219,
+        -0.0298,
+        -0.5
+      ],
+      "elapsed_s": 15.367
+    },
+    {
+      "step": 277,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 56,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1232,
+        0.0611,
+        0.506
+      ],
+      "gripper_qpos": [
+        0.0401,
+        -0.0399
+      ],
+      "action": [
+        0.0569,
+        -0.156,
+        -0.2829,
+        0.0102,
+        -0.0102,
+        -0.0288,
+        -0.5
+      ],
+      "elapsed_s": 15.415
+    },
+    {
+      "step": 278,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 56,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1234,
+        0.0595,
+        0.5019
+      ],
+      "gripper_qpos": [
+        0.04,
+        -0.0399
+      ],
+      "action": [
+        0.0788,
+        -0.1002,
+        -0.2688,
+        0.0072,
+        -0.0088,
+        -0.0284,
+        -0.5
+      ],
+      "elapsed_s": 15.46
+    },
+    {
+      "step": 279,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 56,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1232,
+        0.0583,
+        0.498
+      ],
+      "gripper_qpos": [
+        0.04,
+        -0.0399
+      ],
+      "action": [
+        0.0873,
+        -0.0364,
+        -0.236,
+        0.004,
+        -0.0033,
+        -0.0275,
+        -0.5
+      ],
+      "elapsed_s": 15.508
+    },
+    {
+      "step": 280,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 56,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1231,
+        0.0578,
+        0.4946
+      ],
+      "gripper_qpos": [
+        0.04,
+        -0.0399
+      ],
+      "action": [
+        0.0914,
+        0.0092,
+        -0.1934,
+        0.0027,
+        0.0072,
+        -0.0264,
+        -0.5
+      ],
+      "elapsed_s": 15.556
+    },
+    {
+      "step": 281,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 57,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 44.7,
+      "eef_pos": [
+        -0.1239,
+        0.057,
+        0.4908
+      ],
+      "gripper_qpos": [
+        0.04,
+        -0.0399
+      ],
+      "action": [
+        -0.1084,
+        -0.1425,
+        -0.3184,
+        0.0053,
+        0.0261,
+        -0.01,
+        -0.5
+      ],
+      "elapsed_s": 15.648
+    },
+    {
+      "step": 282,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 57,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1253,
+        0.0557,
+        0.4869
+      ],
+      "gripper_qpos": [
+        0.04,
+        -0.0399
+      ],
+      "action": [
+        -0.1012,
+        -0.1094,
+        -0.2877,
+        0.0053,
+        0.023,
+        -0.0067,
+        -0.5
+      ],
+      "elapsed_s": 15.696
+    },
+    {
+      "step": 283,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 57,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1267,
+        0.0545,
+        0.4833
+      ],
+      "gripper_qpos": [
+        0.04,
+        -0.0399
+      ],
+      "action": [
+        -0.0914,
+        -0.0755,
+        -0.2432,
+        0.0004,
+        0.0273,
+        -0.0036,
+        -0.5
+      ],
+      "elapsed_s": 15.742
+    },
+    {
+      "step": 284,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 57,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1265,
+        0.0535,
+        0.4815
+      ],
+      "gripper_qpos": [
+        0.04,
+        -0.0399
+      ],
+      "action": [
+        -0.0831,
+        -0.0561,
+        -0.2107,
+        -0.0001,
+        0.027,
+        -0.0005,
+        -0.5
+      ],
+      "elapsed_s": 15.792
+    },
+    {
+      "step": 285,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 57,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1261,
+        0.0533,
+        0.4817
+      ],
+      "gripper_qpos": [
+        0.0396,
+        -0.0395
+      ],
+      "action": [
+        -0.0571,
+        -0.0289,
+        -0.1305,
+        -0.0042,
+        0.0237,
+        0.0091,
+        0.5
+      ],
+      "elapsed_s": 15.846
+    },
+    {
+      "step": 286,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 58,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 39.9,
+      "eef_pos": [
+        -0.1266,
+        0.0533,
+        0.4815
+      ],
+      "gripper_qpos": [
+        0.0374,
+        -0.0373
+      ],
+      "action": [
+        -0.2243,
+        -0.0713,
+        -0.2842,
+        0.0007,
+        0.0447,
+        -0.0011,
+        0.5
+      ],
+      "elapsed_s": 15.936
+    },
+    {
+      "step": 287,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 58,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1267,
+        0.0537,
+        0.4815
+      ],
+      "gripper_qpos": [
+        0.034,
+        -0.0339
+      ],
+      "action": [
+        -0.1545,
+        -0.0479,
+        -0.2076,
+        -0.0024,
+        0.0469,
+        0.0009,
+        0.5
+      ],
+      "elapsed_s": 15.987
+    },
+    {
+      "step": 288,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 58,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1267,
+        0.0537,
+        0.4816
+      ],
+      "gripper_qpos": [
+        0.0299,
+        -0.0336
+      ],
+      "action": [
+        -0.0831,
+        -0.0318,
+        -0.1245,
+        -0.0055,
+        0.0586,
+        0.0033,
+        0.5
+      ],
+      "elapsed_s": 16.042
+    },
+    {
+      "step": 289,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 58,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1268,
+        0.0535,
+        0.4819
+      ],
+      "gripper_qpos": [
+        0.0287,
+        -0.0336
+      ],
+      "action": [
+        -0.0338,
+        -0.0232,
+        -0.0369,
+        -0.0085,
+        0.0668,
+        0.0051,
+        0.5
+      ],
+      "elapsed_s": 16.098
+    },
+    {
+      "step": 290,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 58,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.127,
+        0.0532,
+        0.4823
+      ],
+      "gripper_qpos": [
+        0.0285,
+        -0.0336
+      ],
+      "action": [
+        -0.0008,
+        -0.0107,
+        0.0583,
+        -0.0137,
+        0.0729,
+        0.0074,
+        0.5
+      ],
+      "elapsed_s": 16.153
+    },
+    {
+      "step": 291,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 59,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 42.1,
+      "eef_pos": [
+        -0.1271,
+        0.053,
+        0.4824
+      ],
+      "gripper_qpos": [
+        0.0284,
+        -0.0337
+      ],
+      "action": [
+        -0.0715,
+        -0.0218,
+        -0.1032,
+        -0.0107,
+        0.0321,
+        -0.0131,
+        0.5
+      ],
+      "elapsed_s": 16.248
+    },
+    {
+      "step": 292,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 59,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.127,
+        0.0529,
+        0.4826
+      ],
+      "gripper_qpos": [
+        0.0283,
+        -0.0337
+      ],
+      "action": [
+        -0.0561,
+        -0.0237,
+        -0.0073,
+        -0.0125,
+        0.0326,
+        -0.012,
+        0.5
+      ],
+      "elapsed_s": 16.301
+    },
+    {
+      "step": 293,
+      "subtask_idx": 0,
+      "phase": "IDLE",
+      "objects_placed": 0,
+      "replan": 59,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1274,
+        0.0527,
+        0.4833
+      ],
+      "gripper_qpos": [
+        0.0283,
+        -0.0338
+      ],
+      "action": [
+        -0.0385,
+        -0.0207,
+        0.108,
+        -0.0165,
+        0.041,
+        -0.0102,
+        0.5
+      ],
+      "elapsed_s": 16.357
+    },
+    {
+      "step": 294,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 59,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1279,
+        0.0523,
+        0.4854
+      ],
+      "gripper_qpos": [
+        0.0282,
+        -0.0338
+      ],
+      "action": [
+        -0.0101,
+        -0.0003,
+        0.267,
+        -0.0226,
+        0.0362,
+        -0.0099,
+        0.5
+      ],
+      "elapsed_s": 16.406
+    },
+    {
+      "step": 295,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 59,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1284,
+        0.0522,
+        0.4896
+      ],
+      "gripper_qpos": [
+        0.0282,
+        -0.0338
+      ],
+      "action": [
+        0.0405,
+        0.0292,
+        0.4747,
+        -0.0312,
+        0.0448,
+        -0.01,
+        0.5
+      ],
+      "elapsed_s": 16.459
+    },
+    {
+      "step": 296,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 60,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.6,
+      "eef_pos": [
+        -0.1283,
+        0.0518,
+        0.494
+      ],
+      "gripper_qpos": [
+        0.0282,
+        -0.0338
+      ],
+      "action": [
+        -0.0079,
+        -0.0502,
+        0.2195,
+        -0.0268,
+        -0.0097,
+        -0.0268,
+        0.5
+      ],
+      "elapsed_s": 16.559
+    },
+    {
+      "step": 297,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 60,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1276,
+        0.0512,
+        0.4982
+      ],
+      "gripper_qpos": [
+        0.0282,
+        -0.0339
+      ],
+      "action": [
+        0.03,
+        -0.0441,
+        0.3482,
+        -0.0304,
+        -0.0232,
+        -0.0232,
+        0.5
+      ],
+      "elapsed_s": 16.612
+    },
+    {
+      "step": 298,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 60,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1269,
+        0.0506,
+        0.5034
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.0559,
+        -0.0413,
+        0.4578,
+        -0.0297,
+        -0.0214,
+        -0.0215,
+        0.5
+      ],
+      "elapsed_s": 16.664
+    },
+    {
+      "step": 299,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 60,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.126,
+        0.0502,
+        0.5095
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.0936,
+        -0.0284,
+        0.5,
+        -0.0288,
+        -0.0205,
+        -0.0206,
+        0.5
+      ],
+      "elapsed_s": 16.715
+    },
+    {
+      "step": 300,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 60,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1249,
+        0.0498,
+        0.516
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.1412,
+        -0.0127,
+        0.5,
+        -0.0285,
+        -0.0197,
+        -0.0185,
+        0.5
+      ],
+      "elapsed_s": 16.765
+    },
+    {
+      "step": 301,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 61,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 41.8,
+      "eef_pos": [
+        -0.1233,
+        0.0503,
+        0.5222
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.2204,
+        0.1234,
+        0.5,
+        -0.0299,
+        -0.0034,
+        -0.0364,
+        0.5
+      ],
+      "elapsed_s": 16.86
+    },
+    {
+      "step": 302,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 61,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1213,
+        0.0518,
+        0.5285
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.26,
+        0.1882,
+        0.5,
+        -0.033,
+        -0.0097,
+        -0.0335,
+        0.5
+      ],
+      "elapsed_s": 16.914
+    },
+    {
+      "step": 303,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 61,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1187,
+        0.0542,
+        0.5347
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.2924,
+        0.2578,
+        0.5,
+        -0.0409,
+        -0.0147,
+        -0.0341,
+        0.5
+      ],
+      "elapsed_s": 16.964
+    },
+    {
+      "step": 304,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 61,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1156,
+        0.0574,
+        0.5408
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.3304,
+        0.3113,
+        0.5,
+        -0.0452,
+        -0.012,
+        -0.0329,
+        0.5
+      ],
+      "elapsed_s": 17.015
+    },
+    {
+      "step": 305,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 61,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1121,
+        0.0613,
+        0.5469
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.401,
+        0.3609,
+        0.5,
+        -0.0529,
+        -0.0022,
+        -0.0357,
+        0.5
+      ],
+      "elapsed_s": 17.064
+    },
+    {
+      "step": 306,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 62,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 41.2,
+      "eef_pos": [
+        -0.1082,
+        0.0665,
+        0.5527
+      ],
+      "gripper_qpos": [
+        0.0281,
+        -0.0339
+      ],
+      "action": [
+        0.4682,
+        0.4451,
+        0.5,
+        -0.0179,
+        0.0319,
+        -0.0045,
+        0.5
+      ],
+      "elapsed_s": 17.16
+    },
+    {
+      "step": 307,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 62,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.1039,
+        0.0725,
+        0.5585
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.4753,
+        0.4683,
+        0.5,
+        -0.0167,
+        0.0316,
+        -0.0032,
+        0.5
+      ],
+      "elapsed_s": 17.212
+    },
+    {
+      "step": 308,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 62,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0992,
+        0.0788,
+        0.5644
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.4747,
+        0.4963,
+        0.5,
+        -0.0184,
+        0.0262,
+        -0.002,
+        0.5
+      ],
+      "elapsed_s": 17.268
+    },
+    {
+      "step": 309,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 62,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0942,
+        0.0852,
+        0.5704
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.4654,
+        0.5,
+        0.5,
+        -0.0181,
+        0.0233,
+        -0.0021,
+        0.5
+      ],
+      "elapsed_s": 17.32
+    },
+    {
+      "step": 310,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 62,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.089,
+        0.0917,
+        0.5767
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.4578,
+        0.5,
+        0.5,
+        -0.0193,
+        0.0122,
+        -0.0035,
+        0.5
+      ],
+      "elapsed_s": 17.371
+    },
+    {
+      "step": 311,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 63,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.8,
+      "eef_pos": [
+        -0.0841,
+        0.0981,
+        0.5829
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.4284,
+        0.5,
+        0.5,
+        -0.0329,
+        0.0335,
+        0.0053,
+        0.5
+      ],
+      "elapsed_s": 17.472
+    },
+    {
+      "step": 312,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 63,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0793,
+        0.1045,
+        0.5892
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.4268,
+        0.5,
+        0.5,
+        -0.0336,
+        0.0299,
+        0.0078,
+        0.5
+      ],
+      "elapsed_s": 17.521
+    },
+    {
+      "step": 313,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 63,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0745,
+        0.111,
+        0.5955
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.4201,
+        0.5,
+        0.5,
+        -0.0319,
+        0.0229,
+        0.0085,
+        0.5
+      ],
+      "elapsed_s": 17.571
+    },
+    {
+      "step": 314,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 63,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0696,
+        0.1176,
+        0.602
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.3936,
+        0.5,
+        0.5,
+        -0.0298,
+        0.0121,
+        0.0091,
+        0.5
+      ],
+      "elapsed_s": 17.62
+    },
+    {
+      "step": 315,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 63,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0649,
+        0.1242,
+        0.6086
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.3567,
+        0.5,
+        0.5,
+        -0.0277,
+        0.0098,
+        0.0068,
+        0.5
+      ],
+      "elapsed_s": 17.668
+    },
+    {
+      "step": 316,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 64,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 46.6,
+      "eef_pos": [
+        -0.0607,
+        0.1303,
+        0.6156
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.1939,
+        0.4301,
+        0.5,
+        -0.0321,
+        -0.036,
+        -0.0436,
+        0.5
+      ],
+      "elapsed_s": 17.765
+    },
+    {
+      "step": 317,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 64,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0571,
+        0.1362,
+        0.6229
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.1855,
+        0.4524,
+        0.5,
+        -0.0294,
+        -0.0398,
+        -0.0436,
+        0.5
+      ],
+      "elapsed_s": 17.813
+    },
+    {
+      "step": 318,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 64,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0538,
+        0.1426,
+        0.6302
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.1845,
+        0.4941,
+        0.5,
+        -0.0252,
+        -0.052,
+        -0.0444,
+        0.5
+      ],
+      "elapsed_s": 17.862
+    },
+    {
+      "step": 319,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 64,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0509,
+        0.1493,
+        0.6374
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.034
+      ],
+      "action": [
+        0.1616,
+        0.5,
+        0.5,
+        -0.0192,
+        -0.0547,
+        -0.0439,
+        0.5
+      ],
+      "elapsed_s": 17.914
+    },
+    {
+      "step": 320,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 64,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0484,
+        0.1562,
+        0.6444
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.034
+      ],
+      "action": [
+        0.1284,
+        0.5,
+        0.5,
+        -0.0112,
+        -0.0547,
+        -0.0391,
+        0.5
+      ],
+      "elapsed_s": 17.966
+    },
+    {
+      "step": 321,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 65,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 48.0,
+      "eef_pos": [
+        -0.046,
+        0.163,
+        0.6502
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.034
+      ],
+      "action": [
+        0.096,
+        0.5,
+        0.2267,
+        -0.014,
+        -0.104,
+        -0.0538,
+        0.5
+      ],
+      "elapsed_s": 18.069
+    },
+    {
+      "step": 322,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 65,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0437,
+        0.1698,
+        0.6542
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.034
+      ],
+      "action": [
+        0.0643,
+        0.5,
+        0.1604,
+        -0.0087,
+        -0.1148,
+        -0.0554,
+        0.5
+      ],
+      "elapsed_s": 18.119
+    },
+    {
+      "step": 323,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 65,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0419,
+        0.1766,
+        0.6571
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.0281,
+        0.5,
+        0.1102,
+        -0.0036,
+        -0.115,
+        -0.0565,
+        0.5
+      ],
+      "elapsed_s": 18.169
+    },
+    {
+      "step": 324,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 65,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0406,
+        0.1835,
+        0.6592
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.0091,
+        0.5,
+        0.0657,
+        0.0003,
+        -0.1137,
+        -0.056,
+        0.5
+      ],
+      "elapsed_s": 18.218
+    },
+    {
+      "step": 325,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 65,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0398,
+        0.1904,
+        0.6606
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.0002,
+        0.5,
+        0.0105,
+        0.0041,
+        -0.1158,
+        -0.055,
+        0.5
+      ],
+      "elapsed_s": 18.266
+    },
+    {
+      "step": 326,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 66,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 51.6,
+      "eef_pos": [
+        -0.0401,
+        0.1975,
+        0.6595
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.0994,
+        0.5,
+        -0.2608,
+        0.0175,
+        -0.0533,
+        -0.0254,
+        0.5
+      ],
+      "elapsed_s": 18.376
+    },
+    {
+      "step": 327,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 66,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0411,
+        0.2045,
+        0.6565
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.0921,
+        0.5,
+        -0.3021,
+        0.02,
+        -0.0581,
+        -0.0227,
+        0.5
+      ],
+      "elapsed_s": 18.427
+    },
+    {
+      "step": 328,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 66,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0419,
+        0.2114,
+        0.6527
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.0791,
+        0.5,
+        -0.3446,
+        0.0231,
+        -0.0564,
+        -0.0192,
+        0.5
+      ],
+      "elapsed_s": 18.475
+    },
+    {
+      "step": 329,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 66,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0428,
+        0.218,
+        0.6482
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.0718,
+        0.4717,
+        -0.3965,
+        0.0276,
+        -0.0503,
+        -0.0166,
+        0.5
+      ],
+      "elapsed_s": 18.526
+    },
+    {
+      "step": 330,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 66,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0438,
+        0.224,
+        0.6428
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.0753,
+        0.3931,
+        -0.4492,
+        0.0306,
+        -0.0407,
+        -0.0146,
+        0.5
+      ],
+      "elapsed_s": 18.576
+    },
+    {
+      "step": 331,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 67,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.4,
+      "eef_pos": [
+        -0.0446,
+        0.2289,
+        0.6381
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.1438,
+        0.3841,
+        -0.3466,
+        -0.0201,
+        -0.0953,
+        -0.0317,
+        0.5
+      ],
+      "elapsed_s": 18.674
+    },
+    {
+      "step": 332,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 67,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0455,
+        0.2331,
+        0.6339
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.1026,
+        0.2848,
+        -0.3533,
+        -0.0143,
+        -0.0914,
+        -0.0296,
+        0.5
+      ],
+      "elapsed_s": 18.726
+    },
+    {
+      "step": 333,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 67,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0464,
+        0.2365,
+        0.6296
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.0588,
+        0.1889,
+        -0.3535,
+        -0.0074,
+        -0.0752,
+        -0.0328,
+        0.5
+      ],
+      "elapsed_s": 18.776
+    },
+    {
+      "step": 334,
+      "subtask_idx": 0,
+      "phase": "TRANSPORTING",
+      "objects_placed": 0,
+      "replan": 67,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0471,
+        0.2391,
+        0.625
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        -0.0238,
+        0.1174,
+        -0.334,
+        -0.0032,
+        -0.0624,
+        -0.0367,
+        0.5
+      ],
+      "elapsed_s": 18.827
+    },
+    {
+      "step": 335,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 67,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0476,
+        0.2407,
+        0.6207
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.0073,
+        0.0572,
+        -0.2976,
+        -0.0009,
+        -0.0528,
+        -0.0403,
+        0.5
+      ],
+      "elapsed_s": 18.878
+    },
+    {
+      "step": 336,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 68,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.9,
+      "eef_pos": [
+        -0.0475,
+        0.2423,
+        0.6185
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.0968,
+        0.2552,
+        0.0845,
+        -0.0331,
+        -0.0439,
+        -0.0789,
+        -0.5
+      ],
+      "elapsed_s": 18.974
+    },
+    {
+      "step": 337,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 68,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0473,
+        0.2445,
+        0.6183
+      ],
+      "gripper_qpos": [
+        0.028,
+        -0.0339
+      ],
+      "action": [
+        0.0904,
+        0.2222,
+        0.0829,
+        -0.029,
+        -0.0406,
+        -0.0816,
+        -0.5
+      ],
+      "elapsed_s": 19.026
+    },
+    {
+      "step": 338,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 68,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0471,
+        0.2466,
+        0.6185
+      ],
+      "gripper_qpos": [
+        0.0282,
+        -0.0337
+      ],
+      "action": [
+        0.08,
+        0.1815,
+        0.098,
+        -0.0244,
+        -0.0281,
+        -0.0806,
+        -0.5
+      ],
+      "elapsed_s": 19.077
+    },
+    {
+      "step": 339,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 68,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.047,
+        0.2486,
+        0.619
+      ],
+      "gripper_qpos": [
+        0.0288,
+        -0.0333
+      ],
+      "action": [
+        0.0817,
+        0.1532,
+        0.1207,
+        -0.0232,
+        -0.021,
+        -0.0755,
+        -0.5
+      ],
+      "elapsed_s": 19.127
+    },
+    {
+      "step": 340,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 68,
+      "action_in_chunk": 4,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0467,
+        0.2504,
+        0.62
+      ],
+      "gripper_qpos": [
+        0.0293,
+        -0.033
+      ],
+      "action": [
+        0.0971,
+        0.1293,
+        0.1415,
+        -0.0206,
+        -0.0109,
+        -0.0698,
+        -0.5
+      ],
+      "elapsed_s": 19.177
+    },
+    {
+      "step": 341,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 69,
+      "action_in_chunk": 0,
+      "vla_inference_ms": 45.3,
+      "eef_pos": [
+        -0.0465,
+        0.2518,
+        0.6211
+      ],
+      "gripper_qpos": [
+        0.0297,
+        -0.0327
+      ],
+      "action": [
+        -0.0351,
+        0.0379,
+        0.0715,
+        -0.0111,
+        -0.0411,
+        -0.0447,
+        -0.5
+      ],
+      "elapsed_s": 19.272
+    },
+    {
+      "step": 342,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 69,
+      "action_in_chunk": 1,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0465,
+        0.2529,
+        0.6226
+      ],
+      "gripper_qpos": [
+        0.0304,
+        -0.0327
+      ],
+      "action": [
+        0.0056,
+        0.0498,
+        0.1382,
+        -0.015,
+        -0.0339,
+        -0.05,
+        -0.5
+      ],
+      "elapsed_s": 19.321
+    },
+    {
+      "step": 343,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 69,
+      "action_in_chunk": 2,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0465,
+        0.2538,
+        0.6245
+      ],
+      "gripper_qpos": [
+        0.0326,
+        -0.0339
+      ],
+      "action": [
+        0.0359,
+        0.0584,
+        0.2014,
+        -0.02,
+        -0.0197,
+        -0.0575,
+        -0.5
+      ],
+      "elapsed_s": 19.367
+    },
+    {
+      "step": 344,
+      "subtask_idx": 0,
+      "phase": "MOVING",
+      "objects_placed": 0,
+      "replan": 69,
+      "action_in_chunk": 3,
+      "vla_inference_ms": 0,
+      "eef_pos": [
+        -0.0464,
+        0.2545,
+        0.6269
+      ],
+      "gripper_qpos": [
+        0.0353,
+        -0.036
+      ],
+      "action": [
+        0.0492,
+        0.0573,
+        0.2411,
+        -0.022,
+        -0.0071,
+        -0.0651,
+        -0.5
+      ],
+      "elapsed_s": 19.418
+    }
+  ]
+}
