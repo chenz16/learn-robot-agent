@@ -2,7 +2,17 @@
 
 LLM task decomposition + VLA execution in LIBERO tabletop simulation.
 
-Human sends a natural language instruction via CLI. The LLM agent decomposes it into subtasks (PRAE loop), and a VLA model executes each subtask in simulation.
+Human sends a natural language instruction via CLI. The LLM agent decomposes it into subtasks (PRAE loop), and a VLA model (OpenPI pi0) executes each subtask in MuJoCo simulation.
+
+## Demo: Pick-and-Place in LIBERO
+
+> Task: *"pick up the black bowl between the plate and the ramekin and place it on the plate"*
+
+| Initial Scene | Reaching (step 50) | Grasping (step 100) | Task Complete (step 139) |
+|:-:|:-:|:-:|:-:|
+| ![initial](docs/images/01_initial_scene.png) | ![reaching](docs/images/02_reaching.png) | ![grasping](docs/images/03_grasping.png) | ![complete](docs/images/04_task_complete.png) |
+
+**Pipeline**: Gemini 2.5 Flash (task decomposition) -> OpenPI pi0 VLA (motor control @ 10Hz, replan every 5 steps) -> LIBERO MuJoCo (physics simulation)
 
 ## Architecture
 
@@ -46,8 +56,10 @@ robot-agent agent --env mock --vla mock
 # Single message mode
 robot-agent agent -m "put both the alphabet soup and the tomato sauce in the basket"
 
-# With real VLA service + LIBERO simulation
-robot-agent agent --env libero --vla http --vla-url http://localhost:8020 --task "libero_10:0"
+# With OpenPI VLA + LIBERO simulation (requires GPU + openpi server running)
+MUJOCO_GL=egl robot-agent agent --env libero --vla websocket --vla-port 8000 \
+  --task "libero_spatial:0" \
+  -m "pick up the black bowl between the plate and the ramekin and place it on the plate"
 ```
 
 ## Project Structure
@@ -70,7 +82,8 @@ robot-agent-mvp/
 │   ├── vla/
 │   │   ├── base.py             # VLAAdapter ABC
 │   │   ├── mock.py             # MockVLAAdapter (random actions)
-│   │   └── http.py             # HTTPVLAAdapter (remote VLA server)
+│   │   ├── http.py             # HTTPVLAAdapter (remote VLA server)
+│   │   └── websocket.py        # WebSocketVLAAdapter (OpenPI msgpack)
 │   ├── loop.py                 # LoopManager (asyncio control loops)
 │   ├── termination.py          # StepLimit + PositionThreshold
 │   ├── safety.py               # E-Stop + velocity clamp
