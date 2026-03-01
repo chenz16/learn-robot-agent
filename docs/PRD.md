@@ -99,6 +99,13 @@ Teaching tool                  Lab prototype (1-3 robots)       Production (10+ 
               │ GR00T/OpenPI│   │             │
               └──────┬──────┘   └──────┬──────┘
                      │                 │
+              ┌──────┴──────┐          │
+              │ WBC         │          │
+              │ (optional)  │          │
+              │ cuRobo/MPC  │          │
+              │ /Pinocchio  │          │
+              └──────┬──────┘          │
+                     │                 │
               ┌──────┴─────────────────┴──────┐
               │      Robot Hardware / Sim      │
               │  Unitree G1  │  MuJoCo Sim    │
@@ -111,13 +118,53 @@ High-level architecture is intentionally simplified into three logical layers:
 
 - **Intention**: Fast intent detection and task framing from user instruction.
 - **Cognition**: Task reasoning and planning, outputs structured plan/context. Contains an **optional Perception sub-module** for scene understanding.
-- **Action**: Real-time robot control loop (VLA + safety + actuation).
+- **Action**: Real-time robot control loop (VLA + safety + WBC + actuation).
 
 | Layer | Responsibility | Typical Budget | Deployment Mode | Notes |
 |------|----------------|----------------|-----------------|-------|
 | Intention | Classify intent, extract slots, decide whether full planning is needed | 50-800ms | `local_process` or `remote_tool_call` | Optional fast path for simple commands |
 | Cognition | Produce plan for next subtask; optionally invoke Perception | 0.5-10s | `local_process` or `remote_tool_call` | Perception is an optional sub-module |
 | Action | Execute subtasks at high frequency with safety checks | 2-50Hz, p99 step < 20ms | **local_process only** | Must not be blocked by Intention/Cognition latency |
+
+#### Whole-Body Control (WBC) as Sub-module of Action
+
+For robots with high-DOF bodies (e.g., humanoid Unitree G1 with 30+ joints), VLA output (task-space delta: xyz + rotation + gripper) must be converted to whole-body joint commands. WBC sits between VLA prediction and robot actuation:
+
+```
+Action Layer
+├── VLA Predict          ← task-space actions (7-dim: delta_xyz + delta_rot + gripper)
+├── Safety Check         ← velocity clamp, zone enforcement, e-stop
+├── WBC (optional)       ← task-space → joint-space conversion
+│     input:  task-space action + current joint state + constraints
+│     output: joint-space commands (N-DOF joint positions/velocities)
+│     constraints: balance, self-collision avoidance, joint limits
+└── Actuation            ← send joint commands to robot/sim
+```
+
+WBC is **optional** — not needed for fixed-base arms (e.g., Franka Panda in LIBERO) where VLA directly outputs joint-level actions. It is required for:
+- **Humanoid robots**: Must maintain balance while manipulating (G1, H1)
+- **Mobile manipulators**: Must coordinate base motion with arm motion
+- **Multi-arm systems**: Must avoid self-collision between arms
+
+WBC backends:
+- **cuRobo** (NVIDIA): GPU-accelerated motion planning + IK, <5ms per solve
+- **MuJoCo MPC**: Model-predictive control using MuJoCo's physics engine
+- **Pinocchio + ProxQP**: Classical rigid-body dynamics + QP-based whole-body optimization
+- **Pass-through**: No conversion, VLA output used directly (fixed-base arms)
+
+**Configuration:**
+```yaml
+wbc:
+  enabled: false              # true for humanoid, false for fixed-base arms
+  backend: pass_through       # pass_through | curobo | mujoco_mpc | pinocchio
+  frequency_hz: 50            # WBC runs at sim frequency, not VLA frequency
+  constraints:
+    balance: true             # COM must stay within support polygon
+    self_collision: true      # avoid self-intersection
+    joint_limits: true        # respect joint position/velocity/torque limits
+```
+
+**MVP scope**: WBC is **not implemented** in the MVP. The MVP uses pass-through mode (VLA outputs are sent directly to `env.step()`). WBC support is planned for v0.1 when real humanoid hardware is integrated.
 
 #### Perception as Optional Sub-module of Cognition
 
@@ -165,6 +212,10 @@ pipeline:
   action:
     mode: local_process        # fixed
     endpoint: ipc://vla-controller
+    wbc:                       # optional whole-body control
+      enabled: false           # true for humanoid (G1), false for fixed-base arms
+      backend: pass_through    # pass_through | curobo | mujoco_mpc | pinocchio
+      frequency_hz: 50         # WBC interpolation rate (>= sim frequency)
 ```
 
 ### 4.4 What's Reused from Nanobot vs What's New
@@ -188,6 +239,7 @@ pipeline:
 | **Terminators** | **new** (from r13) | ~150 | 5 strategies |
 | **RoutingConfig** | **new** (from r13) | ~100 | YAML routes + difficulty classifier |
 | **SafetyManager** | **new** (from r10) | ~200 | E-stop, zones, velocity, audit |
+| **WBC Adapter** | **new** | ~200 | Task-space → joint-space, balance, self-collision (optional) |
 | **Model Lifecycle** | **new** | ~400 | Base model + LoRA management |
 | **RobotEnv** | **new** (from r01) | ~200 | Mock + real robot interface |
 
@@ -826,17 +878,24 @@ class LoopManager:
 
 **Control loop** (runs at `action_hz`):
 ```
-async def _control_loop(action_hz, terminator):
+async def _control_loop(action_hz, terminator, wbc=None):
     while not termination_signal.is_set():
         observation = env.get_observation()
         actions = await vla_adapter.predict(observation, instruction)
         for action in actions:
             if termination_signal.is_set(): break
-            await env.step_delta(action)
+            safe_action = safety.check_action(action)
+            if wbc is not None:
+                joint_cmd = wbc.solve(safe_action, observation)
+                await env.step_joints(joint_cmd)
+            else:
+                await env.step_delta(safe_action)
             if terminator.should_stop(state, target):
                 termination_signal.set()
         await asyncio.sleep(1.0 / action_hz)
 ```
+
+**Note**: WBC runs at every sim step (50Hz+), not at VLA frequency. When VLA produces a chunk of 5 actions at 10Hz, WBC interpolates each action into multiple sim steps to maintain smooth joint trajectories.
 
 **Example Cognition internal loop** (optional, subprocess-owned):
 ```
@@ -959,8 +1018,14 @@ Action Request
 │  If speed > max_velocity: CLAMP              │
 └───────────────────────────────┬───────────────┘
                                 │
-┌─ Layer 4: Execute ────────────┴──────────────┐
-│  Send action to robot / sim                   │
+┌─ Layer 4: WBC (optional) ────┴──────────────┐
+│  Convert task-space → joint-space            │
+│  Enforce balance, self-collision, joint limits│
+│  Pass-through if disabled                    │
+└───────────────────────────────┬───────────────┘
+                                │
+┌─ Layer 5: Execute ────────────┴──────────────┐
+│  Send joint commands to robot / sim           │
 │  Append to audit log                          │
 └──────────────────────────────────────────────┘
 ```
@@ -1632,7 +1697,8 @@ External services accessed via MCP tools:
 | **Intention** | Logical layer for fast intent recognition and slot extraction before full planning. |
 | **Cognition** | Logical layer that produces structured plans for subtask decisions. Contains an optional Perception sub-module; when disabled, plans from available state directly. |
 | **Perception** | Optional sub-module of Cognition. Produces structured scene descriptions from visual input (VLM, CV, or simulation ground-truth). Can be enabled/disabled and runs at its own frequency. |
-| **Action** | Logical layer that executes robot control in high-frequency local loops (VLA + safety + actuation). |
+| **Action** | Logical layer that executes robot control in high-frequency local loops (VLA + safety + WBC + actuation). |
+| **WBC** | Whole-Body Control. Converts task-space VLA output (end-effector delta) to joint-space commands for high-DOF robots (humanoids, mobile manipulators). Optional — not needed for fixed-base arms. |
 | **LoRA** | Low-Rank Adaptation. Small parameter file (<200MB) that specializes a base model for a specific task. |
 | **MCP** | Model Context Protocol. Standard for connecting AI agents to external tools and services. |
 | **Adapter** | A LoRA weight file that can be hot-swapped onto a base model. |
