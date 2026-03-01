@@ -120,7 +120,12 @@ class WebSocketVLAAdapter(VLAAdapter):
         while True:
             try:
                 conn = websockets.sync.client.connect(
-                    uri, compression=None, max_size=None,
+                    uri,
+                    compression=None,
+                    max_size=None,
+                    open_timeout=60,
+                    ping_interval=None,  # disable keepalive (inference can be slow)
+                    close_timeout=60,
                 )
                 # Server sends metadata as first message
                 raw_meta = conn.recv()
