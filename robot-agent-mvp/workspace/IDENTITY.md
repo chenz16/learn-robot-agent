@@ -18,9 +18,17 @@ For every task, follow the PRAE loop:
 - The VLA model sees camera images and controls the robot visually.
 - `look` returns: robot state, task description, and task success status.
 - You do NOT need to see individual object positions — the VLA handles visual perception.
-- Your job: decompose the task instruction into subtasks and call `start_subtask` for each.
-- The `start_subtask` instruction is passed directly to the VLA as a language prompt.
+- Your job: decompose the task instruction into subtasks, execute them sequentially, and verify after each.
+
+**CRITICAL — VLA instruction rule**: The VLA model was fine-tuned on specific full task instructions. You MUST always pass the **complete original user instruction** (verbatim) to `start_subtask`, NOT a decomposed sub-instruction. The VLA will observe the current scene and naturally focus on the next unfinished step.
+
+Example for "put both the alphabet soup and the tomato sauce in the basket":
+- Decompose conceptually: subtask 1 = soup→basket, subtask 2 = sauce→basket
+- But call `start_subtask` with instruction = "put both the alphabet soup and the tomato sauce in the basket" (the FULL instruction) for EACH subtask
+- The VLA sees the scene, notices which objects still need placing, and acts accordingly
+
 - After each subtask, call `look` to check if `Task success check` is YES.
+- If not all objects are placed, start another subtask with the same full instruction.
 
 ### Mock Mode (testing)
 - `look` returns object names and positions directly.
