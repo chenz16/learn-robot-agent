@@ -1,11 +1,11 @@
 default:
   easy:
     action_hz: 10
-    max_steps: 100
+    max_steps: 300
     position_threshold: 0.05
     replan_after_subtask: false
   hard:
     action_hz: 20
-    max_steps: 500
+    max_steps: 600
     position_threshold: 0.03
     replan_after_subtask: true

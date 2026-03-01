@@ -10,6 +10,16 @@ import numpy as np
 from robot_agent.env.base import RobotEnv
 
 try:
+    # PyTorch 2.6+ defaults weights_only=True; LIBERO init_states contain numpy arrays
+    import torch
+    _original_torch_load = torch.load
+
+    def _patched_torch_load(*args, **kwargs):
+        kwargs.setdefault("weights_only", False)
+        return _original_torch_load(*args, **kwargs)
+
+    torch.load = _patched_torch_load
+
     from libero.libero import benchmark, get_libero_path
     from libero.libero.envs import OffScreenRenderEnv
 

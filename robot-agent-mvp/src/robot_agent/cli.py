@@ -70,12 +70,21 @@ DEMO_TASKS = {
 def _snapshot_env(env) -> dict[str, Any]:
     """Capture a serializable snapshot of environment state."""
     obs = env.get_observation()
-    return {
-        "ee_pos": list(obs["robot0_eef_pos"]),
-        "gripper": "open" if obs["robot0_gripper_qpos"][0] > 0.5 else "closed",
+    ee = obs.get("robot0_eef_pos", [0, 0, 0])
+    gq = obs.get("robot0_gripper_qpos", [1])
+    snap = {
+        "ee_pos": [float(x) for x in ee],
+        "gripper": "open" if gq[0] > 0.5 else "closed",
         "holding": obs.get("holding"),
-        "objects": {k: list(v) for k, v in obs.get("objects", {}).items()},
+        "objects": {k: [float(x) for x in v] for k, v in obs.get("objects", {}).items()},
     }
+    # LiberoEnv: add task success info
+    if hasattr(env, "check_success"):
+        try:
+            snap["success"] = env.check_success()
+        except Exception:
+            pass
+    return snap
 
 
 def _env_changed(before: dict, after: dict) -> bool:

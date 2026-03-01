@@ -1,4 +1,4 @@
-"""LookTool: capture image + VLM analysis (or formatted observation in mock mode)."""
+"""LookTool: capture image + VLM analysis (or formatted observation)."""
 
 from typing import Any
 
@@ -20,7 +20,7 @@ class LookTool(Tool):
 
     @property
     def description(self) -> str:
-        return "Capture current scene image and analyze it. Returns scene description with object positions."
+        return "Capture current scene observation. Returns robot state and scene info."
 
     @property
     def parameters(self) -> dict[str, Any]:
@@ -39,21 +39,25 @@ class LookTool(Tool):
         question = kwargs["question"]
         obs = self._ctx.env.get_observation()
 
-        # Mock mode: format observation as structured text
-        if self._ctx.vlm_url is None:
-            return self._format_mock_observation(obs, question)
-
         # VLM mode: send image to VLM endpoint
-        return await self._query_vlm(obs, question)
+        if self._ctx.vlm_url is not None:
+            return await self._query_vlm(obs, question)
 
-    def _format_mock_observation(self, obs: dict, question: str) -> str:
+        # No VLM: format observation as structured text
+        return self._format_observation(obs, question)
+
+    def _format_observation(self, obs: dict, question: str) -> str:
+        """Format observation as text for both MockEnv and LiberoEnv."""
         ee_pos = obs.get("robot0_eef_pos", [0, 0, 0])
-        gripper = "open" if obs.get("robot0_gripper_qpos", [1])[0] > 0.5 else "closed"
-        holding = obs.get("holding", None)
+        gripper_qpos = obs.get("robot0_gripper_qpos", [1])
+        gripper = "open" if gripper_qpos[0] > 0.5 else "closed"
 
         lines = [f"[Scene observation for: {question}]"]
         lines.append(f"End-effector position: [{ee_pos[0]:.3f}, {ee_pos[1]:.3f}, {ee_pos[2]:.3f}]")
         lines.append(f"Gripper: {gripper}")
+
+        # MockEnv: has "holding" and "objects" dict
+        holding = obs.get("holding")
         if holding:
             lines.append(f"Currently holding: {holding}")
 
@@ -62,6 +66,28 @@ class LookTool(Tool):
             lines.append("Objects in scene:")
             for name, pos in objects.items():
                 lines.append(f"  - {name}: [{pos[0]:.3f}, {pos[1]:.3f}, {pos[2]:.3f}]")
+
+        # LiberoEnv: has task_description, camera images, orientation
+        env = self._ctx.env
+        if hasattr(env, "task_description"):
+            lines.append(f"Task description: {env.task_description}")
+
+        eef_quat = obs.get("robot0_eef_quat")
+        if eef_quat is not None:
+            lines.append(f"End-effector orientation (quat): [{eef_quat[0]:.3f}, {eef_quat[1]:.3f}, {eef_quat[2]:.3f}, {eef_quat[3]:.3f}]")
+
+        has_image = obs.get("agentview_image") is not None
+        if has_image:
+            lines.append("Camera images: available (agentview + wrist)")
+            lines.append("Note: VLA model handles visual perception. Use start_subtask to let VLA execute actions based on camera input.")
+
+        # LiberoEnv: check success
+        if hasattr(env, "check_success"):
+            try:
+                success = env.check_success()
+                lines.append(f"Task success check: {'YES - task completed!' if success else 'not yet'}")
+            except Exception:
+                pass
 
         return "\n".join(lines)
 
