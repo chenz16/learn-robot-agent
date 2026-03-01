@@ -205,7 +205,9 @@ class WebSocketVLAAdapter(VLAAdapter):
         if actions.shape[-1] > 7:
             actions = actions[:, :7]
 
-        return actions
+        # Only use first replan_steps actions, then re-observe and re-predict
+        # (matching openpi's evaluation protocol)
+        return actions[: self._replan_steps]
 
     def reset(self) -> None:
         """Reset for new episode (openpi server is stateless per-request)."""
