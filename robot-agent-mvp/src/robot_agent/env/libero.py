@@ -1,5 +1,8 @@
 """LIBERO environment wrapper."""
 
+from __future__ import annotations
+
+import pathlib
 from typing import Any
 
 import numpy as np
@@ -14,16 +17,27 @@ try:
 except ImportError:
     _LIBERO_AVAILABLE = False
 
+LIBERO_DUMMY_ACTION = [0.0] * 6 + [-1.0]
+
 
 class LiberoEnv(RobotEnv):
-    """Wraps LIBERO's OffScreenRenderEnv for the robot agent."""
+    """Wraps LIBERO's OffScreenRenderEnv for the robot agent.
+
+    Observation keys passed through to VLA adapter:
+        agentview_image: uint8 (H, W, 3) — rotated 180°
+        robot0_eye_in_hand_image: uint8 (H, W, 3) — rotated 180°
+        robot0_eef_pos: float64 (3,)
+        robot0_eef_quat: float64 (4,)
+        robot0_gripper_qpos: float64 (2,)
+    """
 
     def __init__(
         self,
         task_name: str = "libero_10:0",
         camera_height: int = 256,
         camera_width: int = 256,
-        seed: int = 42,
+        seed: int = 7,
+        num_steps_wait: int = 10,
     ):
         if not _LIBERO_AVAILABLE:
             raise ImportError(
@@ -40,6 +54,7 @@ class LiberoEnv(RobotEnv):
         self._camera_height = camera_height
         self._camera_width = camera_width
         self._seed = seed
+        self._num_steps_wait = num_steps_wait
 
         # Load task from benchmark
         benchmark_dict = benchmark.get_benchmark_dict()
@@ -48,18 +63,17 @@ class LiberoEnv(RobotEnv):
         self._init_states = self._task_suite.get_task_init_states(task_id)
 
         # Build BDDL file path
-        bddl_file = f"{get_libero_path('bddl_files')}/{self._task.problem_folder}/{self._task.bddl_file}"
+        bddl_file = pathlib.Path(get_libero_path("bddl_files")) / self._task.problem_folder / self._task.bddl_file
 
         # Create environment
         self._env = OffScreenRenderEnv(
-            bddl_file_name=bddl_file,
+            bddl_file_name=str(bddl_file),
             camera_heights=camera_height,
             camera_widths=camera_width,
-            has_renderer=False,
-            has_offscreen_renderer=True,
         )
         self._env.seed(seed)
         self._obs: dict[str, Any] | None = None
+        self._episode_idx = 0
 
     @property
     def action_dim(self) -> int:
@@ -69,17 +83,23 @@ class LiberoEnv(RobotEnv):
     def task_description(self) -> str:
         return self._task.language
 
+    @property
+    def num_episodes(self) -> int:
+        return len(self._init_states)
+
     def reset(self, episode_idx: int = 0) -> dict[str, Any]:
+        self._episode_idx = episode_idx
         self._env.reset()
         raw_obs = self._env.set_init_state(self._init_states[episode_idx])
-        # Wait for objects to settle (10 no-op steps)
-        for _ in range(10):
-            raw_obs, _, _, _ = self._env.step([0, 0, 0, 0, 0, 0, -1])
+        # Wait for objects to settle
+        for _ in range(self._num_steps_wait):
+            raw_obs, _, _, _ = self._env.step(LIBERO_DUMMY_ACTION)
         self._obs = self._process_obs(raw_obs)
         return self._obs
 
-    def step(self, action: np.ndarray) -> tuple[dict[str, Any], float, bool, dict[str, Any]]:
-        action = np.asarray(action, dtype=np.float64).tolist()
+    def step(self, action: np.ndarray | list) -> tuple[dict[str, Any], float, bool, dict[str, Any]]:
+        if isinstance(action, np.ndarray):
+            action = action.tolist()
         raw_obs, reward, done, info = self._env.step(action)
         self._obs = self._process_obs(raw_obs)
         return self._obs, reward, done, info

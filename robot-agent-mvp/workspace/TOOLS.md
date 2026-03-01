@@ -2,8 +2,13 @@
 
 ## When to use start_subtask vs move/grasp
 
-- **start_subtask**: For VLA-driven actions that require visual feedback and continuous control. Use this for pick, place, open drawer, close drawer, etc. The VLA control loop handles the motion planning.
-- **move/grasp**: For direct state manipulation. In mock mode, these immediately update positions and gripper state. Useful for quick testing without running VLA loops.
+- **start_subtask**: For VLA-driven actions that require visual feedback and continuous control. Use this when a real VLA model is serving (http mode). The VLA control loop handles the motion planning.
+- **move/grasp**: For direct positioning and gripper control. In mock simulation mode, **prefer move + grasp** — they set positions exactly. A typical pick-and-place sequence:
+  1. `move` to the object position
+  2. `grasp` close (pick up)
+  3. `move` to the target position
+  4. `grasp` open (release)
+- Use `look` before and after to perceive and verify.
 
 ## Difficulty Classification
 

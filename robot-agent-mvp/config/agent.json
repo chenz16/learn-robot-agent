@@ -1,7 +1,7 @@
 {
   "agents": {
     "defaults": {
-      "model": "gemini/gemini-2.0-flash",
+      "model": "gemini/gemini-2.5-flash",
       "provider": "gemini",
       "temperature": 0.1,
       "maxTokens": 8192,

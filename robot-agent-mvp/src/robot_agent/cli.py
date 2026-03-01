@@ -263,8 +263,10 @@ def _print_response(response: str, markdown: bool) -> None:
 def agent(
     message: str = typer.Option(None, "--message", "-m", help="Single message to send"),
     env_type: str = typer.Option("mock", "--env", help="Environment: mock or libero"),
-    vla_type: str = typer.Option("mock", "--vla", help="VLA adapter: mock or http"),
+    vla_type: str = typer.Option("mock", "--vla", help="VLA adapter: mock, http, or websocket"),
     vla_url: str = typer.Option("http://localhost:8020", "--vla-url", help="VLA HTTP endpoint"),
+    vla_host: str = typer.Option("0.0.0.0", "--vla-host", help="VLA WebSocket host (for websocket mode)"),
+    vla_port: int = typer.Option(8000, "--vla-port", help="VLA WebSocket port (for websocket mode)"),
     vlm_url: str = typer.Option(None, "--vlm-url", help="VLM endpoint (optional)"),
     config: str = typer.Option(None, "--config", "-c", help="Path to agent.json"),
     task_name: str = typer.Option(None, "--task", help="LIBERO task name (for libero env)"),
@@ -303,7 +305,10 @@ def agent(
         env = MockEnv()
 
     # Create VLA adapter
-    if vla_type == "http":
+    if vla_type == "websocket":
+        from robot_agent.vla.websocket import WebSocketVLAAdapter
+        vla = WebSocketVLAAdapter(host=vla_host, port=vla_port)
+    elif vla_type == "http":
         from robot_agent.vla.http import HTTPVLAAdapter
         vla = HTTPVLAAdapter(base_url=vla_url)
     else:
