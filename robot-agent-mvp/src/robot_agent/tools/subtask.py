@@ -37,6 +37,11 @@ class StartSubtaskTool(Tool):
                     "type": "object",
                     "description": "Target info: {object: str, position: [x,y,z]}",
                 },
+                "difficulty": {
+                    "type": "string",
+                    "enum": ["easy", "hard"],
+                    "description": "Task difficulty: 'easy' for simple single-step actions (pick, place, move), 'hard' for multi-step or precise actions (open drawer then place inside). Determines VLA control loop parameters.",
+                },
             },
             "required": ["instruction", "target"],
         }
@@ -44,9 +49,8 @@ class StartSubtaskTool(Tool):
     async def execute(self, **kwargs: Any) -> str:
         instruction = kwargs["instruction"]
         target = kwargs.get("target", {})
+        difficulty = kwargs.get("difficulty", "easy")
 
-        # Classify difficulty
-        difficulty = self._classify_difficulty(instruction)
         route = self._ctx.route_config.get_route(difficulty)
 
         subtask_id = await self._ctx.loop_manager.start_subtask(
@@ -64,13 +68,6 @@ class StartSubtaskTool(Tool):
             "action_hz": route.action_hz,
             "max_steps": route.max_steps,
         })
-
-    def _classify_difficulty(self, instruction: str) -> str:
-        lower = instruction.lower()
-        complex_keywords = [" and ", "then", "after", "both", "drawer", "cabinet"]
-        if any(kw in lower for kw in complex_keywords):
-            return "hard"
-        return "easy"
 
 
 class CheckLoopsTool(Tool):
